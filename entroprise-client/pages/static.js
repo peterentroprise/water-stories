@@ -1,16 +1,21 @@
-import Link from "next/link";
+import Link from "../components/Link";
+
+import { Container, Box, Typography } from "@material-ui/core";
 
 const Static = (props) => {
   return (
-    <div>
-      <p>
-        This page is static because it does not fetch any data or include the
-        authed user info.
-      </p>
-      <Link href={"/"}>
-        <a>Home</a>
-      </Link>
-    </div>
+    <Container maxWidth="sm">
+      <Box my={4}>
+        <Link href={"/"}>Home</Link>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Entroprise Static
+        </Typography>
+        <Typography>
+          This page is static because it does not fetch any data or include the
+          authed user info.
+        </Typography>
+      </Box>
+    </Container>
   );
 };
 
