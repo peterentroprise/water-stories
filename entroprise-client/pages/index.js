@@ -14,20 +14,20 @@ const GET_QUESTIONS = gql`
   }
 `;
 
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "GET",
-    headers: new Headers({ "Content-Type": "application/json", token }),
-    credentials: "same-origin",
-  }).then((res) => res.json());
+// const fetcher = (url, token) =>
+//   fetch(url, {
+//     method: "GET",
+//     headers: new Headers({ "Content-Type": "application/json", token }),
+//     credentials: "same-origin",
+//   }).then((res) => res.json());
 
 const Index = () => {
   const { user, logout } = useUser();
-  const { data, error } = useSWR(
-    user ? ["/api/getFood", user.token] : null,
-    fetcher
-  );
-  const { apolloLoading, apolloError, apolloData } = useQuery(GET_QUESTIONS);
+  // const { data, error } = useSWR(
+  //   user ? ["/api/getFood", user.token] : null,
+  //   fetcher
+  // );
+  const { loading, error, data } = useQuery(GET_QUESTIONS);
 
   if (!user) {
     return (
@@ -64,11 +64,12 @@ const Index = () => {
           <a>Another example page</a>
         </Link>
       </div>
-      {console.log("apolloLoading", apolloLoading)}
-      {console.log("apolloData", apolloData)}
-      {console.log("apolloError", apolloError)}
-      {error && <div>Failed to fetch food!</div>}
-      {data && <div>Your favorite food is {data.food}.</div>}
+      {data.questions.map((item) => (
+        <div>{item.question}</div>
+      ))}
+      {console.log("apolloLoading", loading)}
+      {console.log("apolloData", data)}
+      {console.log("apolloError", error)}
     </div>
   );
 };
