@@ -45,31 +45,21 @@ const Index = () => {
 
   return (
     <div>
+      <p>You're signed in. Email: {user.email}</p>
+      <button onClick={() => logout()}>Log out</button>
       <div>
-        <p>You're signed in. Email: {user.email}</p>
-        <p
-          style={{
-            display: "inlinelock",
-            color: "blue",
-            textDecoration: "underline",
-            cursor: "pointer",
-          }}
-          onClick={() => logout()}
-        >
-          Log out
-        </p>
-      </div>
-      <div>
-        <Link href={"/example"}>
-          <a>Another example page</a>
+        <Link href={"/static"}>
+          <a>Static Page</a>
         </Link>
       </div>
-      {data.questions.map((item) => (
-        <div>{item.question}</div>
-      ))}
-      {console.log("apolloLoading", loading)}
-      {console.log("apolloData", data)}
-      {console.log("apolloError", error)}
+      {error && <div>Error loading data.</div>}
+      {loading && <div>Loading data ...</div>}
+      <ul>
+        {console.log("apolloData", data)}
+        {data.questions.map((item) => (
+          <li key={item.id}>{item.question}</li>
+        ))}
+      </ul>
     </div>
   );
 };
