@@ -1,14 +1,15 @@
-import FirebaseAuth from '../components/FirebaseAuth'
+import FirebaseAuth from "../components/FirebaseAuth";
+
+import { Container, Box } from "@material-ui/core";
 
 const Auth = () => {
   return (
-    <div>
-      <p>Sign in</p>
-      <div>
+    <Container maxWidth="sm">
+      <Box my={4}>
         <FirebaseAuth />
-      </div>
-    </div>
-  )
-}
+      </Box>
+    </Container>
+  );
+};
 
-export default Auth
+export default Auth;

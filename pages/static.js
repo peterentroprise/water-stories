@@ -7,6 +7,8 @@ const Static = (props) => {
     <Container maxWidth="sm">
       <Box my={4}>
         <Link href={"/"}>Home</Link>
+      </Box>
+      <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
           Entroprise Static
         </Typography>

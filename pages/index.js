@@ -12,6 +12,7 @@ import {
   Typography,
   List,
   ListItem,
+  ListSubheader,
 } from "@material-ui/core";
 
 const GET_QUESTIONS = gql`
@@ -41,9 +42,15 @@ const Index = () => {
   if (!user) {
     return (
       <>
-        <Typography>Hi there!</Typography>
-        <Typography>You are not signed in. </Typography>
-        <Link href={"/auth"}>Sign in</Link>
+        <Container maxWidth="sm">
+          <Box my={4}>
+            <Typography>Hi there!</Typography>
+            <Typography>You are not signed in. </Typography>
+          </Box>
+          <Box my={4}>
+            <Link href={"/auth"}>Sign in</Link>
+          </Box>
+        </Container>
       </>
     );
   }
@@ -52,15 +59,26 @@ const Index = () => {
     <Container maxWidth="sm">
       <Box my={4}>
         <Link href={"/static"}>Static Page</Link>
+      </Box>
+      <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
           Entroprise SSR
         </Typography>
         <Typography>You're signed in. Email: {user.email}</Typography>
+      </Box>
+      <Box my={4}>
         <Button onClick={() => logout()}>Log out</Button>
-
+      </Box>
+      <Box my={4}>
         {error && <div>Error loading data.</div>}
         {loading && <div>Loading data ...</div>}
-        <List>
+        <List
+          subheader={
+            <ListSubheader component="div" id="questions">
+              Questions
+            </ListSubheader>
+          }
+        >
           {console.log("apolloData", data)}
           {data.questions.map((item) => (
             <ListItem key={item.id}>{item.question}</ListItem>
