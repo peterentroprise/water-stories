@@ -17,7 +17,7 @@ steps:
         "entroprise-client-$BRANCH_NAME",
         "--image=us.gcr.io/$PROJECT_ID/entroprise-client:latest",
         "--cpu=2",
-        "--port=80",
+        "--port=3000",
         "--memory=2048Mi",
         "--timeout=600",
         "--concurrency=20",
