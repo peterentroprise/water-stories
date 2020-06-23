@@ -5,17 +5,34 @@ import { red } from "@material-ui/core/colors";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#556cd6",
+      main: "#3f51b5",
     },
     secondary: {
-      main: "#19857b",
+      main: "#f50057",
     },
     error: {
-      main: red.A400,
+      main: "#f44336",
     },
-    background: {
-      default: "#fff",
+  },
+  typography: {
+    button: {
+      textTransform: "none",
     },
+    overline: {
+      textTransform: "none",
+    },
+    fontFamily: [
+      "Muli",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
   },
 });
 
