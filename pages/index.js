@@ -5,6 +5,8 @@ import withApollo from "../lib/apollo";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
+import CompositionComponent from "../components/composition/CompositionComponent";
+
 import {
   Card,
   CardContent,
@@ -101,19 +103,7 @@ const Index = () => {
       <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
-            {error && <div>Error loading data.</div>}
-            {loading && <div>Loading data ...</div>}
-            <List
-              subheader={
-                <ListSubheader component="div" id="questions">
-                  Questions
-                </ListSubheader>
-              }
-            >
-              {data.question.map((item) => (
-                <ListItem key={item.id}>{item.question}</ListItem>
-              ))}
-            </List>
+            <CompositionComponent data={data} />
           </CardContent>
         </Card>
       </Box>
