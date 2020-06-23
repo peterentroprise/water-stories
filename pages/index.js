@@ -17,9 +17,13 @@ import {
 
 const GET_QUESTIONS = gql`
   query MyQuery {
-    questions {
+    question {
       id
       question
+    }
+    answer {
+      id
+      answer
     }
   }
 `;
@@ -79,9 +83,19 @@ const Index = () => {
             </ListSubheader>
           }
         >
-          {console.log("apolloData", data)}
-          {data.questions.map((item) => (
+          {data.question.map((item) => (
             <ListItem key={item.id}>{item.question}</ListItem>
+          ))}
+        </List>
+        <List
+          subheader={
+            <ListSubheader component="div" id="answers">
+              Answers
+            </ListSubheader>
+          }
+        >
+          {data.answer.map((item) => (
+            <ListItem key={item.id}>{item.answer}</ListItem>
           ))}
         </List>
       </Box>
