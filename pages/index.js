@@ -4,7 +4,7 @@ import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-
+import AnswerStepper from "../components/composition/AnswerStepper";
 import CompositionComponent from "../components/composition/CompositionComponent";
 
 import {
@@ -104,26 +104,18 @@ const Index = () => {
         <Card variant="outlined">
           <CardContent>
             <CompositionComponent data={data} />
+            {error && <div>Error loading data.</div>}
+            {loading && <div>Loading data ...</div>}
           </CardContent>
         </Card>
       </Box>
 
-      <Box mt={2} mb={3}>
+      <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
+            <AnswerStepper data={data} />
             {error && <div>Error loading data.</div>}
             {loading && <div>Loading data ...</div>}
-            <List
-              subheader={
-                <ListSubheader component="div" id="answers">
-                  Answers
-                </ListSubheader>
-              }
-            >
-              {data.answer.map((item) => (
-                <ListItem key={item.id}>{item.answer}</ListItem>
-              ))}
-            </List>
           </CardContent>
         </Card>
       </Box>

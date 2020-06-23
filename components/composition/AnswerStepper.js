@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CompositionComponent = ({ data }) => {
+const AnswerStepper = ({ data }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -45,11 +45,11 @@ const CompositionComponent = ({ data }) => {
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep} orientation="vertical">
-        {question.map((item, index) => (
+        {answer.map((item, index) => (
           <Step key={item.id}>
-            <StepLabel>Question {index}</StepLabel>
+            <StepLabel>Answer {index}</StepLabel>
             <StepContent>
-              <Typography>{item.question}</Typography>
+              <Typography>{item.answer}</Typography>
               <div className={classes.actionsContainer}>
                 <div>
                   <Button
@@ -65,7 +65,7 @@ const CompositionComponent = ({ data }) => {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === question.length - 1 ? "Finish" : "Next"}
+                    {activeStep === answer.length - 1 ? "Finish" : "Next"}
                   </Button>
                 </div>
               </div>
@@ -73,11 +73,9 @@ const CompositionComponent = ({ data }) => {
           </Step>
         ))}
       </Stepper>
-      {activeStep === question.length && (
+      {activeStep === answer.length && (
         <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>
-            All questions completed - you&apos;re finished
-          </Typography>
+          <Typography>All answers reviewed - you&apos;re finished</Typography>
           <Button onClick={handleReset} className={classes.button}>
             Reset
           </Button>
@@ -87,4 +85,4 @@ const CompositionComponent = ({ data }) => {
   );
 };
 
-export default CompositionComponent;
+export default AnswerStepper;

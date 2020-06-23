@@ -7,6 +7,20 @@ import cookie from "js-cookie";
 import initFirebase from "../utils/auth/initFirebase";
 import { auth as firebaseuiAuth } from "firebaseui";
 
+import Link from "../components/Link";
+
+import {
+  Card,
+  CardContent,
+  Container,
+  Box,
+  Button,
+  Typography,
+  List,
+  ListItem,
+  ListSubheader,
+} from "@material-ui/core";
+
 // Init the Firebase app.
 initFirebase();
 
@@ -53,14 +67,22 @@ const FirebaseAuth = () => {
     }
   }, []);
   return (
-    <div>
+    <Container maxWidth="sm">
       {renderAuth ? (
-        <StyledFirebaseAuth
-          uiConfig={firebaseAuthConfig}
-          firebaseAuth={firebase.auth()}
-        />
+        <Box mt={3} mb={1}>
+          <Card variant="outlined">
+            <CardContent>
+              <Box mt={2} mb={1}>
+                <StyledFirebaseAuth
+                  uiConfig={firebaseAuthConfig}
+                  firebaseAuth={firebase.auth()}
+                />
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
       ) : null}
-    </div>
+    </Container>
   );
 };
 
