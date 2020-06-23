@@ -6,6 +6,8 @@ import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
 import {
+  Card,
+  CardContent,
   Container,
   Box,
   Button,
@@ -47,12 +49,20 @@ const Index = () => {
     return (
       <>
         <Container maxWidth="sm">
-          <Box my={4}>
-            <Typography>Hi there!</Typography>
-            <Typography>You are not signed in. </Typography>
-          </Box>
-          <Box my={4}>
-            <Link href={"/auth"}>Sign in</Link>
+          <Box mt={3} mb={1}>
+            <Card variant="outlined">
+              <CardContent>
+                <Box mt={2} mb={1}>
+                  <Typography variant="h4">Entroprise</Typography>
+                </Box>
+                <Box mt={2} mb={1}>
+                  <Typography>You are not signed in. </Typography>
+                </Box>
+                <Box mt={2} mb={1}>
+                  <Link href={"/auth"}>Sign in</Link>
+                </Box>
+              </CardContent>
+            </Card>
           </Box>
         </Container>
       </>
@@ -61,43 +71,71 @@ const Index = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box my={4}>
-        <Link href={"/static"}>Static Page</Link>
+      <Box mt={3} mb={1}>
+        <Card variant="outlined">
+          <CardContent>
+            <Box mt={2} mb={1}>
+              <Link href={"/static"}>Static Page</Link>
+            </Box>
+            <Box mt={2} mb={1}>
+              <Typography variant="h4" component="h1" gutterBottom>
+                Entroprise SSR
+              </Typography>
+            </Box>
+            <Box mt={2} mb={1}>
+              <Typography>You're signed in. Email: {user.email}</Typography>
+            </Box>
+            <Box mt={2} mb={1}>
+              <Button
+                disableElevation
+                variant="contained"
+                onClick={() => logout()}
+              >
+                Log out
+              </Button>
+            </Box>
+          </CardContent>
+        </Card>
       </Box>
-      <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Entroprise SSR
-        </Typography>
-        <Typography>You're signed in. Email: {user.email}</Typography>
+
+      <Box mt={2} mb={1}>
+        <Card variant="outlined">
+          <CardContent>
+            {error && <div>Error loading data.</div>}
+            {loading && <div>Loading data ...</div>}
+            <List
+              subheader={
+                <ListSubheader component="div" id="questions">
+                  Questions
+                </ListSubheader>
+              }
+            >
+              {data.question.map((item) => (
+                <ListItem key={item.id}>{item.question}</ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
       </Box>
-      <Box my={4}>
-        <Button onClick={() => logout()}>Log out</Button>
-      </Box>
-      <Box my={4}>
-        {error && <div>Error loading data.</div>}
-        {loading && <div>Loading data ...</div>}
-        <List
-          subheader={
-            <ListSubheader component="div" id="questions">
-              Questions
-            </ListSubheader>
-          }
-        >
-          {data.question.map((item) => (
-            <ListItem key={item.id}>{item.question}</ListItem>
-          ))}
-        </List>
-        <List
-          subheader={
-            <ListSubheader component="div" id="answers">
-              Answers
-            </ListSubheader>
-          }
-        >
-          {data.answer.map((item) => (
-            <ListItem key={item.id}>{item.answer}</ListItem>
-          ))}
-        </List>
+
+      <Box mt={2} mb={3}>
+        <Card variant="outlined">
+          <CardContent>
+            {error && <div>Error loading data.</div>}
+            {loading && <div>Loading data ...</div>}
+            <List
+              subheader={
+                <ListSubheader component="div" id="answers">
+                  Answers
+                </ListSubheader>
+              }
+            >
+              {data.answer.map((item) => (
+                <ListItem key={item.id}>{item.answer}</ListItem>
+              ))}
+            </List>
+          </CardContent>
+        </Card>
       </Box>
     </Container>
   );
