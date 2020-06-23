@@ -2,10 +2,10 @@
 import { useEffect, useState } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase/app";
-import firebaseui from "firebase/app";
 import "firebase/auth";
 import cookie from "js-cookie";
 import initFirebase from "../utils/auth/initFirebase";
+import { auth as firebaseuiAuth } from "firebaseui";
 
 // Init the Firebase app.
 initFirebase();
@@ -16,7 +16,7 @@ const firebaseAuthConfig = {
   // Auth providers
   // https://github.com/firebase/firebaseui-web#configure-oauth-providers
   signInOptions: [
-    // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
+    firebaseuiAuth.AnonymousAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
