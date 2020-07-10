@@ -4,4 +4,4 @@ metadata:
   name: entro-client-certificate
 spec:
   domains:
-    - entroprise.com
+    - entroprise.app
