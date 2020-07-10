@@ -4,4 +4,4 @@ metadata:
   name: entro-client-certificate
 spec:
   domains:
-    - www.entroprise.com
+    - entroprise.com
