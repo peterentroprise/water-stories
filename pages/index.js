@@ -45,7 +45,7 @@ const Index = () => {
   //   user ? ["/api/getFood", user.token] : null,
   //   fetcher
   // );
-  const { loading, error, data } = useQuery(GET_QUESTIONS);
+  // const { loading, error, data } = useQuery(GET_QUESTIONS);
 
   if (!user) {
     return (
@@ -100,7 +100,7 @@ const Index = () => {
         </Card>
       </Box>
 
-      <Box mt={2} mb={1}>
+      {/* <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
             <CompositionComponent data={data} />
@@ -118,7 +118,7 @@ const Index = () => {
             {loading && <div>Loading data ...</div>}
           </CardContent>
         </Card>
-      </Box>
+      </Box> */}
     </Container>
   );
 };
