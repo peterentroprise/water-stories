@@ -4,7 +4,7 @@ steps:
     args:
       [
         "-c",
-        "gcloud secrets versions access latest --secret=qa-client-env > .env.local",
+        "gcloud secrets versions access latest --entro-client-env > .env.local",
       ]
   - id: "docker_build"
     name: "gcr.io/cloud-builders/docker"
@@ -14,24 +14,24 @@ steps:
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "us.gcr.io/$PROJECT_ID/entroprise-client"]
 
-  - id: "cloud_run_deploy"
-    name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
-    args:
-      [
-        "gcloud",
-        "run",
-        "deploy",
-        "entroprise-client-$BRANCH_NAME",
-        "--image=us.gcr.io/$PROJECT_ID/entroprise-client:latest",
-        "--cpu=2",
-        "--port=3000",
-        "--memory=2048Mi",
-        "--timeout=600",
-        "--concurrency=20",
-        "--platform=managed",
-        "--max-instances=1000",
-        "--region=us-central1",
-        "--allow-unauthenticated",
-        "--revision-suffix=$SHORT_SHA",
-        "--set-env-vars=PROJECT_ID=$PROJECT_ID,SHORT_SHA=$SHORT_SHA",
-      ]
+  # - id: "cloud_run_deploy"
+  #   name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+  #   args:
+  #     [
+  #       "gcloud",
+  #       "run",
+  #       "deploy",
+  #       "entroprise-client-$BRANCH_NAME",
+  #       "--image=us.gcr.io/$PROJECT_ID/entroprise-client:latest",
+  #       "--cpu=2",
+  #       "--port=3000",
+  #       "--memory=2048Mi",
+  #       "--timeout=600",
+  #       "--concurrency=20",
+  #       "--platform=managed",
+  #       "--max-instances=1000",
+  #       "--region=us-central1",
+  #       "--allow-unauthenticated",
+  #       "--revision-suffix=$SHORT_SHA",
+  #       "--set-env-vars=PROJECT_ID=$PROJECT_ID,SHORT_SHA=$SHORT_SHA",
+  #     ]
