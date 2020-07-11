@@ -3,8 +3,6 @@ import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
 import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
-import AnswerStepper from "../components/composition/AnswerStepper";
 import CompositionComponent from "../components/composition/CompositionComponent";
 
 import {
@@ -17,35 +15,45 @@ import {
   List,
   ListItem,
   ListSubheader,
+  TextField,
 } from "@material-ui/core";
+import { useState } from "react";
 
-const GET_QUESTIONS = gql`
-  query MyQuery {
-    question {
-      id
-      question
-    }
-    answer {
-      id
-      answer
-    }
-  }
-`;
+const askEndpoint = "http://34.67.136.175/items/ask";
 
-// const fetcher = (url, token) =>
-//   fetch(url, {
-//     method: "GET",
-//     headers: new Headers({ "Content-Type": "application/json", token }),
-//     credentials: "same-origin",
-//   }).then((res) => res.json());
+const askQuestion = async (payload) => {
+
+  const response = await fetch(askEndpoint, {
+    method: "POST",
+    withCredentials: true,
+    headers: {
+      "x-api-key": "dd74decc-8825-4a49-b9bc-e4608249d612",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload),
+  });
+  return await response.json();
+};
 
 const Index = () => {
   const { user, logout } = useUser();
-  // const { data, error } = useSWR(
-  //   user ? ["/api/getFood", user.token] : null,
-  //   fetcher
-  // );
-  // const { loading, error, data } = useQuery(GET_QUESTIONS);
+
+  const [question, setQuestion] = useState('Who are we?')
+  const [answer, setAnswer] = useState()
+
+
+  const handleChangeQuestion = (event) => {
+    setQuestion(event.target.value);
+  };
+
+  const handleAskQuestion = async () => {
+    const payload = {
+      content: "content",
+      question: question,
+    };
+    const response = await askQuestion(payload);
+    setAnswer(response)
+  };
 
   if (!user) {
     return (
@@ -100,25 +108,19 @@ const Index = () => {
         </Card>
       </Box>
 
-      {/* <Box mt={2} mb={1}>
+      <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
-            <CompositionComponent data={data} />
-            {error && <div>Error loading data.</div>}
-            {loading && <div>Loading data ...</div>}
+            <TextField id="question" label="Question" variant="filled" value={question} onChange={handleChangeQuestion} fullWidth/>
+            <Box mt={2} mb={1}>
+              <Button disableElevation variant="contained" onClick={handleAskQuestion}>Ask Question</Button>
+            </Box>
+            {answer && <Typography>{answer}</Typography>}
+            {/* <CompositionComponent/> */}
           </CardContent>
         </Card>
       </Box>
 
-      <Box mt={2} mb={1}>
-        <Card variant="outlined">
-          <CardContent>
-            <AnswerStepper data={data} />
-            {error && <div>Error loading data.</div>}
-            {loading && <div>Loading data ...</div>}
-          </CardContent>
-        </Card>
-      </Box> */}
     </Container>
   );
 };
