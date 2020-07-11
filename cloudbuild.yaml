@@ -8,11 +8,11 @@ steps:
       ]
   - id: "docker_build"
     name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "us.gcr.io/$PROJECT_ID/entroprise-client", "."]
+    args: ["build", "-t", "us.gcr.io/$PROJECT_ID/entro-client", "."]
 
   - id: "docker_push"
     name: "gcr.io/cloud-builders/docker"
-    args: ["push", "us.gcr.io/$PROJECT_ID/entroprise-client"]
+    args: ["push", "us.gcr.io/$PROJECT_ID/entro-client"]
 
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
