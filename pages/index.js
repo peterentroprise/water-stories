@@ -1,9 +1,7 @@
-import useSWR from "swr";
 import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
-import gql from "graphql-tag";
-import CompositionComponent from "../components/composition/CompositionComponent";
+// import CompositionComponent from "../components/composition/CompositionComponent";
 
 import {
   Card,
@@ -12,17 +10,13 @@ import {
   Box,
   Button,
   Typography,
-  List,
-  ListItem,
-  ListSubheader,
   TextField,
 } from "@material-ui/core";
 import { useState } from "react";
 
-const askEndpoint = "http://34.67.136.175/items/ask";
+const askEndpoint = "https://haystack.entroprise.com/items/ask";
 
 const askQuestion = async (payload) => {
-
   const response = await fetch(askEndpoint, {
     method: "POST",
     withCredentials: true,
