@@ -108,7 +108,7 @@ const Index = () => {
             <Box mt={2} mb={1}>
               <Button disableElevation variant="contained" onClick={handleAskQuestion}>Ask Question</Button>
             </Box>
-            {answer && <Typography>{answer}</Typography>}
+            {answer && <Typography>{answer[0].answer}</Typography>}
             {/* <CompositionComponent/> */}
           </CardContent>
         </Card>
