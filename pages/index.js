@@ -32,7 +32,7 @@ const askQuestion = async (payload) => {
 const Index = () => {
   const { user, logout } = useUser();
 
-  const [question, setQuestion] = useState('Who are we?')
+  const [question, setQuestion] = useState('How is the virus spreading?')
   const [answer, setAnswer] = useState()
 
 

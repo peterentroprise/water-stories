@@ -18,5 +18,6 @@ steps:
     args:
     - run
     - --filename=entro-client-deployment.yaml
+    - --image=us.gcr.io/$PROJECT_ID/entro-client
     - --location=us-central1-c
     - --cluster=prod-cluster
