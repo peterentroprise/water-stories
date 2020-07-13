@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core";
 import { useState } from "react";
 
-const askEndpoint = "https://haystack.entroprise.com/items/ask";
+const askEndpoint = "https://haystack.entroprise.com/item/askquestion";
 
 const askQuestion = async (payload) => {
   const response = await fetch(askEndpoint, {
@@ -42,7 +42,6 @@ const Index = () => {
 
   const handleAskQuestion = async () => {
     const payload = {
-      content: "content",
       question: question,
     };
     const response = await askQuestion(payload);
