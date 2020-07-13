@@ -157,7 +157,7 @@ const Index = () => {
               {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
             </div>
             </Box>
-            {answer && <Typography>{answer[0].answer}</Typography>}
+            {answer && <Typography>{answer.answers[0].answer}</Typography>}
             {/* <CompositionComponent/> */}
           </CardContent>
         </Card>
