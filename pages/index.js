@@ -3,7 +3,7 @@ import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
 // import CompositionComponent from "../components/composition/CompositionComponent";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 
 import {
   Card,
@@ -15,8 +15,8 @@ import {
   TextField,
   CircularProgress,
 } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import { makeStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
 
 import { useState } from "react";
 
@@ -28,7 +28,7 @@ const askQuestion = async (payload) => {
     withCredentials: true,
     headers: {
       "x-api-key": "dd74decc-8825-4a49-b9bc-e4608249d612",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });
@@ -37,31 +37,17 @@ const askQuestion = async (payload) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
   },
   wrapper: {
-    margin: theme.spacing(1),
-    position: 'relative',
-  },
-  buttonSuccess: {
-    backgroundColor: green[500],
-    '&:hover': {
-      backgroundColor: green[700],
-    },
-  },
-  fabProgress: {
-    color: green[500],
-    position: 'absolute',
-    top: -6,
-    left: -6,
-    zIndex: 1,
+    position: "relative",
   },
   buttonProgress: {
     color: green[500],
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
     marginTop: -12,
     marginLeft: -12,
   },
@@ -69,14 +55,10 @@ const useStyles = makeStyles((theme) => ({
 const Index = () => {
   const { user, logout } = useUser();
   const classes = useStyles();
-  const [question, setQuestion] = useState('How is the virus spreading?')
-  const [answer, setAnswer] = useState()
-  const [loading, setLoading] = useState(false)
+  const [question, setQuestion] = useState("How is the virus spreading?");
+  const [answer, setAnswer] = useState();
+  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = React.useState(false);
-
-  const buttonClassname = clsx({
-    [classes.buttonSuccess]: success,
-  });
 
   const handleChangeQuestion = (event) => {
     setQuestion(event.target.value);
@@ -86,12 +68,12 @@ const Index = () => {
     const payload = {
       question: question,
     };
-    setLoading(true)
+    setLoading(true);
     setSuccess(false);
     const response = await askQuestion(payload);
-    setLoading(false)
+    setLoading(false);
     setSuccess(true);
-    setAnswer(response)
+    setAnswer(response);
   };
 
   if (!user) {
@@ -150,19 +132,40 @@ const Index = () => {
       <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
-            <TextField id="question" label="Question" variant="filled" value={question} onChange={handleChangeQuestion} fullWidth/>
+            <TextField
+              id="question"
+              label="Question"
+              variant="filled"
+              value={question}
+              onChange={handleChangeQuestion}
+              fullWidth
+            />
             <Box mt={2} mb={1}>
-            <div className={classes.wrapper}>
-            <Button color="primary" className={buttonClassname} disableElevation variant="contained" onClick={handleAskQuestion} disabled={loading}>Ask Question</Button>
-              {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
-            </div>
+              <div className={classes.root}>
+                <div className={classes.wrapper}>
+                  <Button
+                    color="primary"
+                    disableElevation
+                    variant="contained"
+                    onClick={handleAskQuestion}
+                    disabled={loading}
+                  >
+                    Ask Question
+                  </Button>
+                  {loading && (
+                    <CircularProgress
+                      size={24}
+                      className={classes.buttonProgress}
+                    />
+                  )}
+                </div>
+              </div>
             </Box>
             {answer && <Typography>{answer.answers[0].answer}</Typography>}
             {/* <CompositionComponent/> */}
           </CardContent>
         </Card>
       </Box>
-
     </Container>
   );
 };
