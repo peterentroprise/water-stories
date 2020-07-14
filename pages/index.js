@@ -12,6 +12,10 @@ import {
   Box,
   Button,
   Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
   TextField,
   CircularProgress,
 } from "@material-ui/core";
@@ -160,7 +164,53 @@ const Index = () => {
                 </div>
               </div>
             </Box>
-            {answer && <Typography>{answer.answers[0].answer}</Typography>}
+            {answer && (
+              <List disablePadding>
+                <ListItem disableGutters alignItems="flex-start">
+                  <ListItemText
+                    primary={
+                      (answer.answers[0].meta.question &&
+                        answer.answers[0].meta.question) ||
+                      "Not Available"
+                    }
+                    secondary={
+                      <>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className={classes.inline}
+                          color="textPrimary"
+                        >
+                          {`Answer: `}
+                        </Typography>
+                        {answer.answers[0].answer}
+                      </>
+                    }
+                  />
+                </ListItem>
+                <ListItem disableGutters alignItems="flex-start">
+                  <ListItemText
+                    primary="Metadata"
+                    secondary={
+                      <>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className={classes.inline}
+                          color="textPrimary"
+                        >
+                          {`Score: ${answer.answers[0].score} `}
+                        </Typography>
+                        <a href={answer.answers[0].meta.link}>
+                          {` ${answer.answers[0].meta.source}`}
+                        </a>
+                      </>
+                    }
+                  />
+                </ListItem>
+              </List>
+            )}
+
             {/* <CompositionComponent/> */}
           </CardContent>
         </Card>
