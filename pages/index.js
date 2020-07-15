@@ -190,7 +190,7 @@ const Index = () => {
                 </ListItem>
                 <ListItem disableGutters alignItems="flex-start">
                   <ListItemText
-                    primary="Metadata"
+                    primary="Content"
                     secondary={
                       <>
                         <Typography
@@ -201,9 +201,7 @@ const Index = () => {
                         >
                           {`Score: ${answer.answers[0].score} `}
                         </Typography>
-                        <a href={answer.answers[0].meta.link}>
-                          {` ${answer.answers[0].meta.source}`}
-                        </a>
+                        <a href={answer.answers[0].content}>Link to Content</a>
                       </>
                     }
                   />
