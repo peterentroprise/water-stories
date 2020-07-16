@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
 const CompositionComponent = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [placement, setPlacement] = React.useState("right-end");
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
@@ -23,7 +24,13 @@ const CompositionComponent = () => {
   return (
     <div className={classes.root}>
       <FabComponent handleClick={handleClick} />
-      <PopperComponent id={id} open={open} handleClick={handleClick}>
+      <PopperComponent
+        id={id}
+        open={open}
+        handleClick={handleClick}
+        anchorEl={anchorEl}
+        placement={placement}
+      >
         <BodyComponent />
       </PopperComponent>
     </div>

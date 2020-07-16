@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const BodyComponent = () => {
   const classes = useStyles();
 
-  const [question, setQuestion] = useState("How is the virus spreading?");
+  const [question, setQuestion] = useState("How do I make experimental jigs?");
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -111,7 +111,7 @@ const BodyComponent = () => {
           </div>
         </Box>
         {console.log(answer)}
-        {/* {answer && (
+        {answer && (
           <List disablePadding>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
@@ -120,24 +120,12 @@ const BodyComponent = () => {
                     answer.answers[0].meta.question) ||
                   "Not Available"
                 }
-                secondary={
-                  <>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {`Answer: `}
-                    </Typography>
-                    {answer.answers[0].answer}
-                  </>
-                }
+                secondary={answer.answers[0].answer}
               />
             </ListItem>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary="Content"
+                primary="Answer Meta"
                 secondary={
                   <>
                     <Typography
@@ -146,15 +134,15 @@ const BodyComponent = () => {
                       className={classes.inline}
                       color="textPrimary"
                     >
-                      {`Score: ${answer.answers[0].score} `}
+                      {`Confidence Score: ${answer.answers[0].score} `}
                     </Typography>
-                    <a href={answer.answers[0].content}>Link to Content</a>
+                    <a href={answer.answers[0].meta.content}>Link to Content</a>
                   </>
                 }
               />
             </ListItem>
           </List>
-        )} */}
+        )}
       </Box>
     </div>
   );
