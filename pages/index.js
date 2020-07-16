@@ -1,9 +1,7 @@
 import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
-// import CompositionComponent from "../components/composition/CompositionComponent";
-
-import clsx from "clsx";
+import CompositionComponent from "../components/composition/CompositionComponent";
 
 import {
   Card,
@@ -135,81 +133,7 @@ const Index = () => {
       <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
-            <TextField
-              id="question"
-              label="Question"
-              variant="filled"
-              value={question}
-              onChange={handleChangeQuestion}
-              fullWidth
-            />
-            <Box mt={2} mb={1}>
-              <div className={classes.root}>
-                <div className={classes.wrapper}>
-                  <Button
-                    color="primary"
-                    disableElevation
-                    variant="contained"
-                    onClick={handleAskQuestion}
-                    disabled={loading}
-                  >
-                    Ask Question
-                  </Button>
-                  {loading && (
-                    <CircularProgress
-                      size={24}
-                      className={classes.buttonProgress}
-                    />
-                  )}
-                </div>
-              </div>
-            </Box>
-            {answer && (
-              <List disablePadding>
-                <ListItem disableGutters alignItems="flex-start">
-                  <ListItemText
-                    primary={
-                      (answer.answers[0].meta.question &&
-                        answer.answers[0].meta.question) ||
-                      "Not Available"
-                    }
-                    secondary={
-                      <>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          {`Answer: `}
-                        </Typography>
-                        {answer.answers[0].answer}
-                      </>
-                    }
-                  />
-                </ListItem>
-                <ListItem disableGutters alignItems="flex-start">
-                  <ListItemText
-                    primary="Content"
-                    secondary={
-                      <>
-                        <Typography
-                          component="span"
-                          variant="body2"
-                          className={classes.inline}
-                          color="textPrimary"
-                        >
-                          {`Score: ${answer.answers[0].score} `}
-                        </Typography>
-                        <a href={answer.answers[0].content}>Link to Content</a>
-                      </>
-                    }
-                  />
-                </ListItem>
-              </List>
-            )}
-
-            {/* <CompositionComponent/> */}
+            <CompositionComponent />
           </CardContent>
         </Card>
       </Box>
