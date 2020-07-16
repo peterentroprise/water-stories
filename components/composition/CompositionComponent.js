@@ -12,10 +12,11 @@ const useStyles = makeStyles((theme) => ({
 const CompositionComponent = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [placement, setPlacement] = React.useState("right-end");
+  const [placement, setPlacement] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
+    setPlacement("setPlacement");
   };
 
   const open = Boolean(anchorEl);

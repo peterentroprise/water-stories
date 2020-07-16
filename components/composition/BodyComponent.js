@@ -125,7 +125,7 @@ const BodyComponent = () => {
             </ListItem>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary="Answer Meta"
+                primary="Answer Metadata"
                 secondary={
                   <>
                     <Typography
@@ -136,7 +136,16 @@ const BodyComponent = () => {
                     >
                       {`Confidence Score: ${answer.answers[0].score} `}
                     </Typography>
-                    <a href={answer.answers[0].meta.content}>Link to Content</a>
+                    <a target="_blank" href={answer.answers[0].meta.content}>
+                      Link to Content
+                    </a>
+                    <iframe
+                      allow="autoplay"
+                      frameBorder="0"
+                      allowFullScreen="1"
+                      src={`${answer.answers[0].meta.content}?autoplay=1&mute=1&origin=https://entroprise.com`}
+                      width="288"
+                    ></iframe>
                   </>
                 }
               />
