@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {},
+  popper: { top: theme.spacing(3) },
 }));
 
 const PopperComponent = ({
@@ -25,6 +25,7 @@ const PopperComponent = ({
         onClose={handleClick}
         anchorEl={anchorEl}
         placement={placement}
+        className={classes.popper}
       >
         <Paper className={classes.paper}>
           {children}

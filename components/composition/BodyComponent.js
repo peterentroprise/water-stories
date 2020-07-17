@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 const BodyComponent = () => {
   const classes = useStyles();
 
-  const [question, setQuestion] = useState("How do I make experimental jigs?");
+  const [question, setQuestion] = useState("How do I make a jig?");
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = React.useState(false);
@@ -88,18 +88,20 @@ const BodyComponent = () => {
           variant="filled"
           value={question}
           onChange={handleChangeQuestion}
+          autoFocus
         />
         <Box mt={2} mb={1}>
           <div className={classes.root}>
             <div className={classes.wrapper}>
               <Button
+                type="submit"
                 color="primary"
                 disableElevation
                 variant="contained"
                 onClick={handleAskQuestion}
                 disabled={loading}
               >
-                Ask Question
+                Submit
               </Button>
               {loading && (
                 <CircularProgress

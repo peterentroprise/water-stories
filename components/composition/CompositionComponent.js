@@ -16,7 +16,7 @@ const CompositionComponent = () => {
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
-    setPlacement("setPlacement");
+    setPlacement("bottom");
   };
 
   const open = Boolean(anchorEl);
