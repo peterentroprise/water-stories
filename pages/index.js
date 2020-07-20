@@ -2,6 +2,7 @@ import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
 import CompositionComponent from "../components/composition/CompositionComponent";
+import DocumentComp from "../components/composition/DocumentComp";
 
 import {
   Card,
@@ -60,8 +61,17 @@ const Index = () => {
 
   return (
     <Container maxWidth="sm">
-      <CompositionComponent />
+      <DocumentComp />
       <Box mt={12} mb={1}>
+        <Card variant="outlined">
+          <CardContent>
+            <Typography>
+              One document from Pat Trap has been indexed. G-Manual-6305-Binder
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
+      <Box mt={2} mb={1}>
         <Card variant="outlined">
           <CardContent>
             <Typography>

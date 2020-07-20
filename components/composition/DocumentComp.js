@@ -1,16 +1,17 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-import FabComponent from "./FabComponent";
+import ButtonComp from "./ButtonComp";
 import PopperComponent from "./PopperComponent";
 import BodyComponent from "./BodyComponent";
 import DocumentQuestion from "./DocumentQuestion";
+import FabComponent from "./FabComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-const CompositionComponent = () => {
+const DocoumentComp = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [placement, setPlacement] = React.useState(null);
@@ -39,4 +40,4 @@ const CompositionComponent = () => {
   );
 };
 
-export default CompositionComponent;
+export default DocoumentComp;
