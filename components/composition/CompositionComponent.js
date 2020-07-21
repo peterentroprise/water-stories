@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import FabComponent from "./FabComponent";
 import PopperComponent from "./PopperComponent";
+import DialogComponent from "./DialogComponent";
 import BodyComponent from "./BodyComponent";
 import DocumentQuestion from "./DocumentQuestion";
 
@@ -13,11 +14,9 @@ const useStyles = makeStyles((theme) => ({
 const CompositionComponent = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [placement, setPlacement] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
-    setPlacement("bottom");
   };
 
   const open = Boolean(anchorEl);
@@ -26,15 +25,14 @@ const CompositionComponent = () => {
   return (
     <div className={classes.root}>
       <FabComponent handleClick={handleClick} />
-      <PopperComponent
+      <DialogComponent
         id={id}
         open={open}
         handleClick={handleClick}
         anchorEl={anchorEl}
-        placement={placement}
       >
         <DocumentQuestion />
-      </PopperComponent>
+      </DialogComponent>
     </div>
   );
 };

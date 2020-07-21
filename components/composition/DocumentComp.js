@@ -6,6 +6,7 @@ import PopperComponent from "./PopperComponent";
 import BodyComponent from "./BodyComponent";
 import DocumentQuestion from "./DocumentQuestion";
 import FabComponent from "./FabComponent";
+import DialogComponent from "./DialogComponent";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,7 +28,7 @@ const DocoumentComp = () => {
   return (
     <div className={classes.root}>
       <FabComponent handleClick={handleClick} />
-      <PopperComponent
+      <DialogComponent
         id={id}
         open={open}
         handleClick={handleClick}
@@ -35,7 +36,7 @@ const DocoumentComp = () => {
         placement={placement}
       >
         <DocumentQuestion />
-      </PopperComponent>
+      </DialogComponent>
     </div>
   );
 };

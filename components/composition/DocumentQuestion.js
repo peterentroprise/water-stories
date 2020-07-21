@@ -13,6 +13,7 @@ import {
   Divider,
   TextField,
   CircularProgress,
+  LinearProgress,
 } from "@material-ui/core";
 
 import { useState } from "react";
@@ -32,24 +33,17 @@ const askQuestion = async (payload) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    width: 320,
-  },
   wrapper: {
     position: "relative",
   },
-  textField: {
-    width: 320 - theme.spacing(4),
-  },
+  textField: {},
   buttonProgress: {
-    color: theme.palette.primary,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
+    // color: theme.palette.primary,
+    // position: "absolute",
+    // top: "50%",
+    // left: "50%",
+    // marginTop: -12,
+    // marginLeft: -12,
   },
 }));
 
@@ -82,7 +76,7 @@ const DocumentQuestion = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <>
       <Box p={2} mt={2} mb={1}>
         <TextField
           className={classes.textField}
@@ -92,6 +86,7 @@ const DocumentQuestion = () => {
           value={question}
           onChange={handleChangeQuestion}
           autoFocus
+          fullWidth
         />
         <Box mt={2} mb={1}>
           <div className={classes.root}>
@@ -106,12 +101,6 @@ const DocumentQuestion = () => {
               >
                 Submit
               </Button>
-              {loading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
             </div>
           </div>
         </Box>
@@ -120,32 +109,22 @@ const DocumentQuestion = () => {
           <List disablePadding>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary="Answer"
-                secondary={answer.results[0].answers[0].answer}
+                primary={`Answer: ${answer.results[0].answers[0].answer}`}
+                secondary={`Context: ${answer.results[0].answers[0].context}`}
               />
             </ListItem>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary="Context"
-                secondary={answer.results[0].answers[0].context}
+                primary={`Probability: ${
+                  answer.results[0].answers[0].probability * 100
+                }`}
+                secondary={`Score: ${answer.results[0].answers[0].score * 100}`}
               />
             </ListItem>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary="Probability Answer is Correct"
-                secondary={answer.results[0].answers[0].probability * 100}
-              />
-            </ListItem>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary="Document Name"
-                secondary={answer.results[0].answers[0].meta.name}
-              />
-            </ListItem>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary="Location in Document"
-                secondary={`${answer.results[0].answers[0].offset_start_in_doc} - ${answer.results[0].answers[0].offset_end_in_doc}`}
+                primary={`Document: ${answer.results[0].answers[0].meta.name}`}
+                secondary={`Location: ${answer.results[0].answers[0].offset_start_in_doc} - ${answer.results[0].answers[0].offset_end_in_doc}`}
               />
             </ListItem>
 
@@ -179,7 +158,8 @@ const DocumentQuestion = () => {
           </List>
         )}
       </Box>
-    </div>
+      {loading && <LinearProgress className={classes.buttonProgress} />}
+    </>
   );
 };
 

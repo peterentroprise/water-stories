@@ -6,35 +6,32 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  popper: { top: theme.spacing(3) },
+  popper: {},
 }));
 
-const PopperComponent = ({
-  open,
-  handleClick,
-  anchorEl,
-  children,
-  placement,
-}) => {
+const PopperComponent = ({ open, handleClick, anchorEl, children }) => {
   const classes = useStyles();
 
   return (
     <>
       <Popper
+        keepMounted
         open={open}
         onClose={handleClick}
         anchorEl={anchorEl}
-        placement={placement}
+        placement="top-end"
         className={classes.popper}
+        modifiers={{
+          flip: {
+            enabled: true,
+          },
+          // preventOverflow: {
+          //   enabled: true,
+          //   boundariesElement: "scrollParent",
+          // },
+        }}
       >
-        <Paper className={classes.paper}>
-          {children}
-          <Box p={2} mt={2} mb={1}>
-            <Button variant="contained" disableElevation onClick={handleClick}>
-              Close
-            </Button>
-          </Box>
-        </Paper>
+        <Paper className={classes.paper}>{children}</Paper>
       </Popper>
     </>
   );
