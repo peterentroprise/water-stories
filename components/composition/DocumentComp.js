@@ -9,7 +9,7 @@ import FabComponent from "./FabComponent";
 import DialogComponent from "./DialogComponent";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  // root: { width: "100%", height: "100%" },
 }));
 
 const DocoumentComp = () => {
@@ -27,8 +27,8 @@ const DocoumentComp = () => {
 
   return (
     <div className={classes.root}>
-      <FabComponent handleClick={handleClick} />
-      <DialogComponent
+      <FabComponent open={open} handleClick={handleClick} />
+      <PopperComponent
         id={id}
         open={open}
         handleClick={handleClick}
@@ -36,7 +36,7 @@ const DocoumentComp = () => {
         placement={placement}
       >
         <DocumentQuestion />
-      </DialogComponent>
+      </PopperComponent>
     </div>
   );
 };

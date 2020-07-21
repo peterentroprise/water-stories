@@ -14,6 +14,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Muli:300,400,500,700&display=swap"
           />
+          <script
+            type="text/javascript"
+            src="/static/iframeResizer.contentWindow.min.js"
+            defer
+          ></script>
         </Head>
         <body>
           <Main />

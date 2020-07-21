@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
-  popper: {},
+  popper: { width: "calc(100% - 32px);", maxWidth: 512 },
 }));
 
 const PopperComponent = ({ open, handleClick, anchorEl, children }) => {
@@ -19,17 +19,17 @@ const PopperComponent = ({ open, handleClick, anchorEl, children }) => {
         open={open}
         onClose={handleClick}
         anchorEl={anchorEl}
-        placement="top-end"
+        placement="top"
         className={classes.popper}
-        modifiers={{
-          flip: {
-            enabled: true,
-          },
-          // preventOverflow: {
-          //   enabled: true,
-          //   boundariesElement: "scrollParent",
-          // },
-        }}
+        // modifiers={{
+        //   flip: {
+        //     enabled: true,
+        //   },
+        //   // preventOverflow: {
+        //   //   enabled: true,
+        //   //   boundariesElement: "scrollParent",
+        //   // },
+        // }}
       >
         <Paper className={classes.paper}>{children}</Paper>
       </Popper>
