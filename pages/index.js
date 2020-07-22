@@ -41,6 +41,7 @@ const Index = () => {
   if (!user) {
     return (
       <div className={classes.root}>
+        <DocumentComp />
         {/* <Container maxWidth="sm">
           <Box mt={3} mb={1}>
             <Card variant="outlined">
