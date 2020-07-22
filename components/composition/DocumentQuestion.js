@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 const DocumentQuestion = () => {
   const classes = useStyles();
 
-  const [question, setQuestion] = useState("How do I oil the machine?");
+  const [question, setQuestion] = useState("What oil do I use?");
   const [top_k_reader, set_top_k_reader] = useState(1);
   const [top_k_retriever, set_top_k_retriever] = useState(1);
   const [answer, setAnswer] = useState();
