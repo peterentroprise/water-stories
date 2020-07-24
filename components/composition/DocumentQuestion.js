@@ -18,7 +18,7 @@ import {
 
 import { useState } from "react";
 
-const askEndpoint = "https://prediction.entroprise.com/models/1/doc-qa";
+const askEndpoint = "https://prediction.entroprise.com/models/1/doc-qa-dpr";
 
 const askQuestion = async (payload) => {
   const response = await fetch(askEndpoint, {
@@ -51,8 +51,8 @@ const DocumentQuestion = () => {
   const classes = useStyles();
 
   const [question, setQuestion] = useState("What oil do I use?");
-  const [top_k_reader, set_top_k_reader] = useState(1);
-  const [top_k_retriever, set_top_k_retriever] = useState(1);
+  const [top_k_reader, set_top_k_reader] = useState(10);
+  const [top_k_retriever, set_top_k_retriever] = useState(10);
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = React.useState(false);
