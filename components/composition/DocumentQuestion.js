@@ -50,7 +50,9 @@ const useStyles = makeStyles((theme) => ({
 const DocumentQuestion = () => {
   const classes = useStyles();
 
-  const [question, setQuestion] = useState("What oil do I use?");
+  const [question, setQuestion] = useState(
+    "Who created the Dothraki vocabulary?"
+  );
   const [top_k_reader, set_top_k_reader] = useState(10);
   const [top_k_retriever, set_top_k_retriever] = useState(10);
   const [answer, setAnswer] = useState();
