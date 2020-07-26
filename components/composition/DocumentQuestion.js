@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
   },
-  root: { minHeight: "100%" },
+  root: { minHeight: 210 },
   buttonProgress: {
     // color: theme.palette.primary,
     // position: "absolute",
@@ -82,9 +82,9 @@ const DocumentQuestion = () => {
   };
 
   return (
-    <>
+    <div className={classes.root}>
       <Box p={2} mt={2} mb={1}>
-        <form className={classes.root} noValidate autoComplete="off">
+        <form noValidate autoComplete="off">
           <Autocomplete
             freeSolo
             autoFocus
@@ -189,7 +189,7 @@ const DocumentQuestion = () => {
         )}
       </Box>
       {loading && <LinearProgress className={classes.buttonProgress} />}
-    </>
+    </div>
   );
 };
 
