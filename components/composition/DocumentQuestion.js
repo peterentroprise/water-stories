@@ -82,75 +82,78 @@ const DocumentQuestion = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Box p={2} mt={2} mb={1}>
-        <form noValidate autoComplete="off">
-          <Autocomplete
-            freeSolo
-            autoFocus
-            clearOnBlur
-            selectOnFocus
-            id="autocomplete-search"
-            onChange={(event, newValue) => {
-              if (typeof newValue === "string") {
-                setQuestion(newValue);
-              } else if (newValue && newValue.inputValue) {
-                setQuestion(newValue.inputValue);
-              } else {
-                setQuestion(newValue);
-              }
-            }}
-            value={question}
-            options={suggestedQueries.map((option) => option.question)}
-            renderInput={(params) => (
-              <InputBase
-                ref={params.InputProps.ref}
-                id="question"
-                placeholder="Ask Question"
-                autoFocus
-                fullWidth
-                type="search"
-                endAdornment={
-                  <InputAdornment>
-                    <IconButton
-                      aria-label="search"
-                      onClick={handleAskQuestion}
-                      type="submit"
-                      disabled={loading}
-                    >
-                      <SearchOutlinedIcon />
-                    </IconButton>
-                  </InputAdornment>
+    <>
+      <div className={classes.root}>
+        <Box p={2} mt={2} mb={1}>
+          <form noValidate autoComplete="off">
+            <Autocomplete
+              freeSolo
+              autoFocus
+              clearOnBlur
+              selectOnFocus
+              id="autocomplete-search"
+              onChange={(event, newValue) => {
+                if (typeof newValue === "string") {
+                  setQuestion(newValue);
+                } else if (newValue && newValue.inputValue) {
+                  setQuestion(newValue.inputValue);
+                } else {
+                  setQuestion(newValue);
                 }
-                {...params}
-              />
-            )}
-          />
-        </form>
+              }}
+              value={question}
+              options={suggestedQueries.map((option) => option.question)}
+              renderInput={(params) => (
+                <InputBase
+                  ref={params.InputProps.ref}
+                  id="question"
+                  placeholder="Ask Question"
+                  autoFocus
+                  fullWidth
+                  type="search"
+                  endAdornment={
+                    <InputAdornment>
+                      <IconButton
+                        aria-label="search"
+                        onClick={handleAskQuestion}
+                        type="submit"
+                        disabled={loading}
+                      >
+                        <SearchOutlinedIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  {...params}
+                />
+              )}
+            />
+          </form>
 
-        {answer && (
-          <List disablePadding>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary={`Answer: ${answer.results[0].answers[0].answer}`}
-                secondary={`Context: ${answer.results[0].answers[0].context}`}
-              />
-            </ListItem>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary={`Probability: ${
-                  answer.results[0].answers[0].probability * 100
-                }`}
-                secondary={`Score: ${answer.results[0].answers[0].score * 100}`}
-              />
-            </ListItem>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary={`Document: ${answer.results[0].answers[0].meta.name}`}
-                secondary={`Location: ${answer.results[0].answers[0].offset_start_in_doc} - ${answer.results[0].answers[0].offset_end_in_doc}`}
-              />
-            </ListItem>
-            {/* <iframe
+          {answer && (
+            <List disablePadding>
+              <ListItem disableGutters alignItems="flex-start">
+                <ListItemText
+                  primary={`Answer: ${answer.results[0].answers[0].answer}`}
+                  secondary={`Context: ${answer.results[0].answers[0].context}`}
+                />
+              </ListItem>
+              <ListItem disableGutters alignItems="flex-start">
+                <ListItemText
+                  primary={`Probability: ${
+                    answer.results[0].answers[0].probability * 100
+                  }`}
+                  secondary={`Score: ${
+                    answer.results[0].answers[0].score * 100
+                  }`}
+                />
+              </ListItem>
+              <ListItem disableGutters alignItems="flex-start">
+                <ListItemText
+                  primary={`Document: ${answer.results[0].answers[0].meta.name}`}
+                  secondary={`Location: ${answer.results[0].answers[0].offset_start_in_doc} - ${answer.results[0].answers[0].offset_end_in_doc}`}
+                />
+              </ListItem>
+              {/* <iframe
               allow="autoplay"
               frameBorder="0"
               allowFullScreen="1"
@@ -158,7 +161,7 @@ const DocumentQuestion = () => {
               width="288"
             ></iframe> */}
 
-            {/* <ListItem disableGutters alignItems="flex-start">
+              {/* <ListItem disableGutters alignItems="flex-start">
               <ListItemText
                 primary="Answer Metadata"
                 secondary={
@@ -185,11 +188,12 @@ const DocumentQuestion = () => {
                 }
               />
             </ListItem> */}
-          </List>
-        )}
-      </Box>
+            </List>
+          )}
+        </Box>
+      </div>
       {loading && <LinearProgress className={classes.buttonProgress} />}
-    </div>
+    </>
   );
 };
 
