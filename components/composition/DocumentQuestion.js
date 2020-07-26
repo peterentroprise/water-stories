@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
   },
-  textField: {},
+  root: { minHeight: "100%" },
   buttonProgress: {
     // color: theme.palette.primary,
     // position: "absolute",
@@ -65,11 +65,7 @@ const DocumentQuestion = () => {
   const [top_k_retriever, set_top_k_retriever] = useState(10);
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = React.useState(false);
-
-  const handleChangeQuestion = (event) => {
-    setQuestion(event.target.value);
-  };
+  const [success, setSuccess] = useState(false);
 
   const handleAskQuestion = async () => {
     const payload = {
@@ -92,15 +88,25 @@ const DocumentQuestion = () => {
           <Autocomplete
             freeSolo
             autoFocus
+            clearOnBlur
+            selectOnFocus
             id="autocomplete-search"
+            onChange={(event, newValue) => {
+              if (typeof newValue === "string") {
+                setQuestion(newValue);
+              } else if (newValue && newValue.inputValue) {
+                setQuestion(newValue.inputValue);
+              } else {
+                setQuestion(newValue);
+              }
+            }}
+            value={question}
             options={suggestedQueries.map((option) => option.question)}
             renderInput={(params) => (
               <InputBase
                 ref={params.InputProps.ref}
                 id="question"
                 placeholder="Ask Question"
-                value={question}
-                onChange={handleChangeQuestion}
                 autoFocus
                 fullWidth
                 type="search"
