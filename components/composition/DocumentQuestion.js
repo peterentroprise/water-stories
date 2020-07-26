@@ -6,7 +6,7 @@ import {
   Container,
   Box,
   Button,
-  Typography,
+  InputBase,
   List,
   ListItem,
   ListItemText,
@@ -15,6 +15,8 @@ import {
   IconButton,
   LinearProgress,
 } from "@material-ui/core";
+
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
@@ -34,6 +36,12 @@ const askQuestion = async (payload) => {
   return await response.json();
 };
 
+const suggestedQueries = [
+  { question: "Who created the Dothraki vocabulary?" },
+  { question: "Who is the father of Arya Stark?" },
+  { question: "Who is the sister of Sansa?" },
+];
+
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
@@ -52,9 +60,7 @@ const useStyles = makeStyles((theme) => ({
 const DocumentQuestion = () => {
   const classes = useStyles();
 
-  const [question, setQuestion] = useState(
-    "Who created the Dothraki vocabulary?"
-  );
+  const [question, setQuestion] = useState("");
   const [top_k_reader, set_top_k_reader] = useState(10);
   const [top_k_retriever, set_top_k_retriever] = useState(10);
   const [answer, setAnswer] = useState();
@@ -83,30 +89,36 @@ const DocumentQuestion = () => {
     <>
       <Box p={2} mt={2} mb={1}>
         <form className={classes.root} noValidate autoComplete="off">
-          <TextField
-            className={classes.textField}
-            id="question"
-            label="Question"
-            variant="filled"
-            value={question}
-            onChange={handleChangeQuestion}
+          <Autocomplete
+            freeSolo
             autoFocus
-            fullWidth
-            type="search"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="search">
-                  <IconButton
-                    aria-label="search"
-                    onClick={handleAskQuestion}
-                    type="submit"
-                    disabled={loading}
-                  >
-                    <SearchOutlinedIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
+            id="autocomplete-search"
+            options={suggestedQueries.map((option) => option.question)}
+            renderInput={(params) => (
+              <InputBase
+                ref={params.InputProps.ref}
+                id="question"
+                placeholder="Ask Question"
+                value={question}
+                onChange={handleChangeQuestion}
+                autoFocus
+                fullWidth
+                type="search"
+                endAdornment={
+                  <InputAdornment>
+                    <IconButton
+                      aria-label="search"
+                      onClick={handleAskQuestion}
+                      type="submit"
+                      disabled={loading}
+                    >
+                      <SearchOutlinedIcon />
+                    </IconButton>
+                  </InputAdornment>
+                }
+                {...params}
+              />
+            )}
           />
         </form>
 
