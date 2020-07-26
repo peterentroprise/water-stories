@@ -10,19 +10,13 @@ const useStyles = makeStyles((theme) => ({
   },
   fab: {
     boxShadow: "none",
-    // position: "fixed",
-    // left: "50%",
-    // transform: "translateX(-50%)",
   },
   fabOpen: {
     boxShadow: "none",
-    // position: "fixed",
-    // left: "50%",
-    // transform: "translateX(-50%)",
   },
 }));
 
-const FabComponent = ({ handleClick, open }) => {
+const DocumentFab = ({ handleClick, open }) => {
   const classes = useStyles();
 
   return (
@@ -56,4 +50,4 @@ const FabComponent = ({ handleClick, open }) => {
   );
 };
 
-export default FabComponent;
+export default DocumentFab;

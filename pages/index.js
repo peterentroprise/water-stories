@@ -1,8 +1,8 @@
 import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
-import CompositionComponent from "../components/composition/CompositionComponent";
-import DocumentComp from "../components/composition/DocumentComp";
+
+import DocumentComponent from "../components/composition/DocumentComponent";
 
 import {
   Card,
@@ -41,7 +41,7 @@ const Index = () => {
   if (!user) {
     return (
       <div className={classes.root}>
-        <DocumentComp />
+        <DocumentComponent />
         {/* <Container maxWidth="sm">
           <Box mt={3} mb={1}>
             <Card variant="outlined">

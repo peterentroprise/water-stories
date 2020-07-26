@@ -10,11 +10,13 @@ import {
   List,
   ListItem,
   ListItemText,
-  Divider,
+  InputAdornment,
   TextField,
-  CircularProgress,
+  IconButton,
   LinearProgress,
 } from "@material-ui/core";
+
+import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 
 import { useState } from "react";
 
@@ -80,33 +82,34 @@ const DocumentQuestion = () => {
   return (
     <>
       <Box p={2} mt={2} mb={1}>
-        <TextField
-          className={classes.textField}
-          id="question"
-          label="Question"
-          variant="filled"
-          value={question}
-          onChange={handleChangeQuestion}
-          autoFocus
-          fullWidth
-        />
-        <Box mt={2} mb={1}>
-          <div className={classes.root}>
-            <div className={classes.wrapper}>
-              <Button
-                type="submit"
-                color="primary"
-                disableElevation
-                variant="contained"
-                onClick={handleAskQuestion}
-                disabled={loading}
-              >
-                Submit
-              </Button>
-            </div>
-          </div>
-        </Box>
-        {console.log(answer)}
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            className={classes.textField}
+            id="question"
+            label="Question"
+            variant="filled"
+            value={question}
+            onChange={handleChangeQuestion}
+            autoFocus
+            fullWidth
+            type="search"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="search">
+                  <IconButton
+                    aria-label="search"
+                    onClick={handleAskQuestion}
+                    type="submit"
+                    disabled={loading}
+                  >
+                    <SearchOutlinedIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+        </form>
+
         {answer && (
           <List disablePadding>
             <ListItem disableGutters alignItems="flex-start">
@@ -129,6 +132,13 @@ const DocumentQuestion = () => {
                 secondary={`Location: ${answer.results[0].answers[0].offset_start_in_doc} - ${answer.results[0].answers[0].offset_end_in_doc}`}
               />
             </ListItem>
+            {/* <iframe
+              allow="autoplay"
+              frameBorder="0"
+              allowFullScreen="1"
+              src={`${answer.answers[0].meta.content}?autoplay=1&mute=1&origin=https://entroprise.com`}
+              width="288"
+            ></iframe> */}
 
             {/* <ListItem disableGutters alignItems="flex-start">
               <ListItemText
