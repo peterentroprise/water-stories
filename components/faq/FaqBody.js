@@ -24,6 +24,7 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import { useState } from "react";
 
 const askEndpoint = "https://prediction.entroprise.com/models/1/doc-qa-dpr";
+const faqEndpoint = "https://prediction.entroprise.com/models/1/doc-qa-dpr";
 
 const askQuestion = async (payload) => {
   const response = await fetch(askEndpoint, {
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
   },
-  root: { minWidth: 360 },
+  root: { minWidth: 360, minHeight: 360 },
   actions: { paddingRight: 0 },
   buttonProgress: {
     // color: theme.palette.primary,

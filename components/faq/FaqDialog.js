@@ -9,6 +9,9 @@ import FaqBody from "./FaqBody";
 
 const useStyles = makeStyles((theme) => ({
   dialog: {},
+  backdrop: {
+    background: "none",
+  },
 }));
 
 const FaqDialog = ({ open, handleClick, children }) => {
@@ -20,6 +23,11 @@ const FaqDialog = ({ open, handleClick, children }) => {
     <>
       <Dialog
         className={classes.dialog}
+        BackdropProps={{
+          classes: {
+            root: classes.backdrop,
+          },
+        }}
         fullScreen={fullScreen}
         open={open}
         onClose={handleClick}
