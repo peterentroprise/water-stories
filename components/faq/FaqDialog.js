@@ -9,7 +9,9 @@ import FaqBody from "./FaqBody";
 import FaqQuestion from "./FaqQuestion";
 
 const useStyles = makeStyles((theme) => ({
-  dialog: {},
+  dialog: {
+    maxHeight: "none",
+  },
   backdrop: {
     background: "none",
   },
