@@ -6,6 +6,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import FaqBody from "./FaqBody";
+import FaqQuestion from "./FaqQuestion";
 
 const useStyles = makeStyles((theme) => ({
   dialog: {},
@@ -33,7 +34,8 @@ const FaqDialog = ({ open, handleClick, children }) => {
         onClose={handleClick}
         transition
       >
-        <FaqBody handleClick={handleClick} />
+        {/* <FaqBody handleClick={handleClick} /> */}
+        <FaqQuestion handleClick={handleClick} />
       </Dialog>
     </>
   );
