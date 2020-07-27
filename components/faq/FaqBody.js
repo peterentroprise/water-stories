@@ -119,6 +119,20 @@ const FaqBody = ({ handleClick }) => {
           />
         </form>
 
+        <DialogActions className={classes.actions}>
+          <Button variant="outlined" onClick={handleClick}>
+            Close
+          </Button>
+          <Button
+            onClick={handleAskQuestion}
+            type="submit"
+            disableElevation
+            variant="contained"
+            color="primary"
+          >
+            Submit Question
+          </Button>
+        </DialogActions>
         {answer && (
           <List disablePadding>
             <ListItem disableGutters alignItems="flex-start">
@@ -178,20 +192,6 @@ const FaqBody = ({ handleClick }) => {
             </ListItem> */}
           </List>
         )}
-        <DialogActions className={classes.actions}>
-          <Button variant="outlined" onClick={handleClick}>
-            Close
-          </Button>
-          <Button
-            onClick={handleAskQuestion}
-            type="submit"
-            disableElevation
-            variant="contained"
-            color="primary"
-          >
-            Submit Question
-          </Button>
-        </DialogActions>
       </DialogContent>
       {loading && <LinearProgress className={classes.buttonProgress} />}
     </>
