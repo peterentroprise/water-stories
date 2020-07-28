@@ -57,6 +57,7 @@ const faqEndpoint = "https://haystack.entroprise.com/item/askquestion";
 const askQuestion = async (payload) => {
   const response = await fetch(askEndpoint, {
     method: "POST",
+    mode: "cors",
     withCredentials: true,
     headers: {
       "Content-Type": "application/json",
@@ -69,6 +70,7 @@ const askQuestion = async (payload) => {
 const askFaqQuestion = async (payload) => {
   const response = await fetch(faqEndpoint, {
     method: "POST",
+    mode: "cors",
     withCredentials: true,
     headers: {
       "x-api-key": "dd74decc-8825-4a49-b9bc-e4608249d612",
