@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import FaqFab from "./FaqFab";
-import FaqDialog from "./FaqDialog";
+import FaqPopover from "./FaqPopover";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -23,7 +23,7 @@ const FaqComponent = () => {
   return (
     <div className={classes.root}>
       <FaqFab open={open} handleClick={handleClick} />
-      <FaqDialog open={open} handleClick={handleClick} />
+      <FaqPopover open={open} anchorEl={anchorEl} handleClick={handleClick} />
     </div>
   );
 };
