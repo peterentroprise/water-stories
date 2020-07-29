@@ -163,6 +163,16 @@ const FaqQuestion = ({ handleClick }) => {
             renderInput={(params) => (
               <TextField
                 {...params}
+                value={question}
+                onChange={(event, newValue) => {
+                  if (typeof newValue === "string") {
+                    setQuestion(newValue);
+                  } else if (newValue && newValue.inputValue) {
+                    setQuestion(newValue.inputValue);
+                  } else {
+                    setQuestion(newValue);
+                  }
+                }}
                 required
                 placeholder="Ask Question"
                 margin="normal"
