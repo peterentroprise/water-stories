@@ -21,6 +21,7 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
 
   const [documentAnswer, setDocumentAnswer] = useState("");
   const [faqAnswer, setFaqAnswer] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSetDocumentAnswer = (value) => {
     setDocumentAnswer(value);
@@ -28,6 +29,10 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
 
   const handleSetFaqAnswer = (value) => {
     setFaqAnswer(value);
+  };
+
+  const handleSetDocumentLoading = (value) => {
+    setLoading(value);
   };
 
   return (
@@ -46,6 +51,8 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
         <FaqAppBar
           handleSetDocumentAnswer={handleSetDocumentAnswer}
           handleSetFaqAnswer={handleSetFaqAnswer}
+          handleSetDocumentLoading={handleSetDocumentLoading}
+          loading={loading}
         />
         <FaqResponse documentAnswer={documentAnswer} faqAnswer={faqAnswer} />
       </Popover>

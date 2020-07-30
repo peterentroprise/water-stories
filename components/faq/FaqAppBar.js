@@ -9,6 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import FaqInput from "./FaqInput";
@@ -36,7 +37,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const FaqAppBar = ({ handleSetFaqAnswer, handleSetDocumentAnswer }) => {
+const FaqAppBar = ({
+  handleSetFaqAnswer,
+  handleSetDocumentAnswer,
+  handleSetDocumentLoading,
+  loading,
+}) => {
   const classes = useStyles();
 
   return (
@@ -53,6 +59,7 @@ const FaqAppBar = ({ handleSetFaqAnswer, handleSetDocumentAnswer }) => {
           </IconButton>
           <div className={classes.root}>
             <FaqInput
+              handleSetDocumentLoading={handleSetDocumentLoading}
               handleSetDocumentAnswer={handleSetDocumentAnswer}
               handleSetFaqAnswer={handleSetFaqAnswer}
             />
@@ -68,6 +75,7 @@ const FaqAppBar = ({ handleSetFaqAnswer, handleSetDocumentAnswer }) => {
           </IconButton>
         </Toolbar>
       </AppBar>
+      {loading && <LinearProgress className={classes.buttonProgress} />}
     </div>
   );
 };

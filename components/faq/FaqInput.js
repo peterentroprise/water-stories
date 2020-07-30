@@ -93,13 +93,16 @@ const askFaqQuestion = async (payload) => {
   return await response.json();
 };
 
-const FaqInput = ({ handleSetFaqAnswer, handleSetDocumentAnswer }) => {
+const FaqInput = ({
+  handleSetFaqAnswer,
+  handleSetDocumentAnswer,
+  handleSetDocumentLoading,
+}) => {
   const classes = useStyles();
   const [question, setQuestion] = useState("");
   const [top_k_reader, set_top_k_reader] = useState(10);
   const [top_k_retriever, set_top_k_retriever] = useState(10);
 
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const [faqLoading, setFaqLoading] = useState(false);
@@ -116,10 +119,10 @@ const FaqInput = ({ handleSetFaqAnswer, handleSetDocumentAnswer }) => {
       top_k_reader: top_k_reader,
       top_k_retriever: top_k_retriever,
     };
-    setLoading(true);
+    handleSetDocumentLoading(true);
     setSuccess(false);
     const response = await askQuestion(payload);
-    setLoading(false);
+    handleSetDocumentLoading(false);
     setSuccess(true);
     handleSetDocumentAnswer(response);
   };

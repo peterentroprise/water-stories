@@ -5,6 +5,10 @@ import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    paddingLeft: 16,
+    paddingTop: 16,
+  },
   extendedIcon: {
     marginRight: theme.spacing(1),
   },
@@ -20,7 +24,7 @@ const FaqFab = ({ handleClick, open }) => {
   const classes = useStyles();
 
   return (
-    <>
+    <div className={classes.root}>
       {(open && (
         <Fab
           variant="extended"
@@ -46,7 +50,7 @@ const FaqFab = ({ handleClick, open }) => {
           Ask Question
         </Fab>
       )}
-    </>
+    </div>
   );
 };
 
