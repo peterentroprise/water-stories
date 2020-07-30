@@ -39,16 +39,14 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
   },
-  root: { minWidth: 360, minHeight: 360 },
-  actions: { paddingRight: 0 },
-  buttonProgress: {
-    // color: theme.palette.primary,
-    // position: "absolute",
-    // top: "50%",
-    // left: "50%",
-    // marginTop: -12,
-    // marginLeft: -12,
+  root: {
+    width: 480,
+    height: 640,
+    marginLeft: 16,
+    marginRight: 16,
+    marginTop: 8,
   },
+  actions: { paddingRight: 0 },
 }));
 
 const askEndpoint = "https://prediction.entroprise.com/models/1/doc-qa-dpr";
@@ -127,6 +125,10 @@ const FaqQuestion = ({ handleClick }) => {
     setFaqAnswer(response);
   };
 
+  const handleChangeQuestion = (event) => {
+    setQuestion(event.target.value);
+  };
+
   const graphQLClient = new GraphQLClient(API_ENDPOINT, {
     headers: {
       "x-hasura-access-key": "supersecret",
@@ -141,7 +143,7 @@ const FaqQuestion = ({ handleClick }) => {
   return (
     <>
       {console.log({ item, error })}
-      <DialogContent className={classes.root}>
+      <div className={classes.root}>
         <form noValidate autoComplete="off">
           <Autocomplete
             freeSolo
@@ -164,15 +166,7 @@ const FaqQuestion = ({ handleClick }) => {
               <TextField
                 {...params}
                 value={question}
-                onChange={(event, newValue) => {
-                  if (typeof newValue === "string") {
-                    setQuestion(newValue);
-                  } else if (newValue && newValue.inputValue) {
-                    setQuestion(newValue.inputValue);
-                  } else {
-                    setQuestion(newValue);
-                  }
-                }}
+                onChange={handleChangeQuestion}
                 required
                 placeholder="Ask Question"
                 margin="normal"
@@ -185,9 +179,6 @@ const FaqQuestion = ({ handleClick }) => {
         </form>
 
         <DialogActions className={classes.actions}>
-          <Button variant="outlined" onClick={handleClick}>
-            Close
-          </Button>
           <Button
             onClick={handleAskQuestion}
             type="submit"
@@ -256,7 +247,7 @@ const FaqQuestion = ({ handleClick }) => {
             </List>
           </>
         )}
-      </DialogContent>
+      </div>
       {loading && <LinearProgress className={classes.buttonProgress} />}
     </>
   );
