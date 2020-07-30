@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     // height: "100vh",
     maxWidth: 480,
-    // maxHeight: 560,
+    maxHeight: 560,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 8,
@@ -84,7 +84,7 @@ const FaqResponse = ({ documentAnswer, faqAnswer }) => {
                   secondary={`Context: ${documentAnswer.results[0].answers[0].context}`}
                 />
               </ListItem>
-              <ListItem disableGutters alignItems="flex-start">
+              {/* <ListItem disableGutters alignItems="flex-start">
                 <ListItemText
                   primary={`Probability: ${
                     documentAnswer.results[0].answers[0].probability * 100
@@ -99,7 +99,7 @@ const FaqResponse = ({ documentAnswer, faqAnswer }) => {
                   primary={`Document: ${documentAnswer.results[0].answers[0].meta.name}`}
                   secondary={`Location: ${documentAnswer.results[0].answers[0].offset_start_in_doc} - ${documentAnswer.results[0].answers[0].offset_end_in_doc}`}
                 />
-              </ListItem>
+              </ListItem> */}
             </List>
           </>
         )}
