@@ -6,7 +6,6 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-import FaqQuestion from "./FaqQuestion";
 import FaqAppBar from "./FaqAppBar";
 import FaqResponse from "./FaqResponse";
 
@@ -46,7 +45,7 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
         open={open}
         anchorReference="anchorPosition"
         onClose={handleClick}
-        anchorPosition={{ top: 64, left: 16 }}
+        anchorPosition={{ top: 16, left: 16 }}
         anchorOrigin={{
           vertical: "top",
           horizontal: "left",
@@ -54,6 +53,7 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
       >
         <div className={classes.root}>
           <FaqAppBar
+            handleClick={handleClick}
             handleSetDocumentAnswer={handleSetDocumentAnswer}
             handleSetFaqAnswer={handleSetFaqAnswer}
             handleSetDocumentLoading={handleSetDocumentLoading}

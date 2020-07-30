@@ -8,7 +8,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
+import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import FaqInput from "./FaqInput";
@@ -38,6 +38,7 @@ const FaqAppBar = ({
   handleSetDocumentAnswer,
   handleSetDocumentLoading,
   loading,
+  handleClick,
 }) => {
   const classes = useStyles();
 
@@ -49,8 +50,9 @@ const FaqAppBar = ({
           className={classes.menuButton}
           color="inherit"
           aria-label="open drawer"
+          onClick={handleClick}
         >
-          <MenuIcon />
+          <CancelOutlinedIcon />
         </IconButton>
         <div className={classes.input}>
           <FaqInput
@@ -65,6 +67,7 @@ const FaqAppBar = ({
           className={classes.accountButton}
           color="inherit"
           aria-label="open drawer"
+          href="/auth"
         >
           <AccountCircleOutlinedIcon />
         </IconButton>

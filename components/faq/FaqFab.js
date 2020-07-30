@@ -7,7 +7,7 @@ import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 const useStyles = makeStyles((theme) => ({
   root: {
     paddingLeft: 16,
-    paddingTop: 16,
+    paddingTop: 24,
   },
   extendedIcon: {
     marginRight: theme.spacing(1),

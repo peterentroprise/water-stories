@@ -157,13 +157,15 @@ const FaqInput = ({
             setQuestion(newValue);
           }
         }}
-        value={question}
         options={item.item.map((option) => option.question)}
+        value={question}
         renderInput={(params) => (
           <>
             <div className={classes.root}>
               <InputBase
                 {...params}
+                ref={params.InputProps.ref}
+                inputProps={params.inputProps}
                 className={classes.input}
                 value={question}
                 onChange={handleChangeQuestion}
