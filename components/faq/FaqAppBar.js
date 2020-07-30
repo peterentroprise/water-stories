@@ -9,6 +9,7 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import FaqInput from "./FaqInput";
@@ -72,6 +73,7 @@ const FaqAppBar = ({
           <AccountCircleOutlinedIcon />
         </IconButton>
       </Toolbar>
+      {loading && <LinearProgress />}
     </AppBar>
   );
 };

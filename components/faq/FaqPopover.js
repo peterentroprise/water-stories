@@ -4,7 +4,6 @@ import { Popover } from "@material-ui/core";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import LinearProgress from "@material-ui/core/LinearProgress";
 
 import FaqAppBar from "./FaqAppBar";
 import FaqResponse from "./FaqResponse";
@@ -13,9 +12,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 480,
     height: 480,
-  },
-  progress: {
-    position: "sticky",
   },
 }));
 
@@ -60,8 +56,8 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
             handleSetDocumentAnswer={handleSetDocumentAnswer}
             handleSetFaqAnswer={handleSetFaqAnswer}
             handleSetDocumentLoading={handleSetDocumentLoading}
+            loading={loading}
           />
-          {loading && <LinearProgress className={classes.progress} />}
           <FaqResponse documentAnswer={documentAnswer} faqAnswer={faqAnswer} />
         </div>
       </Popover>
