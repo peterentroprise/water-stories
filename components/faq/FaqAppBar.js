@@ -9,15 +9,11 @@ import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import LinearProgress from "@material-ui/core/LinearProgress";
 
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import FaqInput from "./FaqInput";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   search: {
     flexGrow: 1,
     marginLeft: theme.spacing(2),
@@ -25,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
   },
 
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0),
   },
 
   accountButton: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(0),
   },
 
-  title: {
+  input: {
     flexGrow: 1,
   },
 }));
@@ -46,37 +42,34 @@ const FaqAppBar = ({
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-          <div className={classes.root}>
-            <FaqInput
-              handleSetDocumentLoading={handleSetDocumentLoading}
-              handleSetDocumentAnswer={handleSetDocumentAnswer}
-              handleSetFaqAnswer={handleSetFaqAnswer}
-            />
-          </div>
+    <AppBar color="default" position="sticky">
+      <Toolbar>
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <MenuIcon />
+        </IconButton>
+        <div className={classes.input}>
+          <FaqInput
+            handleSetDocumentLoading={handleSetDocumentLoading}
+            handleSetDocumentAnswer={handleSetDocumentAnswer}
+            handleSetFaqAnswer={handleSetFaqAnswer}
+          />
+        </div>
 
-          <IconButton
-            edge="end"
-            className={classes.accountButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <AccountCircleOutlinedIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      {loading && <LinearProgress className={classes.buttonProgress} />}
-    </div>
+        <IconButton
+          edge="end"
+          className={classes.accountButton}
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <AccountCircleOutlinedIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 

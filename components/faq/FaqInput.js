@@ -8,48 +8,28 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import SearchIcon from "@material-ui/icons/Search";
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import DirectionsIcon from "@material-ui/icons/Directions";
 
 const useStyles = makeStyles((theme) => ({
-  autoComplete: { marginTop: theme.spacing(1) },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(1),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
+  root: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   },
-  inputRoot: {
-    color: "inherit",
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
   },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
-    },
+  iconButton: {
+    padding: 10,
   },
+  divider: {
+    height: 28,
+    margin: 4,
+  },
+  autoComplete: { marginTop: theme.spacing(1) },
 }));
 
 const API_ENDPOINT = "https://api.entroprise.com/v1/graphql";
@@ -109,8 +89,12 @@ const FaqInput = ({
   const [faqSuccess, setFaqSuccess] = useState(false);
 
   const handleAskQuestion = async () => {
-    handleAskDocumentQuestion();
-    handleAskFaqQuestion();
+    if (!question == "") {
+      handleAskDocumentQuestion();
+      handleAskFaqQuestion();
+    } else {
+      console.log("TODO - throw null string validation error");
+    }
   };
 
   const handleAskDocumentQuestion = async () => {
@@ -157,10 +141,11 @@ const FaqInput = ({
   return (
     <div className={classes.root}>
       <Autocomplete
-        className={{ marginNormal: classes.autoComplete }}
         freeSolo
         autoFocus
         clearOnBlur
+        blurOnSelect
+        fullWidth
         selectOnFocus
         id="autocomplete-search"
         onChange={(event, newValue) => {
@@ -176,30 +161,34 @@ const FaqInput = ({
         options={item.item.map((option) => option.question)}
         renderInput={(params) => (
           <>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
+            <div className={classes.root}>
               <InputBase
                 {...params}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
+                className={classes.input}
                 value={question}
                 onChange={handleChangeQuestion}
                 required
                 placeholder="Ask Question"
                 margin="none"
                 variant="outlined"
-                autoFocus
                 fullWidth
+                autoFocus
                 onKeyDown={(e) => {
                   if (e.keyCode === 13 && e.target.value) {
                     handleAskQuestion();
                   }
                 }}
               />
+              <IconButton
+                type="submit"
+                color="primary"
+                className={classes.iconButton}
+                aria-label="search"
+                onClick={handleAskQuestion}
+              >
+                <SearchIcon />
+              </IconButton>
+              <Divider className={classes.divider} orientation="vertical" />
             </div>
           </>
         )}

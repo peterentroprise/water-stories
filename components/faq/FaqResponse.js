@@ -31,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     // height: "100vh",
-    maxWidth: 480,
-    maxHeight: 560,
+    position: "relative",
+    // maxWidth: 480,
+    // height: 480,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 8,

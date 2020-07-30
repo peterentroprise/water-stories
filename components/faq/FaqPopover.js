@@ -4,13 +4,17 @@ import { Popover } from "@material-ui/core";
 
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 import FaqQuestion from "./FaqQuestion";
 import FaqAppBar from "./FaqAppBar";
 import FaqResponse from "./FaqResponse";
 
 const useStyles = makeStyles((theme) => ({
-  dialog: {},
+  root: {
+    maxWidth: 480,
+    height: 480,
+  },
 }));
 
 const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
@@ -48,13 +52,15 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
           horizontal: "left",
         }}
       >
-        <FaqAppBar
-          handleSetDocumentAnswer={handleSetDocumentAnswer}
-          handleSetFaqAnswer={handleSetFaqAnswer}
-          handleSetDocumentLoading={handleSetDocumentLoading}
-          loading={loading}
-        />
-        <FaqResponse documentAnswer={documentAnswer} faqAnswer={faqAnswer} />
+        <div className={classes.root}>
+          <FaqAppBar
+            handleSetDocumentAnswer={handleSetDocumentAnswer}
+            handleSetFaqAnswer={handleSetFaqAnswer}
+            handleSetDocumentLoading={handleSetDocumentLoading}
+          />
+          {loading && <LinearProgress className={classes.progress} />}
+          <FaqResponse documentAnswer={documentAnswer} faqAnswer={faqAnswer} />
+        </div>
       </Popover>
     </>
   );

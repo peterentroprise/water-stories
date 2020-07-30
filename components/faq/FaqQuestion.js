@@ -95,8 +95,12 @@ const FaqQuestion = ({ handleClick }) => {
   const [faqSuccess, setFaqSuccess] = useState(false);
 
   const handleAskQuestion = async () => {
-    handleAskDocumentQuestion();
-    handleAskFaqQuestion();
+    if (question == "") {
+      console.log("TODO throw validation error for null string");
+    } else {
+      handleAskDocumentQuestion();
+      handleAskFaqQuestion();
+    }
   };
 
   const handleAskDocumentQuestion = async () => {
