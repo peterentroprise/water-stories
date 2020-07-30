@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 480,
     height: 480,
   },
+  progress: {
+    position: "sticky",
+  },
 }));
 
 const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
