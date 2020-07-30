@@ -29,11 +29,13 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   root: {
-    width: 480,
-    height: 640,
-    marginLeft: 16,
-    marginRight: 16,
-    marginTop: 8,
+    width: "100%",
+    height: "100%",
+    maxWidth: 480,
+    maxHeight: 560,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 8,
   },
   actions: { paddingRight: 0 },
 }));
