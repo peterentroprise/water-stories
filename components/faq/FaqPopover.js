@@ -42,7 +42,7 @@ const FaqPopover = ({ open, handleClick, anchorEl, children }) => {
         open={open}
         anchorReference="anchorPosition"
         onClose={handleClick}
-        anchorPosition={{ top: 48, left: 16 }}
+        anchorPosition={{ top: 64, left: 16 }}
         anchorOrigin={{
           vertical: "top",
           horizontal: "left",
