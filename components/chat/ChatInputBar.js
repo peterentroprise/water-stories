@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     top: "auto",
     bottom: 0,
+    backgroundColor: theme.palette.background.paper,
   },
   search: {
     flexGrow: 1,
