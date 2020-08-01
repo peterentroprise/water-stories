@@ -67,7 +67,7 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
             allow="autoplay"
             frameBorder="0"
             allowFullScreen="1"
-            src={`${faqAnswer.answers[0].meta.content}?autoplay=1&mute=1&origin=https://entroprise.com`}
+            src={`${faqAnswer.answers[0].meta.content}?autoplay=1&mute=1`}
           />
         </div>
       )}
