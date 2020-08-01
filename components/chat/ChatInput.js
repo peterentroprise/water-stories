@@ -73,7 +73,7 @@ const askFaqQuestion = async (payload) => {
   return await response.json();
 };
 
-const FaqInput = ({
+const ChatInput = ({
   handleSetFaqAnswer,
   handleSetDocumentAnswer,
   handleSetDocumentLoading,
@@ -204,4 +204,4 @@ const FaqInput = ({
   );
 };
 
-export default FaqInput;
+export default ChatInput;
