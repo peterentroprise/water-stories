@@ -49,9 +49,14 @@ const ChatInputBar = ({
   const classes = useStyles();
 
   return (
-    <AppBar className={classes.appBar} color="default" position="sticky">
+    <AppBar
+      data-iframe-height
+      className={classes.appBar}
+      color="default"
+      position="sticky"
+    >
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           className={classes.menuButton}
           edge="start"
           color="inherit"
@@ -59,7 +64,7 @@ const ChatInputBar = ({
           onClick={handleClick}
         >
           <CancelOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
         <div className={classes.input}>
           <ChatInput
             handleSetDocumentLoading={handleSetDocumentLoading}
@@ -67,7 +72,7 @@ const ChatInputBar = ({
             handleSetFaqAnswer={handleSetFaqAnswer}
           />
         </div>
-
+        {/* 
         <IconButton
           edge="end"
           className={classes.accountButton}
@@ -76,7 +81,7 @@ const ChatInputBar = ({
           href="/auth"
         >
           <AccountCircleOutlinedIcon />
-        </IconButton>
+        </IconButton> */}
       </Toolbar>
       {loading && <LinearProgress />}
     </AppBar>

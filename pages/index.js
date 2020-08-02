@@ -2,7 +2,6 @@ import Link from "../components/Link";
 import { useUser } from "../utils/auth/useUser";
 import withApollo from "../lib/apollo";
 
-import FaqComponent from "../components/faq/FaqComponent";
 import ChatComponent from "../components/chat/ChatComponent";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -57,7 +56,7 @@ const Index = () => {
 
   return (
     <div className={classes.root}>
-      <FaqComponent />
+      <ChatComponent />
     </div>
     // <Container maxWidth="sm">
     //   <DocumentComp />

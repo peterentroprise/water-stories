@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
+    // marginLeft: theme.spacing(1),
   },
   iconButton: {
     padding: 10,
@@ -189,13 +188,14 @@ const ChatInput = ({
               <IconButton
                 type="submit"
                 color="primary"
+                edge="end"
                 className={classes.iconButton}
                 aria-label="search"
                 onClick={handleAskQuestion}
               >
                 <SearchIcon />
               </IconButton>
-              <Divider className={classes.divider} orientation="vertical" />
+              {/* <Divider className={classes.divider} orientation="vertical" /> */}
             </div>
           </>
         )}

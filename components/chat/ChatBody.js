@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     // height: 480,
     paddingLeft: 16,
     paddingRight: 16,
-    paddingTop: 8,
+    // paddingTop: 8,
   },
   actions: { paddingRight: 0 },
 }));
