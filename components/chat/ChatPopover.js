@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 320,
     maxWidth: 480,
-    maxHeight: "50vh",
+    maxHeight: "40vh",
   },
 }));
 
