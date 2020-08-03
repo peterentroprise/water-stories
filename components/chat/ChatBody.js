@@ -4,20 +4,12 @@ import useSWR from "swr";
 
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Card,
-  CardContent,
-  Container,
   Divider,
-  Button,
-  DialogActions,
-  DialogContent,
   List,
   ListItem,
+  ListSubheader,
   ListItemText,
-  Link,
-  TextField,
-  IconButton,
-  LinearProgress,
+  Typography,
 } from "@material-ui/core";
 
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -27,6 +19,9 @@ import { useState } from "react";
 const useStyles = makeStyles((theme) => ({
   wrapper: {
     position: "relative",
+  },
+  secondary: {
+    textOverflow: "hidden",
   },
   root: {
     width: "100%",
@@ -71,32 +66,63 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
           />
         </div>
       )}
-      <div className={classes.root}>
-        {faqAnswer && (
+      {faqAnswer && (
+        <List>
+          {faqAnswer.answers.map((object, index) => (
+            <ListItem key={index} alignItems="flex-start">
+              <ListItemText
+                primary={`${object.score.toFixed(2) * 100}% - ${
+                  object.meta.question
+                }`}
+                secondary={object.answer}
+              />
+            </ListItem>
+          ))}
+        </List>
+      )}
+      {documentAnswer && (
+        <>
+          <Divider />
+          <List>
+            {console.log(documentAnswer)}
+            {documentAnswer.results.map((result, index) => (
+              <List key={index}>
+                {result.answers.map((object, index) => (
+                  <ListItem key={index} alignItems="flex-start">
+                    <ListItemText
+                      primary={`${object.probability.toFixed(2) * 100}% - ${
+                        object.answer
+                      }`}
+                      secondary={
+                        <Typography
+                          noWrap
+                          variant="body2"
+                          color="textSecondary"
+                        >
+                          {object.context}
+                        </Typography>
+                      }
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            ))}
+          </List>
+        </>
+      )}
+      {/* {documentAnswer && (
+        <>
+          <Divider />
           <List disablePadding>
             <ListItem disableGutters alignItems="flex-start">
               <ListItemText
-                primary={`FAQ Answer: ${faqAnswer.answers[0].answer}`}
-                secondary={`Confidence Score: ${faqAnswer.answers[0].score} `}
+                primary={`AI Answer: ${documentAnswer.results[0].answers[0].answer}`}
+                secondary={`Context: ${documentAnswer.results[0].answers[0].context}`}
               />
             </ListItem>
           </List>
-        )}
-
-        {documentAnswer && (
-          <>
-            <Divider />
-            <List disablePadding>
-              <ListItem disableGutters alignItems="flex-start">
-                <ListItemText
-                  primary={`AI Answer: ${documentAnswer.results[0].answers[0].answer}`}
-                  secondary={`Context: ${documentAnswer.results[0].answers[0].context}`}
-                />
-              </ListItem>
-            </List>
-          </>
-        )}
-      </div>
+        </>
+      )} */}
     </>
   );
 };
