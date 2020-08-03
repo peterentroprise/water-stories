@@ -2,6 +2,8 @@ import React from "react";
 import { GraphQLClient } from "graphql-request";
 import useSWR from "swr";
 
+import Link from "../Link";
+
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Divider,
@@ -39,6 +41,16 @@ const useStyles = makeStyles((theme) => ({
 const ChatBody = ({ documentAnswer, faqAnswer }) => {
   const classes = useStyles();
 
+  const href = "/result/219";
+
+  const CustomLink = React.useMemo(
+    (href) =>
+      React.forwardRef((linkProps, ref) => (
+        <Link ref={ref} href={href} {...linkProps} />
+      )),
+    [href]
+  );
+
   return (
     <>
       {faqAnswer && (
@@ -68,8 +80,15 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
       )}
       {faqAnswer && (
         <List>
+          {console.log(faqAnswer)}
           {faqAnswer.answers.map((object, index) => (
-            <ListItem key={index} alignItems="flex-start">
+            <ListItem
+              key={index}
+              alignItems="flex-start"
+              button
+              component={CustomLink}
+              href={`/result/${object.meta.id}`}
+            >
               <ListItemText
                 primary={`${object.score.toFixed(2) * 100}% - ${
                   object.meta.question
@@ -88,7 +107,12 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
             {documentAnswer.results.map((result, index) => (
               <List key={index}>
                 {result.answers.map((object, index) => (
-                  <ListItem key={index} alignItems="flex-start">
+                  <ListItem
+                    key={index}
+                    alignItems="flex-start"
+                    component={CustomLink}
+                    href={`/result/${object.document_id}`}
+                  >
                     <ListItemText
                       primary={`${object.probability.toFixed(2) * 100}% - ${
                         object.answer

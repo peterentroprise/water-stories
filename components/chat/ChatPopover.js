@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 320,
     maxWidth: 480,
     maxHeight: "40vh",
+    width: "100%",
   },
 }));
 
@@ -43,6 +44,7 @@ const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
       <Popover
         id={id}
         open={open}
+        PaperProps={{ style: { width: "100%" } }}
         anchorReference="anchorPosition"
         onClose={handleClick}
         anchorPosition={{ top: 16, left: 16 }}

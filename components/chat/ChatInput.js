@@ -6,7 +6,9 @@ import useSWR from "swr";
 
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import Autocomplete, {
+  createFilterOptions,
+} from "@material-ui/lab/Autocomplete";
 import SearchIcon from "@material-ui/icons/Search";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
@@ -71,6 +73,8 @@ const askFaqQuestion = async (payload) => {
   });
   return await response.json();
 };
+
+const filter = createFilterOptions();
 
 const ChatInput = ({
   handleSetFaqAnswer,
@@ -144,7 +148,6 @@ const ChatInput = ({
         clearOnBlur
         handleHomeEndKeys
         blurOnSelect
-        openOnFocus
         autoFocus
         autoComplete
         freeSolo
@@ -161,6 +164,20 @@ const ChatInput = ({
             setQuestion(newValue);
           }
         }}
+        filterOptions={(options, params) => {
+          const filtered = filter(options, params);
+          return filtered;
+        }}
+        // onSelect={async (event, newValue) => {
+        //   if (typeof newValue === "string") {
+        //     await setQuestion(newValue);
+        //   } else if (newValue && newValue.inputValue) {
+        //     await setQuestion(newValue.inputValue);
+        //   } else {
+        //     await setQuestion(newValue);
+        //   }
+        //   handleAskQuestion();
+        // }}
         options={item.item.map((option) => option.question)}
         value={question}
         renderInput={(params) => (
