@@ -107,7 +107,7 @@ const ResultPage = () => {
                 {item_by_pk.item_by_pk.question}
               </Typography>
             </Box>
-            <Box pt={2} pb={1}>
+            <Box py={1}>
               <Typography variant="caption">Answer: </Typography>
               <Typography variant="body1">
                 {item_by_pk.item_by_pk.answer}
