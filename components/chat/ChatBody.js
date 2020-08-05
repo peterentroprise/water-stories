@@ -109,12 +109,7 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
             {documentAnswer.results.map((result, index) => (
               <List key={index}>
                 {result.answers.map((object, index) => (
-                  <ListItem
-                    key={index}
-                    alignItems="flex-start"
-                    component={CustomLink}
-                    href={`/result/${object.document_id}`}
-                  >
+                  <ListItem key={index} alignItems="flex-start">
                     <ListItemText
                       primary={`${object.probability.toFixed(2) * 100}% - ${
                         object.answer
@@ -136,19 +131,6 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
           </List>
         </>
       )}
-      {/* {documentAnswer && (
-        <>
-          <Divider />
-          <List disablePadding>
-            <ListItem disableGutters alignItems="flex-start">
-              <ListItemText
-                primary={`AI Answer: ${documentAnswer.results[0].answers[0].answer}`}
-                secondary={`Context: ${documentAnswer.results[0].answers[0].context}`}
-              />
-            </ListItem>
-          </List>
-        </>
-      )} */}
     </>
   );
 };

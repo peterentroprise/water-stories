@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 320,
     maxWidth: 480,
+    backgroundColor: theme.palette.background.paper,
   },
   appBar: {
     flexGrow: 1,
@@ -64,50 +65,50 @@ const ResultPage = () => {
   );
 
   return (
-    <Container maxWidth="sm">
-      <div className={classes.root}>
-        <AppBar className={classes.appBar} color="default" position="sticky">
-          <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.backButton}
-              color="inherit"
-              aria-label="back"
-              onClick={() => router.back()}
-            >
-              <ArrowBackIcon />
-            </IconButton>
-            <Typography variant="h6" className={classes.title}>
-              Content Page
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        {item_by_pk && (
-          <>
-            <ReactJWPlayer
-              playerId="retrieve-player"
-              playerScript="https://cdn.jwplayer.com/libraries/ParpSc0m.js"
-              file={item_by_pk.item_by_pk.content}
-              isAutoPlay
-            />
-            <div className={classes.content}>
-              <Box pt={2} pb={1}>
-                <Typography variant="caption">Question: </Typography>
-                <Typography variant="body1">
-                  {item_by_pk.item_by_pk.question}
-                </Typography>
-              </Box>
-              <Box py={1}>
-                <Typography variant="caption">Answer: </Typography>
-                <Typography variant="body1">
-                  {item_by_pk.item_by_pk.answer}
-                </Typography>
-              </Box>
-            </div>
-          </>
-        )}
-      </div>
-    </Container>
+    // <Container maxWidth="sm">
+    <div className={classes.root}>
+      <AppBar className={classes.appBar} color="default" position="sticky">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.backButton}
+            color="inherit"
+            aria-label="back"
+            onClick={() => router.back()}
+          >
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Content Page
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      {item_by_pk && (
+        <>
+          <ReactJWPlayer
+            playerId="retrieve-player"
+            playerScript="https://cdn.jwplayer.com/libraries/ParpSc0m.js"
+            file={item_by_pk.item_by_pk.content}
+            isAutoPlay
+          />
+          <div className={classes.content}>
+            <Box pt={2} pb={1}>
+              <Typography variant="caption">Question: </Typography>
+              <Typography variant="body1">
+                {item_by_pk.item_by_pk.question}
+              </Typography>
+            </Box>
+            <Box py={1}>
+              <Typography variant="caption">Answer: </Typography>
+              <Typography variant="body1">
+                {item_by_pk.item_by_pk.answer}
+              </Typography>
+            </Box>
+          </div>
+        </>
+      )}
+    </div>
+    // </Container>
   );
 };
 
