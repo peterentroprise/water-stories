@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
   },
-  input: {
-    // marginLeft: theme.spacing(1),
-  },
   iconButton: {
     padding: 10,
   },

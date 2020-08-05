@@ -1,6 +1,7 @@
 import React from "react";
 import { GraphQLClient } from "graphql-request";
 import useSWR from "swr";
+import ReactJWPlayer from "react-jw-player";
 
 import Link from "../Link";
 
@@ -26,14 +27,9 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "hidden",
   },
   root: {
-    width: "100%",
-    // height: "100vh",
     position: "relative",
-    // maxWidth: 480,
-    // height: 480,
     paddingLeft: 16,
     paddingRight: 16,
-    // paddingTop: 8,
   },
   actions: { paddingRight: 0 },
 }));
@@ -54,29 +50,35 @@ const ChatBody = ({ documentAnswer, faqAnswer }) => {
   return (
     <>
       {faqAnswer && (
-        <div
-          className="video"
-          style={{
-            position: "relative",
-            paddingBottom: "56.25%" /* 16:9 */,
-            paddingTop: 25,
-            height: 0,
-          }}
-        >
-          <iframe
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-            }}
-            allow="autoplay"
-            frameBorder="0"
-            allowFullScreen="1"
-            src={`${faqAnswer.answers[0].meta.content}?autoplay=1&mute=1`}
-          />
-        </div>
+        <ReactJWPlayer
+          playerId="retrieve-player"
+          playerScript="https://cdn.jwplayer.com/libraries/ParpSc0m.js"
+          file={faqAnswer.answers[0].meta.content}
+          isAutoPlay
+        />
+        // <div
+        //   className="video"
+        //   style={{
+        //     position: "relative",
+        //     paddingBottom: "56.25%" /* 16:9 */,
+        //     paddingTop: 25,
+        //     height: 0,
+        //   }}
+        // >
+        //   <iframe
+        //     style={{
+        //       position: "absolute",
+        //       top: 0,
+        //       left: 0,
+        //       width: "100%",
+        //       height: "100%",
+        //     }}
+        //     allow="autoplay"
+        //     frameBorder="0"
+        //     allowFullScreen="1"
+        //     src={`${faqAnswer.answers[0].meta.content}?autoplay=1&mute=1`}
+        //   />
+        // </div>
       )}
       {faqAnswer && (
         <List>
