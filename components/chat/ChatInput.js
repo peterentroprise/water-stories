@@ -81,7 +81,7 @@ const ChatInput = ({
   const classes = useStyles();
   const [question, setQuestion] = useState("");
   const [top_k_reader, set_top_k_reader] = useState(3);
-  const [top_k_retriever, set_top_k_retriever] = useState(10);
+  const [top_k_retriever, set_top_k_retriever] = useState(3);
 
   const [success, setSuccess] = useState(false);
 
