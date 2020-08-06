@@ -80,7 +80,7 @@ const ChatInput = ({
 }) => {
   const classes = useStyles();
   const [question, setQuestion] = useState("");
-  const [top_k_reader, set_top_k_reader] = useState(10);
+  const [top_k_reader, set_top_k_reader] = useState(3);
   const [top_k_retriever, set_top_k_retriever] = useState(10);
 
   const [success, setSuccess] = useState(false);
@@ -114,6 +114,7 @@ const ChatInput = ({
   const handleAskFaqQuestion = async () => {
     const payload = {
       question: question,
+      top_k_retriever: top_k_retriever,
     };
     setFaqLoading(true);
     setFaqSuccess(false);
