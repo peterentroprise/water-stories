@@ -71,7 +71,10 @@ const askFaqQuestion = async (payload) => {
   return await response.json();
 };
 
-const filter = createFilterOptions();
+const filterOptions = createFilterOptions({
+  limit: 3,
+  // stringify: (option) => option.question,
+});
 
 const ChatInput = ({
   handleSetFaqAnswer,
@@ -80,8 +83,8 @@ const ChatInput = ({
 }) => {
   const classes = useStyles();
   const [question, setQuestion] = useState("");
-  const [top_k_reader, set_top_k_reader] = useState(3);
-  const [top_k_retriever, set_top_k_retriever] = useState(3);
+  const [top_k_reader, set_top_k_reader] = useState(1);
+  const [top_k_retriever, set_top_k_retriever] = useState(1);
 
   const [success, setSuccess] = useState(false);
 
@@ -162,10 +165,7 @@ const ChatInput = ({
             setQuestion(newValue);
           }
         }}
-        filterOptions={(options, params) => {
-          const filtered = filter(options, params);
-          return filtered;
-        }}
+        filterOptions={filterOptions}
         // onSelect={async (event, newValue) => {
         //   if (typeof newValue === "string") {
         //     await setQuestion(newValue);
@@ -176,6 +176,7 @@ const ChatInput = ({
         //   }
         //   handleAskQuestion();
         // }}
+        results
         options={item.item.map((option) => option.question)}
         value={question}
         renderInput={(params) => (

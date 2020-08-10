@@ -9,6 +9,7 @@ import ChatInputBar from "./ChatInputBar";
 import ChatBody from "./ChatBody";
 
 const useStyles = makeStyles((theme) => ({
+  popover: {},
   root: {
     minWidth: 320,
     maxWidth: 480,
@@ -35,6 +36,12 @@ const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
     setFaqAnswer(value);
   };
 
+  const handleClose = () => {
+    setDocumentAnswer("");
+    setFaqAnswer("");
+    handleClick();
+  };
+
   const handleSetDocumentLoading = (value) => {
     setLoading(value);
   };
@@ -42,15 +49,22 @@ const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
   return (
     <>
       <Popover
+        className={classes.popover}
         id={id}
         open={open}
-        // PaperProps={{ style: { width: "100%" } }}
+        PaperProps={{
+          style: {
+            maxWidth: "calc(100% - 32px)",
+            width: "100%",
+            height: "100%",
+          },
+        }}
         anchorReference="anchorPosition"
-        onClose={handleClick}
+        onClose={handleClose}
         anchorPosition={{ top: 16, left: 16 }}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
+        transformOrigin={{
+          vertical: "bottom",
+          horizontal: "right",
         }}
       >
         <div className={classes.root}>
