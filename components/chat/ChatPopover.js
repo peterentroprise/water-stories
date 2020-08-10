@@ -52,13 +52,21 @@ const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
         className={classes.popover}
         id={id}
         open={open}
-        PaperProps={{
-          style: {
-            maxWidth: "calc(100% - 32px)",
-            width: "100%",
-            height: "100%",
-          },
-        }}
+        PaperProps={
+          (fullScreen && {
+            style: {
+              maxWidth: "calc(100% - 32px)",
+              width: "100%",
+              height: "100%",
+            },
+          }) || {
+            style: {
+              maxWidth: 480,
+              width: "100%",
+              height: "100%",
+            },
+          }
+        }
         anchorReference="anchorPosition"
         onClose={handleClose}
         anchorPosition={{ top: 16, left: 16 }}
