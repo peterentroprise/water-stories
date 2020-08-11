@@ -1,27 +1,20 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Popover, Container } from "@material-ui/core";
 
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Popover, Container, useMediaQuery } from "@material-ui/core";
 
 import ChatInputBar from "./ChatInputBar";
 import ChatBody from "./ChatBody";
 
 const useStyles = makeStyles((theme) => ({
   popover: {},
-  root: {
-    // minWidth: 320,
-    // maxWidth: 480,
-    // maxHeight: "40vh",
-    // minHeight: 384,
-    // width: "100%",
-  },
+  root: {},
 }));
 
 const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
   const classes = useStyles();
   const theme = useTheme();
+
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const id = open ? "simple-popover" : undefined;
 
@@ -56,25 +49,8 @@ const ChatPopover = ({ open, handleClick, anchorEl, children }) => {
         style: {
           maxWidth: 480,
           width: "calc(100% - 32px)",
-          maxHeight: 320,
         },
       }}
-      // PaperProps={
-      //   (fullScreen && {
-      //     style: {
-      //       maxWidth: 480,
-      //       width: "calc(100% - 32px)",
-      //       height: "100%",
-      //     },
-      //   }) || {
-      //     style: {
-      //       maxWidth: 480,
-      //       // width: "100%",
-      //       width: "calc(100% - 32px)",
-      //       // height: "100%",
-      //     },
-      //   }
-      // }
       anchorReference="anchorPosition"
       onClose={handleClose}
       anchorPosition={{ top: 16, left: 16 }}
