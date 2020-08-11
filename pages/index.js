@@ -5,88 +5,21 @@ import withApollo from "../lib/apollo";
 import ChatComponent from "../components/chat/ChatComponent";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { Container, Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    backgroundColor: "transparent",
-    zIndex: 3000,
-  },
-  wrapper: {
-    position: "relative",
-  },
-  buttonProgress: {
-    color: theme.palette.primary,
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    marginTop: -12,
-    marginLeft: -12,
-  },
+  root: {},
 }));
 const Index = () => {
   const { user, logout } = useUser();
   const classes = useStyles();
 
-  if (!user) {
-    return (
-      <div className={classes.root}>
-        <ChatComponent />
-        {/* <Container maxWidth="sm">
-          <Box mt={3} mb={1}>
-            <Card variant="outlined">
-              <CardContent>
-                <Box mt={2} mb={1}>
-                  <Typography variant="h4">Entroprise</Typography>
-                </Box>
-                <Box mt={2} mb={1}>
-                  <Typography>You are not signed in. </Typography>
-                </Box>
-                <Box mt={2} mb={1}>
-                  <Link href={"/auth"}>Sign in</Link>
-                </Box>
-              </CardContent>
-            </Card>
-          </Box>
-        </Container> */}
-      </div>
-    );
-  }
-
   return (
-    <div className={classes.root}>
-      <ChatComponent />
-    </div>
-    // <Container maxWidth="sm">
-    //   <DocumentComp />
-    //   <Box mt={3} mb={1}>
-    //     <Card variant="outlined">
-    //       <CardContent>
-    //         <Box mt={2} mb={1}>
-    //           <Link href={"/static"}>Static Page</Link>
-    //         </Box>
-    //         <Box mt={2} mb={1}>
-    //           <Typography variant="h4" component="h1" gutterBottom>
-    //             Entroprise SSR
-    //           </Typography>
-    //         </Box>
-    //         <Box mt={2} mb={1}>
-    //           <Typography>You're signed in. Email: {user.email}</Typography>
-    //         </Box>
-    //         <Box mt={2} mb={1}>
-    //           <Button
-    //             disableElevation
-    //             variant="contained"
-    //             onClick={() => logout()}
-    //           >
-    //             Log out
-    //           </Button>
-    //         </Box>
-    //       </CardContent>
-    //     </Card>
-    //   </Box>
-    // </Container>
+    <Container maxWidth="sm">
+      <Box mt={3} mb={1}>
+        <ChatComponent />
+      </Box>
+    </Container>
   );
 };
 

@@ -5,10 +5,7 @@ import HelpOutlineOutlinedIcon from "@material-ui/icons/HelpOutlineOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    paddingLeft: 16,
-    paddingTop: 24,
-  },
+  root: {},
   extendedIcon: {
     marginRight: theme.spacing(1),
   },

@@ -19,6 +19,15 @@ import DirectionsIcon from "@material-ui/icons/Directions";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    alignItems: "center",
+    width: "100%",
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  input: {
+    marginLeft: theme.spacing(1),
+    flex: 1,
   },
   iconButton: {
     padding: 10,
@@ -27,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
-  autoComplete: { marginTop: theme.spacing(1) },
 }));
 
 const API_ENDPOINT = "https://api.entroprise.com/v1/graphql";
@@ -83,8 +91,8 @@ const ChatInput = ({
 }) => {
   const classes = useStyles();
   const [question, setQuestion] = useState("");
-  const [top_k_reader, set_top_k_reader] = useState(1);
-  const [top_k_retriever, set_top_k_retriever] = useState(1);
+  const [top_k_reader, set_top_k_reader] = useState(3);
+  const [top_k_retriever, set_top_k_retriever] = useState(3);
 
   const [success, setSuccess] = useState(false);
 
@@ -143,80 +151,77 @@ const ChatInput = ({
 
   if (!item) return <></>;
   return (
-    <div className={classes.root}>
-      <Autocomplete
-        selectOnFocus
-        clearOnBlur
-        handleHomeEndKeys
-        blurOnSelect
-        autoFocus
-        autoComplete
-        freeSolo
-        fullWidth
-        onClose={(event, newValue) => {
-          handleAskQuestion();
-        }}
-        onChange={(event, newValue) => {
-          if (typeof newValue === "string") {
-            setQuestion(newValue);
-          } else if (newValue && newValue.inputValue) {
-            setQuestion(newValue.inputValue);
-          } else {
-            setQuestion(newValue);
-          }
-        }}
-        filterOptions={filterOptions}
-        // onSelect={async (event, newValue) => {
-        //   if (typeof newValue === "string") {
-        //     await setQuestion(newValue);
-        //   } else if (newValue && newValue.inputValue) {
-        //     await setQuestion(newValue.inputValue);
-        //   } else {
-        //     await setQuestion(newValue);
-        //   }
-        //   handleAskQuestion();
-        // }}
-        results
-        options={item.item.map((option) => option.question)}
-        value={question}
-        renderInput={(params) => (
-          <>
-            <div className={classes.root}>
-              <InputBase
-                {...params}
-                ref={params.InputProps.ref}
-                inputProps={params.inputProps}
-                className={classes.input}
-                value={question}
-                onChange={handleChangeQuestion}
-                required
-                placeholder="Ask Question"
-                margin="none"
-                variant="outlined"
-                fullWidth
-                autoFocus
-                onKeyDown={(e) => {
-                  if (e.keyCode === 13 && e.target.value) {
-                    handleAskQuestion();
-                  }
-                }}
-              />
-              <IconButton
-                type="submit"
-                color="primary"
-                edge="end"
-                className={classes.iconButton}
-                aria-label="search"
-                onClick={handleAskQuestion}
-              >
-                <SearchIcon />
-              </IconButton>
-              {/* <Divider className={classes.divider} orientation="vertical" /> */}
-            </div>
-          </>
-        )}
-      />
-    </div>
+    <Autocomplete
+      selectOnFocus
+      clearOnBlur
+      handleHomeEndKeys
+      blurOnSelect
+      autoFocus
+      autoComplete
+      freeSolo
+      fullWidth
+      onClose={(event, newValue) => {
+        handleAskQuestion();
+      }}
+      onChange={(event, newValue) => {
+        if (typeof newValue === "string") {
+          setQuestion(newValue);
+        } else if (newValue && newValue.inputValue) {
+          setQuestion(newValue.inputValue);
+        } else {
+          setQuestion(newValue);
+        }
+      }}
+      filterOptions={filterOptions}
+      // onSelect={async (event, newValue) => {
+      //   if (typeof newValue === "string") {
+      //     await setQuestion(newValue);
+      //   } else if (newValue && newValue.inputValue) {
+      //     await setQuestion(newValue.inputValue);
+      //   } else {
+      //     await setQuestion(newValue);
+      //   }
+      //   handleAskQuestion();
+      // }}
+      results
+      options={item.item.map((option) => option.question)}
+      value={question}
+      renderInput={(params) => (
+        <>
+          <div className={classes.root}>
+            <InputBase
+              {...params}
+              className={classes.input}
+              ref={params.InputProps.ref}
+              inputProps={params.inputProps}
+              value={question}
+              onChange={handleChangeQuestion}
+              required
+              placeholder="Ask Question"
+              margin="none"
+              variant="outlined"
+              fullWidth
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.keyCode === 13 && e.target.value) {
+                  handleAskQuestion();
+                }
+              }}
+            />
+            <IconButton
+              type="submit"
+              color="primary"
+              edge="end"
+              className={classes.iconButton}
+              aria-label="search"
+              onClick={handleAskQuestion}
+            >
+              <SearchIcon />
+            </IconButton>
+          </div>
+        </>
+      )}
+    />
   );
 };
 

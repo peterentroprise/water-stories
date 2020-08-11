@@ -21,10 +21,10 @@ const ChatComponent = () => {
   const open = Boolean(anchorEl);
 
   return (
-    <div className={classes.root}>
+    <>
       <ChatFab open={open} handleClick={handleClick} />
       <ChatPopover open={open} anchorEl={anchorEl} handleClick={handleClick} />
-    </div>
+    </>
   );
 };
 
