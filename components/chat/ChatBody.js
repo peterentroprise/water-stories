@@ -36,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
 const ChatBody = ({ documentAnswer, faqAnswer }) => {
   const classes = useStyles();
 
-  const onlyHeight = useWindowHeight();
-
   const href = "/result/219";
 
   const CustomLink = React.useMemo(
