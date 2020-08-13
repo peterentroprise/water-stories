@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import UploadButton from "./UploadButton";
+import VideoUploads from "./VideoUploads";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -12,7 +13,8 @@ const VideUploadComponent = () => {
 
   return (
     <>
-      <UploadButton />
+      {/* <UploadButton /> */}
+      <VideoUploads />
     </>
   );
 };

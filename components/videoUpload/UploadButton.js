@@ -4,9 +4,7 @@ import { Button } from "@material-ui/core";
 import { CloudUploadOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    borderRadius: theme.spacing(3),
-  },
+  root: {},
 }));
 
 const UploadButton = () => {
@@ -28,7 +26,7 @@ const UploadButton = () => {
       />
       <label htmlFor="icon-button-file">
         <Button
-          className={classes.button}
+          component="span"
           variant="outlined"
           size="large"
           startIcon={<CloudUploadOutlined />}
