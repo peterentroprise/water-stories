@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://34.98.70.119/video",
+  baseURL: "https://tad.entroprise.com/video",
   headers: {
     "Content-type": "application/json",
   },
