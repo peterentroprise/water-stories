@@ -5,7 +5,7 @@ const upload = (file, onUploadProgress) => {
 
   formData.append("video", file);
 
-  return http.post("/uploadvideo", formData, {
+  return http.post("/uploadvideo/", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -14,7 +14,7 @@ const upload = (file, onUploadProgress) => {
 };
 
 const getFiles = () => {
-  return http.get("/listvideos");
+  return http.get("/listvideos/");
 };
 
 export default {
