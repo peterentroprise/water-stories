@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-
 import { Container, Box } from "@material-ui/core";
 
 const FirebaseAuth = dynamic(() => import("../components/FirebaseAuth"), {

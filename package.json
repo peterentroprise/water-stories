@@ -30,6 +30,7 @@
     "react-draggable": "^4.4.3",
     "react-firebaseui": "4.0.0",
     "react-jw-player": "^1.19.1",
+    "recoil": "^0.1.2",
     "swr": "^0.2.2"
   },
   "devDependencies": {

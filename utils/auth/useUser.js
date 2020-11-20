@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import cookies from 'js-cookie'
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import initFirebase from '../auth/initFirebase'
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import firebase from "firebase/app";
+import "firebase/auth";
+import initFirebase from "../auth/initFirebase";
+import {
+  removeUserCookie,
+  setUserCookie,
+  getUserFromCookie,
+} from "./userCookies";
+import { mapUserData } from "./mapUserData";
 
-initFirebase()
+initFirebase();
 
 const useUser = () => {
-  const [user, setUser] = useState()
-  const router = useRouter()
+  const [user, setUser] = useState();
+  const router = useRouter();
 
   const logout = async () => {
     return firebase
@@ -17,25 +22,44 @@ const useUser = () => {
       .signOut()
       .then(() => {
         // Sign-out successful.
-        cookies.remove('auth')
-        router.push('/auth')
+        router.push("/auth");
       })
       .catch((e) => {
-        console.error(e)
-      })
-  }
+        console.error(e);
+      });
+  };
 
   useEffect(() => {
-    const cookie = cookies.get('auth')
-    if (!cookie) {
-      router.push('/')
-      return
+    // Firebase updates the id token every hour, this
+    // makes sure the react state and the cookie are
+    // both kept up to date
+    const cancelAuthListener = firebase
+      .auth()
+      .onIdTokenChanged(async (user) => {
+        if (user) {
+          const userData = await mapUserData(user);
+          setUserCookie(userData);
+          setUser(userData);
+        } else {
+          removeUserCookie();
+          setUser();
+        }
+      });
+
+    const userFromCookie = getUserFromCookie();
+    if (!userFromCookie) {
+      router.push("/");
+      return;
     }
-    setUser(JSON.parse(cookie))
+    setUser(userFromCookie);
+
+    return () => {
+      cancelAuthListener();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
-  return { user, logout }
-}
+  return { user, logout };
+};
 
-export { useUser }
+export { useUser };

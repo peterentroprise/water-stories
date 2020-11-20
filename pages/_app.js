@@ -3,6 +3,14 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
+
 import theme from "../configs/theme";
 import "../components/firebaseui-styling.css";
 
@@ -18,7 +26,7 @@ export default function MyApp(props) {
   }, []);
 
   return (
-    <React.Fragment>
+    <RecoilRoot>
       <Head>
         <title>Entroprise</title>
         <meta
@@ -31,7 +39,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </React.Fragment>
+    </RecoilRoot>
   );
 }
 

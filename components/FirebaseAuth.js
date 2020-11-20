@@ -1,31 +1,15 @@
-/* globals window */
-import { useEffect, useState } from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import firebase from "firebase/app";
-import "firebase/auth";
-import cookie from "js-cookie";
-import initFirebase from "../utils/auth/initFirebase";
 import { auth as firebaseuiAuth } from "firebaseui";
-
-import Link from "../components/Link";
-
-import {
-  Card,
-  CardContent,
-  Container,
-  Box,
-  Button,
-  Typography,
-  List,
-  ListItem,
-  ListSubheader,
-} from "@material-ui/core";
+import "firebase/auth";
+import initFirebase from "../utils/auth/initFirebase";
+import { setUserCookie } from "../utils/auth/userCookies";
+import { mapUserData } from "../utils/auth/mapUserData";
 
 // Init the Firebase app.
 initFirebase();
 
 const firebaseAuthConfig = {
-  autoUpgradeAnonymousUsers: true,
   signInFlow: "popup",
   // Auth providers
   // https://github.com/firebase/firebaseui-web#configure-oauth-providers
@@ -42,47 +26,20 @@ const firebaseAuthConfig = {
   credentialHelper: "none",
   callbacks: {
     signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {
-      // xa is the access token, which can be retrieved through
-      // firebase.auth().currentUser.getIdToken()
-      const { uid, email, xa } = user;
-      const userData = {
-        id: uid,
-        email,
-        token: xa,
-      };
-      cookie.set("auth", userData, {
-        expires: 1,
-      });
+      const userData = await mapUserData(user);
+      setUserCookie(userData);
     },
   },
 };
 
 const FirebaseAuth = () => {
-  // Do not SSR FirebaseUI, because it is not supported.
-  // https://github.com/firebase/firebaseui-web/issues/213
-  const [renderAuth, setRenderAuth] = useState(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setRenderAuth(true);
-    }
-  }, []);
   return (
-    <Container maxWidth="sm">
-      {renderAuth ? (
-        <Box mt={3} mb={1}>
-          <Card variant="outlined">
-            <CardContent>
-              <Box mt={2} mb={1}>
-                <StyledFirebaseAuth
-                  uiConfig={firebaseAuthConfig}
-                  firebaseAuth={firebase.auth()}
-                />
-              </Box>
-            </CardContent>
-          </Card>
-        </Box>
-      ) : null}
-    </Container>
+    <div>
+      <StyledFirebaseAuth
+        uiConfig={firebaseAuthConfig}
+        firebaseAuth={firebase.auth()}
+      />
+    </div>
   );
 };
 
