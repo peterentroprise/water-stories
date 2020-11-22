@@ -3,16 +3,12 @@ import PropTypes from "prop-types";
 import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import {
-  RecoilRoot,
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-} from "recoil";
+import { RecoilRoot } from "recoil";
 
 import theme from "../configs/theme";
 import "../components/firebaseui-styling.css";
+
+import AppFab from "../components/AppFab";
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -38,6 +34,7 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />
+        <AppFab />
       </ThemeProvider>
     </RecoilRoot>
   );

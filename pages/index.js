@@ -1,8 +1,16 @@
 import Link from "../components/Link";
+import AppContainer from "../components/AppContainer";
 import { useUser } from "../utils/auth/useUser";
 
 import { makeStyles } from "@material-ui/core/styles";
-import { Container, Box } from "@material-ui/core";
+import {
+  Container,
+  Button,
+  Box,
+  Typography,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import useSWR from "swr";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -10,8 +18,6 @@ import {
   nameState,
   charState,
 } from "../components/states";
-
-import AppFab from "../components/AppFab";
 
 const fetcher = (url, token) =>
   fetch(url, {
@@ -39,56 +45,52 @@ const Index = () => {
     fetcher
   );
 
-  if (!user && globalExpansion) {
+  if (!user) {
     return (
-      <Container maxWidth="sm">
-        <Box mt={3} mb={1}>
-          <p> You are not signed in. </p>
-          <Link href={"/auth"}>
-            <p>Sign in</p>
-          </Link>
-        </Box>
-      </Container>
-    );
-  }
-
-  if (user && globalExpansion) {
-    return (
-      <Container maxWidth="sm">
-        <Box mt={3} mb={1}>
-          <p>Index</p>
-          <p>You're signed in. Email: {user.email}</p>
-          <p
-            style={{
-              display: "inline-block",
-              color: "blue",
-              textDecoration: "underline",
-              cursor: "pointer",
-            }}
-            onClick={() => logout()}
-          >
-            Log out
-          </p>
-          <div>
-            <Link href={"/static"}>
-              <p>Static Page</p>
-            </Link>
-          </div>
-          {error && <div>Failed to fetch food!</div>}
-          {data && !error ? (
-            <div>Your favorite food is {data.food}.</div>
-          ) : (
-            <div>Loading...</div>
-          )}
-        </Box>
-      </Container>
+      <AppContainer>
+        <Card variant="outlined">
+          <CardContent>
+            <Box mt={2} mb={1}>
+              <Link href={"/auth"}>Sign in</Link>
+            </Box>
+            <Box mt={2} mb={1}>
+              <Typography variant="h4" component="h1" gutterBottom>
+                Entroprise
+              </Typography>
+              <Typography>You are not signed in.</Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </AppContainer>
     );
   }
 
   return (
-    <>
-      <AppFab />
-    </>
+    <AppContainer>
+      <Card variant="outlined">
+        <CardContent>
+          <Box mt={2} mb={1}>
+            <Link href={"/static"}>Static Page</Link>
+          </Box>
+          <Box mt={2} mb={1}>
+            <Typography variant="h4" component="h1" gutterBottom>
+              Entroprise
+            </Typography>
+            <Typography>You're signed in. Email: {user.email}</Typography>
+            <Button variant="outlined" onClick={() => logout()}>
+              Log out
+            </Button>
+
+            {error && <Typography>Failed to fetch food!</Typography>}
+            {data && !error ? (
+              <Typography>Your favorite food is {data.food}.</Typography>
+            ) : (
+              <Typography>Loading...</Typography>
+            )}
+          </Box>
+        </CardContent>
+      </Card>
+    </AppContainer>
   );
 };
 

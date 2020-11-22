@@ -1,4 +1,5 @@
 import Link from "../components/Link";
+import AppContainer from "../components/AppContainer"
 
 import {
   Container,
@@ -10,8 +11,7 @@ import {
 
 const Static = (props) => {
   return (
-    <Container maxWidth="sm">
-      <Box mt={3} mb={1}>
+    <AppContainer>
         <Card variant="outlined">
           <CardContent>
             <Box mt={2} mb={1}>
@@ -28,8 +28,7 @@ const Static = (props) => {
             </Box>
           </CardContent>
         </Card>
-      </Box>
-    </Container>
+        </AppContainer>
   );
 };
 
