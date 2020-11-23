@@ -28,7 +28,7 @@ const fetcher = (url, token) =>
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    height: "100vh",
+    height: "80vh",
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 16,

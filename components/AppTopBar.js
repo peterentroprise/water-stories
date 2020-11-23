@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   profileButton: {
-    paddingRight: theme.spacing(2),
+    marginRight: -12,
   },
   title: {
     flexGrow: 1,
