@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down("sm")]: {
       maxWidth: "none",
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
+      paddingLeft: theme.spacing(0),
+      paddingRight: theme.spacing(0),
+      height: "calc(100vh - 64px)",
     },
     position: "fixed",
     top: 0,
