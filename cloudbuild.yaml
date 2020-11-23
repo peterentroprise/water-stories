@@ -13,7 +13,6 @@ steps:
   - id: "docker_push"
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "us.gcr.io/$PROJECT_ID/entro-client"]
-
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
       - run
@@ -21,7 +20,7 @@ steps:
       - update
       - $_SERVICE_NAME
       - "--platform=managed"
-      - "--image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
+      - "--image=us.gcr.io/$PROJECT_ID/entro-client"
       - >-
         --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
       - "--region=$_DEPLOY_REGION"
