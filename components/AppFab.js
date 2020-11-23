@@ -9,10 +9,10 @@ import { globalExpansionState } from "../components/states";
 
 const useStyles = makeStyles((theme) => ({
   fab: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(0),
     position: "fixed",
-    top: theme.spacing(3),
-    right: theme.spacing(3),
+    top: theme.spacing(2),
+    right: theme.spacing(2),
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
