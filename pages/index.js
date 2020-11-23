@@ -27,7 +27,13 @@ const fetcher = (url, token) =>
   }).then((res) => res.json());
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  card: {
+    height: 640,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 16,
+    borderBottomLeftRadius: 16,
+  },
 }));
 
 const Index = () => {
@@ -48,7 +54,7 @@ const Index = () => {
   if (!user) {
     return (
       <AppContainer>
-        <Card variant="outlined">
+        <Card className={classes.card} variant="outlined">
           <CardContent>
             <Box mt={2} mb={1}>
               <Link href={"/auth"}>Sign in</Link>
@@ -67,7 +73,7 @@ const Index = () => {
 
   return (
     <AppContainer>
-      <Card variant="outlined">
+      <Card className={classes.card} variant="outlined">
         <CardContent>
           <Box mt={2} mb={1}>
             <Link href={"/static"}>Static Page</Link>

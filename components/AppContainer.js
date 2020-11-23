@@ -5,12 +5,13 @@ import FilterHdrOutlinedIcon from "@material-ui/icons/FilterHdrOutlined";
 import CloseIcon from "@material-ui/icons/Close";
 import { useRecoilState, useRecoilValue } from "recoil";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import AppTopBar from "../components/AppTopBar";
 
 import { globalExpansionState } from "../components/states";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
     [theme.breakpoints.up("sm")]: {
       maxWidth: 384,
       paddingRight: theme.spacing(2),
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: theme.spacing(2),
     },
     position: "fixed",
-    top: 0,
+    bottom: 0,
     right: 0,
   },
 }));
@@ -38,12 +39,14 @@ const AppFab = (props) => {
   if (globalExpansion)
     return (
       <Container
+        data-iframe-height
         fixed
         disableGutters
         className={classes.container}
         maxWidth="sm"
       >
         <Box mt={3} mb={1}>
+          <AppTopBar />
           {children}
         </Box>
       </Container>

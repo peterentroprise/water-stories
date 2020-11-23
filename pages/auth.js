@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Container,
   Button,
@@ -16,10 +16,21 @@ const FirebaseAuth = dynamic(() => import("../components/FirebaseAuth"), {
   ssr: false,
 });
 
+const useStyles = makeStyles((theme) => ({
+  card: {
+    height: 640,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 16,
+    borderBottomLeftRadius: 16,
+  },
+}));
+
 const Auth = () => {
+  const classes = useStyles();
   return (
     <AppContainer>
-      <Card variant="outlined">
+      <Card className={classes.card} variant="outlined">
         <CardContent>
           <Box mt={2} mb={1}>
             <Link href={"/"}>Root</Link>
