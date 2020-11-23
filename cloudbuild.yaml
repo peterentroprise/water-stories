@@ -29,7 +29,7 @@ steps:
     id: Deploy
     entrypoint: gcloud
 images:
-  - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA"
+  - "us.gcr.io/$PROJECT_ID/entro-client"
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
