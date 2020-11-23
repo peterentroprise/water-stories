@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   fab: {
     margin: theme.spacing(0),
     position: "fixed",
-    bottom: theme.spacing(2),
+    top: theme.spacing(2),
     right: theme.spacing(2),
   },
   extendedIcon: {

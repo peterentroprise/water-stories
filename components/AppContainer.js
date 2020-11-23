@@ -11,7 +11,7 @@ import { globalExpansionState } from "../components/states";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(8),
     [theme.breakpoints.up("sm")]: {
       maxWidth: 384,
       paddingRight: theme.spacing(2),
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: theme.spacing(2),
     },
     position: "fixed",
-    bottom: 0,
+    top: 0,
     right: 0,
   },
 }));
