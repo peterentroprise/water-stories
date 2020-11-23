@@ -11,7 +11,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   card: {
-    height: 640,
+    height: 480,
     borderTopLeftRadius: 0,
     borderTopRightRadius: 0,
     borderBottomRightRadius: 16,
