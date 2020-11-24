@@ -4,13 +4,15 @@ import { useUser } from "../utils/auth/useUser";
 
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Container,
-  Button,
+  List,
+  ListItem,
+  ListItemText,
   Box,
   Typography,
   Card,
   CardContent,
 } from "@material-ui/core";
+
 import useSWR from "swr";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
@@ -18,13 +20,6 @@ import {
   nameState,
   charState,
 } from "../components/states";
-
-const fetcher = (url, token) =>
-  fetch(url, {
-    method: "GET",
-    headers: new Headers({ "Content-Type": "application/json", token }),
-    credentials: "same-origin",
-  }).then((res) => res.json());
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -36,7 +31,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Index = () => {
+const fetcher = async (...args) => {
+  const res = await fetch(...args);
+
+  return res.json();
+};
+
+const Threads = () => {
   const { user, logout } = useUser();
   const classes = useStyles();
 
@@ -46,10 +47,11 @@ const Index = () => {
   const [name, setName] = useRecoilState(nameState);
   const charName = useRecoilValue(charState);
 
-  const { data, error } = useSWR(
-    user ? ["/api/getFood", user.token] : null,
-    fetcher
-  );
+  const { data } = useSWR(`/api/threads/`, fetcher);
+
+  if (!data) {
+    return "Loading...";
+  }
 
   if (!user) {
     return (
@@ -76,26 +78,18 @@ const Index = () => {
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Box mt={2} mb={1}>
-            <Link href={"/static"}>Static Page</Link>
-          </Box>
-          <Box mt={2} mb={1}>
-            <Link href={"/threads"}>Threads</Link>
+            <Link href={"/"}>Home</Link>
           </Box>
           <Box mt={2} mb={1}>
             <Typography variant="h4" component="h1" gutterBottom>
-              Entroprise
+              Threads
             </Typography>
-            <Typography>You're signed in. Email: {user.email}</Typography>
-            <Button variant="outlined" onClick={() => logout()}>
-              Log out
-            </Button>
-
-            {error && <Typography>Failed to fetch food!</Typography>}
-            {data && !error ? (
-              <Typography>Your favorite food is {data.food}.</Typography>
-            ) : (
-              <Typography>Loading...</Typography>
-            )}
+            <List component="nav" aria-label="main mailbox folders">
+              {data.map((doc) => (
+                <Link href={`/thread/${doc.id}`}>{doc.data.name}</Link>
+              ))}
+            </List>
+            {console.log(data)}
           </Box>
         </CardContent>
       </Card>
@@ -103,4 +97,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Threads;

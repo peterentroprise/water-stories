@@ -21,7 +21,7 @@ function Thread() {
   return (
     <LayoutComponent>
       {data.map((doc) => (
-        <Typography>{doc.payload}</Typography>
+        <Typography key={doc.id}>{doc.payload}</Typography>
       ))}
     </LayoutComponent>
   );
