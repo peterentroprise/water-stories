@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: theme.spacing(0),
       paddingRight: theme.spacing(0),
     },
+    height: 640,
     position: "fixed",
     bottom: theme.spacing(0),
     right: theme.spacing(0),
@@ -36,13 +37,7 @@ const AppFab = (props) => {
   );
 
   return (
-    <Container
-      data-iframe-height
-      fixed
-      disableGutters
-      className={classes.container}
-      maxWidth="sm"
-    >
+    <Container disableGutters className={classes.container} maxWidth="sm">
       <Box>
         <AppTopBar />
         {children}
