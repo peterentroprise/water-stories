@@ -11,7 +11,6 @@ import { globalExpansionState } from "../components/states";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    paddingTop: theme.spacing(8),
     [theme.breakpoints.up("sm")]: {
       maxWidth: 384,
       paddingRight: theme.spacing(2),
@@ -20,11 +19,10 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "none",
       paddingLeft: theme.spacing(0),
       paddingRight: theme.spacing(0),
-      height: "calc(100vh - 64px)",
     },
     position: "fixed",
-    top: 0,
-    right: 0,
+    bottom: theme.spacing(0),
+    right: theme.spacing(0),
   },
 }));
 
@@ -37,23 +35,20 @@ const AppFab = (props) => {
     globalExpansionState
   );
 
-  if (globalExpansion)
-    return (
-      <Container
-        data-iframe-height
-        fixed
-        disableGutters
-        className={classes.container}
-        maxWidth="sm"
-      >
-        <Box mt={3} mb={1}>
-          <AppTopBar />
-          {children}
-        </Box>
-      </Container>
-    );
-
-  return <></>;
+  return (
+    <Container
+      data-iframe-height
+      fixed
+      disableGutters
+      className={classes.container}
+      maxWidth="sm"
+    >
+      <Box>
+        <AppTopBar />
+        {children}
+      </Box>
+    </Container>
+  );
 };
 
 export default AppFab;

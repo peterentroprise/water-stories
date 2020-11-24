@@ -34,7 +34,6 @@ export default function MyApp(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Component {...pageProps} />
-        <AppFab />
       </ThemeProvider>
     </RecoilRoot>
   );
