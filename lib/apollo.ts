@@ -15,7 +15,7 @@ export type ResolverContext = {
   res?: ServerResponse;
 };
 
-function createIsomorphLink(context: ResolverContext = {}) {
+function createIsomorphLink() {
   if (typeof window === "undefined") {
     return null;
   } else {
