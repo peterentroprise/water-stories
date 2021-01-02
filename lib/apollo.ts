@@ -27,10 +27,10 @@ function createIsomorphLink() {
   }
 }
 
-function createApolloClient(context?: ResolverContext) {
+function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === "undefined",
-    link: createIsomorphLink(context),
+    link: createIsomorphLink(),
     cache: new InMemoryCache(),
   });
 }
