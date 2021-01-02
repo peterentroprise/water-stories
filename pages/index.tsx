@@ -1,15 +1,29 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Layout from "../components/Layout";
+import Header from "../components/Header";
+import Login from "../components/Auth/Login";
+import TodoPrivateWrapper from "../components/Todo/TodoPrivateWrapper";
+import TodoPublicWrapper from "../components/Todo/TodoPublicWrapper";
+import OnlineUsersWrapper from "../components/OnlineUsers/OnlineUsersWrapper";
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+import { useFetchUser } from "../lib/user";
+import { withApollo } from "../lib/withApollo";
 
-export default IndexPage
+const IndexPage = () => {
+  const { user, loading } = useFetchUser({ required: true });
+  if (!loading && !user) {
+    return <Login />;
+  }
+  return (
+    <Layout title="Index | Entroprise">
+      <Header />
+      <TodoPrivateWrapper />
+      <TodoPublicWrapper />
+      <OnlineUsersWrapper />
+    </Layout>
+  );
+};
+
+export default withApollo({ ssr: true })(IndexPage);
+
+// enable the line below for client side rendering of <TodoPrivateWrapper />
+// export default withApollo()(IndexPage)
