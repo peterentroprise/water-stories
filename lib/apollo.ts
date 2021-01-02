@@ -6,7 +6,7 @@ import {
   NormalizedCacheObject,
 } from "@apollo/client";
 
-import { SERVER, WEB_SOCKET_LINK } from "../config";
+import { SERVER } from "../config";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
