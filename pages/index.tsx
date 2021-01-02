@@ -13,6 +13,9 @@ const IndexPage = () => {
   if (!loading && !user) {
     return <Login />;
   }
+  if (!user) {
+    return <></>;
+  }
   return (
     <Layout title="Index | Entroprise">
       <Header />
@@ -26,4 +29,4 @@ const IndexPage = () => {
 export default withApollo({ ssr: true })(IndexPage);
 
 // enable the line below for client side rendering of <TodoPrivateWrapper />
-// export default withApollo()(IndexPage)
+// export default withApollo()(IndexPage);
