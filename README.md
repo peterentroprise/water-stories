@@ -1,3 +1,1 @@
 # Entroprise
-
-asd
