@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
 import { Button, Typography } from "@material-ui/core";
 
-import Link from "../Link";
+import Link from "../components/Link";
 
 const AboutPage = () => (
   <Layout title="About | Next.js + TypeScript Example">
