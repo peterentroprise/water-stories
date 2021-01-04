@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next";
-import Link from "../../components/Link";
-import { Button, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 
 import { User } from "../../interfaces";
 import { sampleUserData } from "../../utils/sample-data";
