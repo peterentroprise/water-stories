@@ -1,23 +1,35 @@
-import * as React from 'react'
-import { Button } from "@material-ui/core";
+import * as React from "react";
+import { AppBar, Toolbar, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 import Link from "../Link";
 
-const HeaderComponent = () => (
-    <header>
-      <nav>
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+const HeaderComponent = () => {
+  const classes = useStyles();
+  return (
+    <AppBar className={classes.appBar} position="sticky">
+      <Toolbar>
         <Link href="/" passHref>
-          <Button>Index</Button>
-        </Link>
-        <Link href="/about" passHref>
-          <Button>About</Button>
+          <Button>Todos</Button>
         </Link>
         <Link href="/products" passHref>
           <Button>Products</Button>
         </Link>
-      </nav>
-    </header>
+        <Link href="/users" passHref>
+          <Button>Users</Button>
+        </Link>
+        <Link href="/about" passHref>
+          <Button>About</Button>
+        </Link>
+      </Toolbar>
+    </AppBar>
+  );
+};
 
-)
-
-export default HeaderComponent
+export default HeaderComponent;

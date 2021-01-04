@@ -64,8 +64,7 @@ const OnlineUsersWrapper = () => {
 
   return (
     <>
-      <Typography variant="h4">Users</Typography>
-      <Typography>Online Users: {onlineUsersList.length}</Typography>
+      <Typography>Number Of User Online: {onlineUsersList.length}</Typography>
       {onlineUsersList}
     </>
   );

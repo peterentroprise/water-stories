@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Typography } from "@material-ui/core";
+// import { Typography, Box } from "@material-ui/core";
 
-const HeaderComponent = () => (
+const Footer = () => (
   <footer>
-    <hr />
-    <Typography>Footer</Typography>
+    {/* <Box px={4}>
+      <Typography>Entroprise, LLC ©2021</Typography>
+    </Box> */}
   </footer>
 );
 
-export default HeaderComponent;
+export default Footer;

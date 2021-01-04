@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 const OnlineUser = ({ user }) => {
   return (
-    <ListItem alignItems="flex-start">
+    <ListItem disableGutters alignItems="flex-start">
       <ListItemAvatar>
         <Avatar alt={user.name} />
       </ListItemAvatar>

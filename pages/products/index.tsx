@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import { Typography } from "@material-ui/core";
+import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
 
 import { Product } from "../../interfaces";
 import fetchAPI from "../../lib/fetchAPI";
@@ -16,6 +16,7 @@ query getProductCollection {
     items {
       productName
       productDescription
+      slug
       sys {
         id
       }
@@ -25,8 +26,14 @@ query getProductCollection {
 
 const WithStaticProps = ({ items }: Props) => (
   <Layout title="Products List | Entroprise">
-    <Typography variant="h3">Products List</Typography>
-    <ProductList items={items} />
+    <Box my={3}>
+      <Card variant="outlined">
+        <CardHeader title="Products" />
+        <CardContent>
+          <ProductList items={items} />
+        </CardContent>
+      </Card>
+    </Box>
   </Layout>
 );
 

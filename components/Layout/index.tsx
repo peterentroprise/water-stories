@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Layout = ({ children, title = "Entroprise" }: Props) => (
-  <div>
+  <>
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -20,7 +20,7 @@ const Layout = ({ children, title = "Entroprise" }: Props) => (
     <Header />
     <Body>{children}</Body>
     <Footer />
-  </div>
+  </>
 );
 
 export default Layout;

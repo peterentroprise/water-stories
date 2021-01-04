@@ -14,8 +14,15 @@ const GET_PRODUCT_COLLECTION = `
 query getProductCollection {
   productCollection {
     items {
-      productName
+      price
       productDescription
+      productName
+      quantity
+      sizetypecolor
+      sku
+      slug
+      tags
+      website
       sys {
         id
       }
@@ -51,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const data = await fetchAPI(GET_PRODUCT_COLLECTION);
   const items = data.productCollection.items;
   const paths = items.map((item: Product) => ({
-    params: { id: item.sys.id.toString() },
+    params: { id: item.slug.toString() },
   }));
 
   // We'll pre-render only these paths at build time.
@@ -68,7 +75,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const data = await fetchAPI(GET_PRODUCT_COLLECTION);
 
     const items = data.productCollection.items;
-    const item = items.find((item: Product) => item.sys.id === String(id));
+    const item = items.find((item: Product) => item.slug === String(id));
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } };

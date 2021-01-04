@@ -2,11 +2,11 @@ import React, { ReactNode } from "react";
 import Container from "@material-ui/core/Container";
 
 type Props = {
-  children?: ReactNode;
+  children: ReactNode;
 };
 
-const BodyComponent = ({ children }: Props) => (
+const Body = ({ children }: Props) => (
   <Container maxWidth="sm">{children}</Container>
 );
 
-export default BodyComponent;
+export default Body;

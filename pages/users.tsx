@@ -3,17 +3,16 @@ import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
 import Layout from "../components/Layout";
 import Login from "../components/Auth/Login";
 import LogoutBtn from "../components/Auth/Logout";
-import TodoPrivateWrapper from "../components/Todo/TodoPrivateWrapper";
-import TodoPublicWrapper from "../components/Todo/TodoPublicWrapper";
+import OnlineUsersWrapper from "../components/OnlineUsers/OnlineUsersWrapper";
 
 import { useFetchUser } from "../lib/user";
 import { withApollo } from "../lib/withApollo";
 
-const IndexPage = () => {
+const UsersPage = () => {
   const { user, loading } = useFetchUser();
   if (!loading && !user) {
     return (
-      <Layout title="Todos | Entroprise">
+      <Layout title="Users | Entroprise">
         <Login />
       </Layout>
     );
@@ -22,20 +21,15 @@ const IndexPage = () => {
     return <></>;
   }
   return (
-    <Layout title="Todos | Entroprise">
+    <Layout title="Users | Entroprise">
       <Box my={3}>
         <Card variant="outlined">
-          <CardHeader title="Private Todos" />
+          <CardHeader title="Users" />
           <CardContent>
-            <TodoPrivateWrapper />
-          </CardContent>
-        </Card>
-      </Box>
-      <Box mt={2} mb={1}>
-        <Card variant="outlined">
-          <CardHeader title="Public Todos" />
-          <CardContent>
-            <TodoPublicWrapper />
+            <OnlineUsersWrapper />
+            <Box mt={2} mb={1}>
+              <LogoutBtn />
+            </Box>
           </CardContent>
         </Card>
       </Box>
@@ -43,7 +37,7 @@ const IndexPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(IndexPage);
+export default withApollo({ ssr: true })(UsersPage);
 
 // enable the line below for client side rendering of <TodoPrivateWrapper />
 // export default withApollo()(IndexPage);

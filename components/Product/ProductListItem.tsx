@@ -9,9 +9,9 @@ type Props = {
 };
 
 const ProductListItem = ({ data }: Props) => (
-  <Link href={`/products/${data.sys.id}`}>
-    <ListItem button key={data.sys.id}>
-      {data.productName}{" "}
+  <Link href={`/products/${data.slug}`}>
+    <ListItem disableGutters button key={data.slug}>
+      {data.productName}
     </ListItem>
   </Link>
 );
