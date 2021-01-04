@@ -1,17 +1,10 @@
 import Layout from "../components/Layout";
-import { Button, Typography } from "@material-ui/core";
-
-import Link from "../components/Link";
+import { Typography } from "@material-ui/core";
 
 const AboutPage = () => (
-  <Layout title="About | Next.js + TypeScript Example">
-    <Typography>About</Typography>
+  <Layout title="About | Entroprise">
+    <Typography variant="h3">About</Typography>
     <Typography>This is the about page.</Typography>
-    <Link href="/" passHref>
-      <Button variant="contained" color="secondary">
-        Go To Index
-      </Button>
-    </Link>
   </Layout>
 );
 

@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
-import Link from "next/link";
+import Link from "../../components/Link";
+import { Button, Typography } from "@material-ui/core";
 
 import { User } from "../../interfaces";
 import { sampleUserData } from "../../utils/sample-data";
@@ -11,15 +12,9 @@ type Props = {
 };
 
 const WithStaticProps = ({ items }: Props) => (
-  <Layout title="Users List | Next.js + TypeScript Example">
-    <h1>Users List</h1>
-    <p>You are currently on: /users</p>
+  <Layout title="Users List | Entroprise">
+    <Typography variant="h3">Users List</Typography>
     <List items={items} />
-    <p>
-      <Link href="/">
-        <a>Go home</a>
-      </Link>
-    </p>
   </Layout>
 );
 
