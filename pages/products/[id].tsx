@@ -47,12 +47,9 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Get the paths we want to pre-render based on users
-
+  // Get the paths we want to pre-render based on products
   const data = await fetchAPI(GET_PRODUCT_COLLECTION);
-
   const items = data.productCollection.items;
-
   const paths = items.map((item: Product) => ({
     params: { id: item.sys.id.toString() },
   }));
