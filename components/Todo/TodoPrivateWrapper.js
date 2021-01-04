@@ -5,9 +5,8 @@ import TodoPrivateList from "./TodoPrivateList";
 
 const TodoPrivateWrapper = (props) => {
   return (
-    <div className="todoWrapper">
-      <div className="sectionHeader">Personal todos</div>
-
+    <div>
+      <div>Personal todos</div>
       <TodoInput />
       <TodoPrivateList />
     </div>

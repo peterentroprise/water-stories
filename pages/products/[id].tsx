@@ -1,14 +1,14 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps, GetStaticPaths } from "next";
 
-import { Product } from '../../interfaces'
-import fetchAPI from "../../lib/fetchAPI"
-import Layout from '../../components/Layout'
-import ListDetail from '../../components/Product/ListDetail'
+import { Product } from "../../interfaces";
+import fetchAPI from "../../lib/fetchAPI";
+import Layout from "../../components/Layout";
+import ProductListDetail from "../../components/Product/ProductListDetail";
 
 type Props = {
-  item?: Product
-  errors?: string
-}
+  item?: Product;
+  errors?: string;
+};
 
 const GET_PRODUCT_COLLECTION = `
 query getProductCollection {
@@ -28,60 +28,54 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
     return (
       <Layout title="Error | Entroprise">
         <p>
-          <span style={{ color: 'red' }}>Error:</span> {errors}
+          <span style={{ color: "red" }}>Error:</span> {errors}
         </p>
       </Layout>
-    )
+    );
   }
 
   return (
     <Layout
-      title={`${
-        item ? item.productName : 'Product Detail'
-      } | Entroprise`}
+      title={`${item ? item.productName : "Product Detail"} | Entroprise`}
     >
       {console.log(item)}
-      {item && <ListDetail item={item} />}
+      {item && <ProductListDetail item={item} />}
     </Layout>
-  )
-}
+  );
+};
 
-export default StaticPropsDetail
+export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on users
 
-  const data = await fetchAPI(
-    GET_PRODUCT_COLLECTION
-  )
+  const data = await fetchAPI(GET_PRODUCT_COLLECTION);
 
   const items = data.productCollection.items;
- 
+
   const paths = items.map((item: Product) => ({
     params: { id: item.sys.id.toString() },
-  }))
+  }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
-}
+  return { paths, fallback: false };
+};
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
-    const id = params?.id
-    const data = await fetchAPI(
-      GET_PRODUCT_COLLECTION
-    )
+    const id = params?.id;
+    const data = await fetchAPI(GET_PRODUCT_COLLECTION);
 
     const items = data.productCollection.items;
-    const item = items.find((item: Product) => item.sys.id === String(id))
+    const item = items.find((item: Product) => item.sys.id === String(id));
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
-    return { props: { item } }
+    return { props: { item } };
   } catch (err) {
-    return { props: { errors: err.message } }
+    return { props: { errors: err.message } };
   }
-}
+};

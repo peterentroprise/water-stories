@@ -5,8 +5,8 @@ import TodoPublicList from "./TodoPublicList";
 
 const TodoPublicWrapper = () => {
   return (
-    <div className="todoWrapper">
-      <div className="sectionHeader">Public feed (realtime)</div>
+    <div>
+      <div>Public feed (realtime)</div>
 
       <TodoInput isPublic />
       <TodoPublicList />

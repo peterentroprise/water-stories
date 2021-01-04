@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
-import Header from "../components/Header";
 import Login from "../components/Auth/Login";
+import LogoutBtn from "../components/Auth/Logout";
 import TodoPrivateWrapper from "../components/Todo/TodoPrivateWrapper";
 import TodoPublicWrapper from "../components/Todo/TodoPublicWrapper";
 import OnlineUsersWrapper from "../components/OnlineUsers/OnlineUsersWrapper";
@@ -18,10 +18,10 @@ const IndexPage = () => {
   }
   return (
     <Layout title="Index | Entroprise">
-      <Header />
       <TodoPrivateWrapper />
       <TodoPublicWrapper />
       <OnlineUsersWrapper />
+      <LogoutBtn />
     </Layout>
   );
 };

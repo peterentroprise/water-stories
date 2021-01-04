@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 
 import Link from "../Link";
 
-const LogoutBtn = ({ logoutHandler }) => (
+const LogoutBtn = () => (
   <Link href="/api/logout" passHref>
     <Button variant="outlined">Log Out</Button>
   </Link>
