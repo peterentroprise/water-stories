@@ -6,7 +6,9 @@ type Props = {
 };
 
 const Body = ({ children }: Props) => (
-  <Container maxWidth="sm">{children}</Container>
+  <Container maxWidth="sm">
+    <>{children}</>
+  </Container>
 );
 
 export default Body;

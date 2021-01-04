@@ -2,7 +2,6 @@ import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
 
 import Layout from "../components/Layout";
 import Login from "../components/Auth/Login";
-import LogoutBtn from "../components/Auth/Logout";
 import TodoPrivateWrapper from "../components/Todo/TodoPrivateWrapper";
 import TodoPublicWrapper from "../components/Todo/TodoPublicWrapper";
 
