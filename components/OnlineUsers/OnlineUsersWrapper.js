@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment, useState } from "react";
 import { useMutation, useSubscription } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import { Typography } from "@material-ui/core";
 
 import OnlineUser from "./OnlineUser";
 
@@ -49,11 +50,11 @@ const OnlineUsersWrapper = () => {
 
   const { loading, error, data } = useSubscription(onlineUsersSubscription);
   if (loading) {
-    return <span>Loading...</span>;
+    return <Typography>Loading...</Typography>;
   }
   if (error) {
     console.error(error);
-    return <span>Error!</span>;
+    return <Typography>Error!</Typography>;
   }
   if (data) {
     onlineUsersList = data.online_users.map((u) => (
@@ -64,7 +65,7 @@ const OnlineUsersWrapper = () => {
   return (
     <div>
       <Fragment>
-        <div>Online users - {onlineUsersList.length}</div>
+        <Typography>Online Users: {onlineUsersList.length}</Typography>
         {onlineUsersList}
       </Fragment>
     </div>
