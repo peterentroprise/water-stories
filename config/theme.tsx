@@ -37,6 +37,18 @@ const theme = createMuiTheme({
       '"Segoe UI Symbol"',
     ].join(","),
   },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 0,
+      },
+    },
+    MuiCard: {
+      root: {
+        borderRadius: 0,
+      },
+    },
+  },
 });
 
 export default theme;

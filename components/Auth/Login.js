@@ -19,10 +19,10 @@ const Login = () => {
           subheader="Merging the finite with the infinite."
         />
         <CardContent>
-          <Typography>Please login to continue</Typography>
+          <Typography>Please Login To Continue</Typography>
           <Box mt={2} mb={1}>
             <Link href="/api/login" passHref>
-              <Button variant="outlined" color="primary">
+              <Button elevation={0} variant="contained" color="primary">
                 Log In
               </Button>
             </Link>

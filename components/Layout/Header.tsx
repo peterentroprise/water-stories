@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 const HeaderComponent = () => {
   const classes = useStyles();
   return (
-    <AppBar className={classes.appBar} position="sticky">
+    <AppBar elevation={0} className={classes.appBar} position="sticky">
       <Toolbar>
         <Link href="/" passHref>
           <Button>Todos</Button>
