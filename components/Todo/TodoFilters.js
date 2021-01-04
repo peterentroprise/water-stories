@@ -1,26 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
+import {
+  Typography,
+  Checkbox,
+  Avatar,
+  Button,
+  ButtonGroup,
+  DraftsIcon,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core";
+
 const TodoFilters = ({
   todos,
   currentFilter,
   filterResultsFn,
-  clearCompletedFn
+  clearCompletedFn,
 }) => {
-  const filterResultsHandler = filter => {
+  const filterResultsHandler = (filter) => {
     return () => {
       filterResultsFn(filter);
     };
   };
 
-  // The clear completed button if these are personal todos
-  const clearCompletedButton = (
-    <button onClick={clearCompletedFn} className="clearComp">
-      Clear completed
-    </button>
-  );
-
-  const activeTodos = todos.filter(todo => todo.is_completed !== true);
+  const activeTodos = todos.filter((todo) => todo.is_completed !== true);
 
   let itemCount = todos.length;
   if (currentFilter === "active") {
@@ -30,31 +37,18 @@ const TodoFilters = ({
   }
 
   return (
-    <div className="footerList">
-      <span>
-        {" "}
-        {itemCount} item
+    <>
+      <Typography>
+        {itemCount} Todo
         {itemCount !== 1 ? "s" : ""}
-      </span>
-
-      <ul>
-        <li onClick={filterResultsHandler("all")}>
-          <a className={currentFilter === "all" ? "selected" : ""}>All</a>
-        </li>
-
-        <li onClick={filterResultsHandler("active")}>
-          <a className={currentFilter === "active" ? "selected" : ""}>Active</a>
-        </li>
-
-        <li onClick={filterResultsHandler("completed")}>
-          <a className={currentFilter === "completed" ? "selected" : ""}>
-            Completed
-          </a>
-        </li>
-      </ul>
-
-      {clearCompletedButton}
-    </div>
+      </Typography>
+      <ButtonGroup color="primary" aria-label="outlined primary button group">
+        <Button onClick={filterResultsHandler("all")}>All</Button>
+        <Button onClick={filterResultsHandler("active")}>Active</Button>
+        <Button onClick={filterResultsHandler("completed")}>Completed</Button>
+      </ButtonGroup>
+      <Button onClick={clearCompletedFn}>Clear Completed</Button>
+    </>
   );
 };
 

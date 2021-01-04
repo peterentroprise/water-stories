@@ -1,6 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import {
+  Typography,
+  Checkbox,
+  IconButton,
+  Avatar,
+  DraftsIcon,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core";
 
 import TodoItem from "./TodoItem";
 import TodoFilters from "./TodoFilters";
@@ -30,16 +42,16 @@ const CLEAR_COMPLETED = gql`
   }
 `;
 
-const TodoPrivateList = props => {
+const TodoPrivateList = (props) => {
   const [state, setState] = useState({
     filter: "all",
-    clearInProgress: false
+    clearInProgress: false,
   });
 
-  const filterResults = filter => {
+  const filterResults = (filter) => {
     setState({
       ...state,
-      filter: filter
+      filter: filter,
     });
   };
 
@@ -50,9 +62,9 @@ const TodoPrivateList = props => {
       optimisticResponse: true,
       update: (cache, { data }) => {
         const existingTodos = cache.readQuery({ query: GET_MY_TODOS });
-        const newTodos = existingTodos.todos.filter(t => !t.is_completed);
+        const newTodos = existingTodos.todos.filter((t) => !t.is_completed);
         cache.writeQuery({ query: GET_MY_TODOS, data: { todos: newTodos } });
-      }
+      },
     });
   };
 
@@ -60,9 +72,9 @@ const TodoPrivateList = props => {
 
   let filteredTodos = todos;
   if (state.filter === "active") {
-    filteredTodos = todos.filter(todo => todo.is_completed !== true);
+    filteredTodos = todos.filter((todo) => todo.is_completed !== true);
   } else if (state.filter === "completed") {
-    filteredTodos = todos.filter(todo => todo.is_completed === true);
+    filteredTodos = todos.filter((todo) => todo.is_completed === true);
   }
 
   const todoList = [];
@@ -71,11 +83,7 @@ const TodoPrivateList = props => {
   });
 
   return (
-    <Fragment>
-      <div className="todoListWrapper">
-        <ul>{todoList}</ul>
-      </div>
-
+    <>
       <TodoFilters
         todos={filteredTodos}
         currentFilter={state.filter}
@@ -83,7 +91,8 @@ const TodoPrivateList = props => {
         clearCompletedFn={clearCompleted}
         clearInProgress={state.clearInProgress}
       />
-    </Fragment>
+      <List>{todoList}</List>
+    </>
   );
 };
 
@@ -91,11 +100,11 @@ const TodoPrivateListQuery = () => {
   const { loading, error, data } = useQuery(GET_MY_TODOS);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Typography>Loading...</Typography>;
   }
   if (error) {
     console.error(error);
-    return <div>Error!</div>;
+    return <Typography>Error!</Typography>;
   }
   return <TodoPrivateList todos={data.todos} />;
 };

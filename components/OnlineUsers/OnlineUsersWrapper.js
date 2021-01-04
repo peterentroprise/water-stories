@@ -63,12 +63,11 @@ const OnlineUsersWrapper = () => {
   }
 
   return (
-    <div>
-      <Fragment>
-        <Typography>Online Users: {onlineUsersList.length}</Typography>
-        {onlineUsersList}
-      </Fragment>
-    </div>
+    <>
+      <Typography variant="h4">Users</Typography>
+      <Typography>Online Users: {onlineUsersList.length}</Typography>
+      {onlineUsersList}
+    </>
   );
 };
 

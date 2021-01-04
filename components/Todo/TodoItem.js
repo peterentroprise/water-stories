@@ -1,6 +1,20 @@
 import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import {
+  Typography,
+  Checkbox,
+  IconButton,
+  Avatar,
+  DraftsIcon,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
+} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+
 import { GET_MY_TODOS } from "./TodoPrivateList";
 
 const TodoItem = ({ index, todo }) => {
@@ -14,20 +28,20 @@ const TodoItem = ({ index, todo }) => {
 
   const [removeTodoMutation] = useMutation(REMOVE_TODO);
 
-  const removeTodo = e => {
+  const removeTodo = (e) => {
     e.preventDefault();
     e.stopPropagation();
     removeTodoMutation({
       variables: { id: todo.id },
       optimisticResponse: true,
-      update: cache => {
+      update: (cache) => {
         const existingTodos = cache.readQuery({ query: GET_MY_TODOS });
-        const newTodos = existingTodos.todos.filter(t => t.id !== todo.id);
+        const newTodos = existingTodos.todos.filter((t) => t.id !== todo.id);
         cache.writeQuery({
           query: GET_MY_TODOS,
-          data: { todos: newTodos }
+          data: { todos: newTodos },
         });
-      }
+      },
     });
   };
 
@@ -48,9 +62,9 @@ const TodoItem = ({ index, todo }) => {
     toggleTodoMutation({
       variables: { id: todo.id, isCompleted: !todo.is_completed },
       optimisticResponse: true,
-      update: cache => {
+      update: (cache) => {
         const existingTodos = cache.readQuery({ query: GET_MY_TODOS });
-        const newTodos = existingTodos.todos.map(t => {
+        const newTodos = existingTodos.todos.map((t) => {
           if (t.id === todo.id) {
             return { ...t, is_completed: !t.is_completed };
           } else {
@@ -59,34 +73,26 @@ const TodoItem = ({ index, todo }) => {
         });
         cache.writeQuery({
           query: GET_MY_TODOS,
-          data: { todos: newTodos }
+          data: { todos: newTodos },
         });
-      }
+      },
     });
   };
 
   return (
-    <li>
-      <div className="view">
-        <div className="round">
-          <input
-            checked={todo.is_completed}
-            type="checkbox"
-            id={todo.id}
-            onChange={toggleTodo}
-          />
-          <label htmlFor={todo.id} />
-        </div>
-      </div>
-
-      <div className={"labelContent" + (todo.is_completed ? " completed" : "")}>
-        <div>{todo.title}</div>
-      </div>
-
-      <button className="closeBtn" onClick={removeTodo}>
-        x
-      </button>
-    </li>
+    <ListItem>
+      <ListItemIcon>
+        <Checkbox
+          edge="start"
+          checked={todo.is_completed}
+          onChange={toggleTodo}
+        />
+      </ListItemIcon>
+      <ListItemText primary={todo.title} />
+      <IconButton onClick={removeTodo}>
+        <DeleteIcon />
+      </IconButton>
+    </ListItem>
   );
 };
 

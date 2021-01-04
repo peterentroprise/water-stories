@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
+import { TextField } from "@material-ui/core";
+
 import { GET_MY_TODOS } from "./TodoPrivateList";
 
 const ADD_TODO = gql`
@@ -30,14 +32,14 @@ const TodoInput = ({ isPublic = false }) => {
 
     // Fetch the todos from the cache
     const existingTodos = cache.readQuery({
-      query: GET_MY_TODOS
+      query: GET_MY_TODOS,
     });
 
     // Add the new todo to the cache
     const newTodo = data.insert_todos.returning[0];
     cache.writeQuery({
       query: GET_MY_TODOS,
-      data: { todos: [newTodo, ...existingTodos.todos] }
+      data: { todos: [newTodo, ...existingTodos.todos] },
     });
   };
 
@@ -47,25 +49,24 @@ const TodoInput = ({ isPublic = false }) => {
 
   const [addTodo] = useMutation(ADD_TODO, {
     update: updateCache,
-    onCompleted: resetInput
+    onCompleted: resetInput,
   });
 
   return (
     <form
       className="formInput"
-      onSubmit={e => {
+      onSubmit={(e) => {
         e.preventDefault();
         addTodo({ variables: { todo: todoInput, isPublic } });
       }}
     >
-      <input
-        className="input"
+      <TextField
+        label="Create Todo"
         value={todoInput}
         placeholder="What needs to be done?"
-        ref={n => (input = n)}
-        onChange={e => setTodoInput(e.target.value)}
+        ref={(n) => (input = n)}
+        onChange={(e) => setTodoInput(e.target.value)}
       />
-      <i className="inputMarker fa fa-angle-right" />
     </form>
   );
 };
