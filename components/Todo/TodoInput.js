@@ -61,7 +61,8 @@ const TodoInput = ({ isPublic = false }) => {
       }}
     >
       <TextField
-        label="Create Todo"
+        label="New Todo"
+        variant="outlined"
         value={todoInput}
         placeholder="What needs to be done?"
         ref={(n) => (input = n)}
