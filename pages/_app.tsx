@@ -6,7 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import createCache from "@emotion/cache";
 import "@fontsource/muli";
-
+import LogRocket from "logrocket";
 import theme from "../config/theme";
 
 export const cache = createCache({ key: "css", prepend: true });
@@ -18,6 +18,10 @@ export default function App({ Component, pageProps }: AppProps) {
       jssStyles.parentElement!.removeChild(jssStyles);
     }
   }, []);
+
+  if (typeof window !== "undefined") {
+    LogRocket.init("xjwz8l/entro-web");
+  }
 
   return (
     <CacheProvider value={cache}>
