@@ -5,6 +5,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import createCache from "@emotion/cache";
+import "@fontsource/muli";
 
 import theme from "../config/theme";
 
