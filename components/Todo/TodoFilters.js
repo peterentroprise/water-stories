@@ -2,6 +2,7 @@
 import React from "react";
 
 import {
+  Box,
   Typography,
   Checkbox,
   Avatar,
@@ -38,16 +39,20 @@ const TodoFilters = ({
 
   return (
     <>
-      <Typography>
-        {itemCount} Todo
-        {itemCount !== 1 ? "s" : ""}
-      </Typography>
-      <ButtonGroup color="primary" aria-label="outlined primary button group">
-        <Button onClick={filterResultsHandler("all")}>All</Button>
-        <Button onClick={filterResultsHandler("active")}>Active</Button>
-        <Button onClick={filterResultsHandler("completed")}>Completed</Button>
-      </ButtonGroup>
-      <Button onClick={clearCompletedFn}>Clear Completed</Button>
+      <Box pt={3} pb={2}>
+        <Typography>
+          {itemCount} Rendered Todo
+          {itemCount !== 1 ? "s" : ""}
+        </Typography>
+      </Box>
+      <Box py={1}>
+        <ButtonGroup color="primary" aria-label="outlined primary button group">
+          <Button onClick={filterResultsHandler("all")}>All</Button>
+          <Button onClick={filterResultsHandler("active")}>Active</Button>
+          <Button onClick={filterResultsHandler("completed")}>Completed</Button>
+        </ButtonGroup>
+        <Button onClick={clearCompletedFn}>Clear Completed</Button>
+      </Box>
     </>
   );
 };
