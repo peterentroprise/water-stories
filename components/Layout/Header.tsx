@@ -21,9 +21,6 @@ const HeaderComponent = () => {
         <Link href="/stories" passHref>
           <Button>Stories</Button>
         </Link>
-        <Link href="/products" passHref>
-          <Button>Products</Button>
-        </Link>
         <Link href="/users" passHref>
           <Button>Users</Button>
         </Link>

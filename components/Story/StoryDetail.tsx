@@ -25,8 +25,15 @@ const StoryDetail = ({ item: story }: ListDetailProps) => {
             subheader={story.storyShortDescription}
           />
           <CardContent>
-            <Typography>{storyLongDescription}</Typography>
-            <img src={story.coverImage.url}></img>
+            <Box my={1}>
+              <img
+                src={story.coverImage.url}
+                style={{ maxWidth: "100%" }}
+              ></img>
+            </Box>
+            <Box my={1}>
+              <Typography>{storyLongDescription}</Typography>
+            </Box>
           </CardContent>
         </Card>
       </Box>

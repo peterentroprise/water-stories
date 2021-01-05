@@ -10,9 +10,8 @@ type Props = {
 
 const StoryList = ({ items }: Props) => (
   <List>
-    {console.log(items)}
     {items.map((item) => (
-      <StoryListItem data={item} />
+      <StoryListItem key={item.slug} data={item} />
     ))}
   </List>
 );
