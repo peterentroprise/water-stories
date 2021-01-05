@@ -61,6 +61,7 @@ const TodoInput = ({ isPublic = false }) => {
       }}
     >
       <TextField
+        fullWidth
         label="New Todo"
         variant="outlined"
         value={todoInput}
