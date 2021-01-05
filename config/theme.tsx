@@ -40,12 +40,12 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       root: {
-        borderRadius: 0,
+        borderRadius: 2,
       },
     },
     MuiCard: {
       root: {
-        borderRadius: 0,
+        borderRadius: 2,
       },
     },
   },
