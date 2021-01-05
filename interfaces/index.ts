@@ -22,3 +22,18 @@ export type Product = {
     id: string;
   };
 };
+
+export type Story = {
+  storyName: string;
+  storyShortDescription: string;
+  storyLongDescription: {
+    json: any;
+  };
+  slug: string;
+  coverImage: {
+    url: string;
+  };
+  sys: {
+    id: string;
+  };
+};
