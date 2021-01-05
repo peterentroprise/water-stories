@@ -48,6 +48,16 @@ const theme = createMuiTheme({
         borderRadius: 2,
       },
     },
+    MuiInputBase: {
+      root: {
+        borderRadius: 2,
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: 2,
+      },
+    },
   },
 });
 
