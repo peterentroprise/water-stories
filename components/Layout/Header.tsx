@@ -18,6 +18,9 @@ const HeaderComponent = () => {
         <Link href="/" passHref>
           <Button>Todos</Button>
         </Link>
+        <Link href="/messages" passHref>
+          <Button>Messages</Button>
+        </Link>
         <Link href="/stories" passHref>
           <Button>Stories</Button>
         </Link>
