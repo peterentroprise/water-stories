@@ -21,7 +21,7 @@ const MessageList = ({ messages }) => {
 // Run a subscription to get the latest public todo
 const GET_MESSAGES = gql`
   subscription getMessages {
-    messages(order_by: { created_at: desc }) {
+    messages(order_by: { created_at: asc }) {
       created_at
       body
       id
