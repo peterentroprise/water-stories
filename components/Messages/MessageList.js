@@ -51,6 +51,7 @@ const MessageList = ({ latestMessage }) => {
         };
       });
       newestMessageId = latestMessage.id;
+      loadNew();
     }
   }, [latestMessage]);
 
@@ -107,7 +108,6 @@ const MessageList = ({ latestMessage }) => {
         ) {
           id
           body
-          is_completed
           user {
             name
           }
@@ -142,23 +142,28 @@ const MessageList = ({ latestMessage }) => {
 
   return (
     <div className={classes.list}>
-      {state.newMessagesCount !== 0 && (
-        <Button onClick={loadNew}>
-          New messages have arrived! ({state.newMessagesCount.toString()})
-        </Button>
-      )}
-      <List>
-        {state.messages &&
-          state.messages.map((message, index) => {
-            return <MessageItem key={index} index={index} message={message} />;
-          })}
-      </List>
-
       <Button onClick={loadOlder}>
         {state.olderMessagesAvailable
           ? "Load older messages"
           : "No more old messages!"}
       </Button>
+
+      <List>
+        {state.messages &&
+          state.messages
+            .map((message, index) => {
+              return (
+                <MessageItem key={index} index={index} message={message} />
+              );
+            })
+            .reverse()}
+      </List>
+
+      {state.newMessagesCount !== 0 && (
+        <Button onClick={loadNew}>
+          New messages have arrived! ({state.newMessagesCount.toString()})
+        </Button>
+      )}
     </div>
   );
 };
