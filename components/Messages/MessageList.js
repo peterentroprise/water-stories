@@ -1,14 +1,15 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useRef } from "react";
 import { useSubscription, useApolloClient } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, List, Button } from "@material-ui/core";
+import { Waypoint } from "react-waypoint";
 
 import MessageItem from "./MessageItem";
 
 const useStyles = makeStyles((theme) => ({
   list: {
-    height: 200,
+    height: "60vh",
     overflow: "auto",
   },
 }));
@@ -16,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 const MessageList = ({ latestMessage }) => {
   const classes = useStyles();
   const client = useApolloClient();
-
   const [state, setState] = useState({
     olderMessagesAvailable: latestMessage ? true : false,
     newMessagesCount: 0,
@@ -60,7 +60,7 @@ const MessageList = ({ latestMessage }) => {
       query getOldMessages($oldestMessageId: Int!) {
         messages(
           where: { id: { _lt: $oldestMessageId } }
-          limit: 2
+          limit: 5
           order_by: { created_at: desc }
         ) {
           id
@@ -142,28 +142,22 @@ const MessageList = ({ latestMessage }) => {
 
   return (
     <div className={classes.list}>
-      <Button onClick={loadOlder}>
-        {state.olderMessagesAvailable
-          ? "Load older messages"
-          : "No more old messages!"}
-      </Button>
-
-      <List>
+      <Waypoint onEnter={loadOlder} />
+      <List className="message-list">
         {state.messages &&
           state.messages
             .map((message, index) => {
               return (
-                <MessageItem key={index} index={index} message={message} />
+                <MessageItem
+                  className="message"
+                  key={index}
+                  index={index}
+                  message={message}
+                />
               );
             })
             .reverse()}
       </List>
-
-      {state.newMessagesCount !== 0 && (
-        <Button onClick={loadNew}>
-          New messages have arrived! ({state.newMessagesCount.toString()})
-        </Button>
-      )}
     </div>
   );
 };
