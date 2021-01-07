@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import { TextField } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { TextField, AppBar, Toolbar } from "@material-ui/core";
 
 const ADD_MESSAGE = gql`
   mutation($message: String!) {
@@ -17,7 +18,17 @@ const ADD_MESSAGE = gql`
   }
 `;
 
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    backgroundColor: theme.palette.background.paper,
+    position: "sticky",
+    bottom: 0,
+  },
+}));
+
 const MessageInput = () => {
+  const classes = useStyles();
+
   let input;
 
   const [messageInput, setMessageInput] = useState("");
@@ -31,23 +42,24 @@ const MessageInput = () => {
   });
 
   return (
-    <form
-      className="formInput"
-      onSubmit={(e) => {
-        e.preventDefault();
-        addMessage({ variables: { message: messageInput } });
-      }}
-    >
-      <TextField
-        fullWidth
-        label="New Message"
-        variant="outlined"
-        value={messageInput}
-        placeholder="Enter a message..."
-        ref={(n) => (input = n)}
-        onChange={(e) => setMessageInput(e.target.value)}
-      />
-    </form>
+    <AppBar elevation={0} className={classes.appBar}>
+      <Toolbar>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            addMessage({ variables: { message: messageInput } });
+          }}
+        >
+          <TextField
+            fullWidth
+            value={messageInput}
+            placeholder="Enter a message..."
+            ref={(n) => (input = n)}
+            onChange={(e) => setMessageInput(e.target.value)}
+          />
+        </form>
+      </Toolbar>
+    </AppBar>
   );
 };
 
