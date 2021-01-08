@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, AppBar, Toolbar } from "@material-ui/core";
+import { GET_THREADS } from "././ThreadList";
 
 const ADD_THREAD = gql`
   mutation($threadName: String!, $threadDescription: String!) {
@@ -16,6 +17,7 @@ const ADD_THREAD = gql`
       returning {
         id
         created_at
+        updated_at
         threadName
         threadDescription
       }
@@ -42,7 +44,19 @@ const ThreadInput = () => {
     setThreadInput("");
   };
 
+  const updateCache = (cache, { data }) => {
+    const existingThreads = cache.readQuery({
+      query: GET_THREADS,
+    });
+    const newThread = data.insert_threads.returning[0];
+    cache.writeQuery({
+      query: GET_THREADS,
+      data: { threads: [newThread, ...existingThreads.threads] },
+    });
+  };
+
   const [addThread] = useMutation(ADD_THREAD, {
+    update: updateCache,
     onCompleted: resetInput,
   });
 
