@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, AppBar, Toolbar } from "@material-ui/core";
-import { GET_THREADS } from "././ThreadList";
+import { GET_THREADS } from "./ThreadList";
 
 const ADD_THREAD = gql`
   mutation($threadName: String!, $threadDescription: String!) {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ThreadInput = () => {
   const classes = useStyles();
-
+  const router = useRouter();
   let input;
 
   const [threadInput, setThreadInput] = useState("");
@@ -57,7 +58,13 @@ const ThreadInput = () => {
 
   const [addThread] = useMutation(ADD_THREAD, {
     update: updateCache,
-    onCompleted: resetInput,
+    onCompleted(data) {
+      const id = data.insert_threads.returning[0].id;
+      resetInput();
+      console.log("data")
+      console.log(id);
+      router.push(`/threads/${id}`);
+    },
   });
 
   return (

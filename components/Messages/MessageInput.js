@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, AppBar, Toolbar } from "@material-ui/core";
+import {  } from "./MessageList";
 
 const ADD_MESSAGE = gql`
   mutation($message: String!, $thread_id: Int!) {

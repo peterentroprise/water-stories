@@ -43,7 +43,7 @@ const MessageList = ({ thread, latestMessage }) => {
   }, []);
 
   useEffect(() => {
-    if (latestMessage && latestMessage.id > newestMessageId) {
+    if (latestMessage && latestMessage.id >= newestMessageId) {
       setState((prevState) => {
         return {
           ...prevState,
@@ -196,7 +196,7 @@ const MessageListSubscription = ({ thread }) => {
   const { loading, error, data } = useSubscription(NOTIFY_NEW_MESSAGES, {
     variables: { "thread_id": thread.id },
   });
-
+  
   if (loading) {
     return <Typography>Loading...</Typography>;
   }
