@@ -77,6 +77,8 @@ const MessageList = ({ thread, latestMessage }) => {
       }
     `;
 
+    console.log('load older')
+    console.log(thread)
     const { error, data } = await client.query({
       query: GET_OLD_MESSAGES,
       variables: { thread_id: thread.id, oldestMessageId: oldestMessageId },
@@ -149,11 +151,15 @@ const MessageList = ({ thread, latestMessage }) => {
     }
   };
   const handleLoad = () => {
-    loadOlder(thread.id)
+    loadOlder(thread)
   }
+if (state.messages.length == 0) {
+  return <Typography>No messages in thread.</Typography>
+}
+  
   return (
     <div className={classes.list}>
-      {/* <Waypoint onEnter={handleLoad} /> */}
+      <Waypoint onEnter={handleLoad} />
       <List className="message-list">
         {state.messages &&
           state.messages
@@ -167,7 +173,7 @@ const MessageList = ({ thread, latestMessage }) => {
                 />
               );
             })
-            .reverse()}
+            .reverse()} 
       </List>
     </div>
   );
