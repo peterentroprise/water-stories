@@ -24,7 +24,7 @@ const HeaderComponent = () => {
         <Link href="/users" passHref>
           <Button>Users</Button>
         </Link>
-        <Link href="/about" passHref>
+        <Link href="/" passHref>
           <Button>About</Button>
         </Link>
       </Toolbar>
