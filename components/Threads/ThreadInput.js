@@ -61,8 +61,6 @@ const ThreadInput = () => {
     onCompleted(data) {
       const id = data.insert_threads.returning[0].id;
       resetInput();
-      console.log("data")
-      console.log(id);
       router.push(`/threads/${id}`);
     },
   });

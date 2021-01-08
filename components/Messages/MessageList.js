@@ -77,8 +77,6 @@ const MessageList = ({ thread, latestMessage }) => {
       }
     `;
 
-    console.log('load older')
-    console.log(thread)
     const { error, data } = await client.query({
       query: GET_OLD_MESSAGES,
       variables: { thread_id: thread.id, oldestMessageId: oldestMessageId },
