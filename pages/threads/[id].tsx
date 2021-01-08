@@ -1,23 +1,11 @@
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import {
-  Typography,
-  Checkbox,
-  IconButton,
-  Avatar,
-  DraftsIcon,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-} from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
 
 import { ThreadInterface } from "../../interfaces";
 import Layout from "../../components/Layout";
 import { withApollo } from "../../lib/withApollo";
-
 import ThreadDetail from "../../components/Threads/ThreadDetail";
 
 type Props = {

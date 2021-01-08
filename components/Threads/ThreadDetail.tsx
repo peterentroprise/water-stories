@@ -1,11 +1,5 @@
 import * as React from "react";
-import {
-  Typography,
-  Box,
-  Card,
-  CardHeader,
-  CardContent,
-} from "@material-ui/core";
+import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
 
 import { ThreadInterface } from "../../interfaces";
 import MessagesWrapper from "../Messages/MessagesWrapper";
