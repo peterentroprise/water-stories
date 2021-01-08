@@ -15,8 +15,8 @@ const HeaderComponent = () => {
   return (
     <AppBar elevation={0} className={classes.appBar} position="sticky">
       <Toolbar>
-        <Link href="/" passHref>
-          <Button>Todos</Button>
+        <Link href="/threads" passHref>
+          <Button>Threads</Button>
         </Link>
         <Link href="/messages" passHref>
           <Button>Messages</Button>
