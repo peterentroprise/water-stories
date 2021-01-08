@@ -8,12 +8,12 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {},
 }));
 
-const MessagesWrapper = () => {
+const MessagesWrapper = ({ thread }) => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <MessageList />
-      <MessageInput />
+      <MessageList thread={thread} />
+      <MessageInput thread={thread} />
     </div>
   );
 };

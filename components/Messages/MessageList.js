@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageList = ({ latestMessage }) => {
+const MessageList = ({ thread, latestMessage }) => {
   const classes = useStyles();
   const client = useApolloClient();
   const [state, setState] = useState({
@@ -39,7 +39,7 @@ const MessageList = ({ latestMessage }) => {
     : 0;
 
   useEffect(() => {
-    loadOlder();
+    loadOlder(thread);
   }, []);
 
   useEffect(() => {
@@ -51,20 +51,24 @@ const MessageList = ({ latestMessage }) => {
         };
       });
       newestMessageId = latestMessage.id;
-      loadNew();
+      loadNew(thread);
     }
   }, [latestMessage]);
 
-  const loadOlder = async () => {
+  const loadOlder = async (thread) => {
     const GET_OLD_MESSAGES = gql`
-      query getOldMessages($oldestMessageId: Int!) {
+      query getOldMessages($thread_id: Int, $oldestMessageId: Int!) {
         messages(
-          where: { id: { _lt: $oldestMessageId } }
-          limit: 5
+          where: {
+            thread_id: { _eq: $thread_id }
+            id: { _lt: $oldestMessageId }
+          },
+          limit: 5,
           order_by: { created_at: desc }
         ) {
           id
           body
+
           created_at
           user {
             name
@@ -75,7 +79,7 @@ const MessageList = ({ latestMessage }) => {
 
     const { error, data } = await client.query({
       query: GET_OLD_MESSAGES,
-      variables: { oldestMessageId: oldestMessageId },
+      variables: { thread_id: thread.id, oldestMessageId: oldestMessageId },
     });
 
     if (data.messages.length) {
@@ -99,15 +103,19 @@ const MessageList = ({ latestMessage }) => {
     }
   };
 
-  const loadNew = async () => {
+  const loadNew = async (thread) => {
     const GET_NEW_MESSAGES = gql`
-      query getNewMessages($latestVisibleId: Int) {
+      query getNewMessages($thread_id: Int, $latestVisibleId: Int) {
         messages(
-          where: { id: { _gt: $latestVisibleId } }
+          where: {
+            thread_id: { _eq: $thread_id }
+            id: { _gt: $latestVisibleId }
+          },
           order_by: { created_at: desc }
         ) {
           id
           body
+          thread_id
           user {
             name
           }
@@ -118,6 +126,7 @@ const MessageList = ({ latestMessage }) => {
     const { error, data } = await client.query({
       query: GET_NEW_MESSAGES,
       variables: {
+        thread_id: thread.id,
         latestVisibleId: state.messages.length ? state.messages[0].id : null,
       },
     });
@@ -139,10 +148,12 @@ const MessageList = ({ latestMessage }) => {
       });
     }
   };
-
+  const handleLoad = () => {
+    loadOlder(thread.id)
+  }
   return (
     <div className={classes.list}>
-      <Waypoint onEnter={loadOlder} />
+      {/* <Waypoint onEnter={handleLoad} /> */}
       <List className="message-list">
         {state.messages &&
           state.messages
@@ -163,16 +174,23 @@ const MessageList = ({ latestMessage }) => {
 };
 
 const NOTIFY_NEW_MESSAGES = gql`
-  subscription notifyNewMessages {
-    messages(limit: 1, order_by: { created_at: desc }) {
+  subscription notifyNewMessages($thread_id: Int) {
+    messages(
+      where: { thread_id: { _eq: $thread_id } },
+      limit: 1,
+      order_by: { created_at: desc }
+    ) {
       id
       created_at
     }
   }
 `;
 
-const MessageListSubscription = () => {
-  const { loading, error, data } = useSubscription(NOTIFY_NEW_MESSAGES);
+const MessageListSubscription = ({ thread }) => {
+  const { loading, error, data } = useSubscription(NOTIFY_NEW_MESSAGES, {
+    variables: { "thread_id": thread.id },
+  });
+
   if (loading) {
     return <Typography>Loading...</Typography>;
   }
@@ -181,6 +199,7 @@ const MessageListSubscription = () => {
   }
   return (
     <MessageList
+      thread={thread}
       latestMessage={data.messages.length ? data.messages[0] : null}
     />
   );

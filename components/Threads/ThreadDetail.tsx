@@ -9,7 +9,6 @@ type ListDetailProps = {
 };
 
 const ThreadDetail = ({ item: thread }: ListDetailProps) => {
-  console.log(thread);
   return (
     <>
       <Box my={3}>
@@ -19,7 +18,7 @@ const ThreadDetail = ({ item: thread }: ListDetailProps) => {
             subheader={thread.threadDescription}
           />
           <CardContent>
-            <MessagesWrapper />
+            <MessagesWrapper thread={thread} />
           </CardContent>
         </Card>
       </Box>

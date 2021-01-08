@@ -10,7 +10,6 @@ type Props = {
 
 const ProductList = ({ items }: Props) => (
   <List>
-    {console.log(items)}
     {items.map((item) => (
       <ProductListItem data={item} />
     ))}

@@ -45,7 +45,6 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
     <Layout
       title={`${item ? item.productName : "Product Detail"} | Entroprise`}
     >
-      {console.log(item)}
       {item && <ProductListDetail item={item} />}
     </Layout>
   );

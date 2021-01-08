@@ -43,7 +43,6 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 
   return (
     <Layout title={`${item ? item.storyName : "Detail"} | Entroprise`}>
-      {console.log(item)}
       {item && <StoryDetail item={item} />}
     </Layout>
   );

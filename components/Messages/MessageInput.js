@@ -5,14 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, AppBar, Toolbar } from "@material-ui/core";
 
 const ADD_MESSAGE = gql`
-  mutation($message: String!) {
-    insert_messages(objects: { body: $message }) {
+  mutation($message: String!, $thread_id: Int!) {
+    insert_messages(objects: { body: $message, thread_id: $thread_id }) {
       affected_rows
       returning {
         id
         created_at
         user_id
         body
+        thread_id
       }
     }
   }
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MessageInput = () => {
+const MessageInput = ({ thread }) => {
   const classes = useStyles();
 
   let input;
@@ -47,7 +48,9 @@ const MessageInput = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            addMessage({ variables: { message: messageInput } });
+            addMessage({
+              variables: { message: messageInput, thread_id: thread.id },
+            });
           }}
         >
           <TextField
