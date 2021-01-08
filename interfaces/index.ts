@@ -37,3 +37,12 @@ export type Story = {
     id: string;
   };
 };
+
+export type ThreadInterface = {
+  id: string;
+  threadName: string;
+  threadDescription: string;
+  created_at: string;
+  updated_at: string;
+  user_group_id: string;
+};

@@ -1,11 +1,11 @@
 import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
 
-import Layout from "../components/Layout";
-import Login from "../components/Auth/Login";
-import ThreadsWrapper from "../components/Threads/ThreadsWrapper";
+import Layout from "../../components/Layout";
+import Login from "../../components/Auth/Login";
+import ThreadsWrapper from "../../components/Threads/ThreadsWrapper";
 
-import { useFetchUser } from "../lib/user";
-import { withApollo } from "../lib/withApollo";
+import { useFetchUser } from "../../lib/user";
+import { withApollo } from "../../lib/withApollo";
 
 const ThreadsPage = () => {
   const { user, loading } = useFetchUser();
