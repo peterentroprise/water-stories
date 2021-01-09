@@ -7,6 +7,7 @@ import { ThreadInterface } from "../../interfaces";
 import Layout from "../../components/Layout";
 import { withApollo } from "../../lib/withApollo";
 import ThreadDetail from "../../components/Threads/ThreadDetail";
+import IndeterminateLoader from "../../components/IndeterminateLoader";
 
 type Props = {
   item?: ThreadInterface;
@@ -52,7 +53,7 @@ const ThreadListQuery = () => {
   });
 
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader />;
   }
   if (error) {
     console.error(error);

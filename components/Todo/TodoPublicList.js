@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import { useSubscription, useApolloClient } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Typography, Button, List } from "@material-ui/core";
-
+import IndeterminateLoader from "../IndeterminateLoader";
 import TodoItem from "./TodoItem";
 
 const TodoPublicList = (props) => {
@@ -167,7 +167,7 @@ const NOTIFY_NEW_PUBLIC_TODOS = gql`
 const TodoPublicListSubscription = () => {
   const { loading, error, data } = useSubscription(NOTIFY_NEW_PUBLIC_TODOS);
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader >;
   }
   if (error) {
     return <Typography>Error {JSON.stringify(error)}</Typography>;

@@ -14,6 +14,7 @@ import {
   ListItemIcon,
 } from "@material-ui/core";
 
+import IndeterminateLoader from "../IndeterminateLoader";
 import TodoItem from "./TodoItem";
 import TodoFilters from "./TodoFilters";
 
@@ -100,7 +101,7 @@ const TodoPrivateListQuery = () => {
   const { loading, error, data } = useQuery(GET_MY_TODOS);
 
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader />;
   }
   if (error) {
     console.error(error);
