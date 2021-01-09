@@ -167,7 +167,7 @@ const NOTIFY_NEW_PUBLIC_TODOS = gql`
 const TodoPublicListSubscription = () => {
   const { loading, error, data } = useSubscription(NOTIFY_NEW_PUBLIC_TODOS);
   if (loading) {
-    return <IndeterminateLoader >;
+    return <IndeterminateLoader />;
   }
   if (error) {
     return <Typography>Error {JSON.stringify(error)}</Typography>;
