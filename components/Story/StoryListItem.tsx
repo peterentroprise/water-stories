@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem } from "@material-ui/core";
+import { ListItem, ListItemText } from "@material-ui/core";
 
 import { Story } from "../../interfaces";
 import Link from "../../components/Link";
@@ -10,8 +10,8 @@ type Props = {
 
 const StoryListItem = ({ data }: Props) => (
   <Link href={`/stories/${data.slug}`}>
-    <ListItem disableGutters button key={data.slug}>
-      {data.storyName}
+    <ListItem disableGutters button key={data.slug} divider>
+      <ListItemText primary={data.storyName} secondary={data.storyShortDescription} />
     </ListItem>
   </Link>
 );
