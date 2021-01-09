@@ -3,6 +3,7 @@ import { useMutation, useSubscription } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Typography } from "@material-ui/core";
 
+import IndeterminateLoader from "../IndeterminateLoader";
 import OnlineUser from "./OnlineUser";
 
 const onlineUsersSubscription = gql`
@@ -50,7 +51,7 @@ const OnlineUsersWrapper = () => {
 
   const { loading, error, data } = useSubscription(onlineUsersSubscription);
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader />;
   }
   if (error) {
     console.error(error);

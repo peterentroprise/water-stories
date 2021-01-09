@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Typography, List, Button } from "@material-ui/core";
 import { Waypoint } from "react-waypoint";
 
+import IndeterminateLoader from "../IndeterminateLoader";
 import MessageItem from "./MessageItem";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,8 +63,8 @@ const MessageList = ({ thread, latestMessage }) => {
           where: {
             thread_id: { _eq: $thread_id }
             id: { _lt: $oldestMessageId }
-          },
-          limit: 5,
+          }
+          limit: 5
           order_by: { created_at: desc }
         ) {
           id
@@ -110,7 +111,7 @@ const MessageList = ({ thread, latestMessage }) => {
           where: {
             thread_id: { _eq: $thread_id }
             id: { _gt: $latestVisibleId }
-          },
+          }
           order_by: { created_at: desc }
         ) {
           id
@@ -149,12 +150,12 @@ const MessageList = ({ thread, latestMessage }) => {
     }
   };
   const handleLoad = () => {
-    loadOlder(thread)
+    loadOlder(thread);
+  };
+  if (state.messages.length == 0) {
+    return <Typography>No messages in thread.</Typography>;
   }
-if (state.messages.length == 0) {
-  return <Typography>No messages in thread.</Typography>
-}
-  
+
   return (
     <div className={classes.list}>
       <Waypoint onEnter={handleLoad} />
@@ -171,7 +172,7 @@ if (state.messages.length == 0) {
                 />
               );
             })
-            .reverse()} 
+            .reverse()}
       </List>
     </div>
   );
@@ -180,8 +181,8 @@ if (state.messages.length == 0) {
 const NOTIFY_NEW_MESSAGES = gql`
   subscription notifyNewMessages($thread_id: Int) {
     messages(
-      where: { thread_id: { _eq: $thread_id } },
-      limit: 1,
+      where: { thread_id: { _eq: $thread_id } }
+      limit: 1
       order_by: { created_at: desc }
     ) {
       id
@@ -192,11 +193,11 @@ const NOTIFY_NEW_MESSAGES = gql`
 
 const MessageListSubscription = ({ thread }) => {
   const { loading, error, data } = useSubscription(NOTIFY_NEW_MESSAGES, {
-    variables: { "thread_id": thread.id },
+    variables: { thread_id: thread.id },
   });
-  
+
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader />;
   }
   if (error) {
     return <Typography>Error {JSON.stringify(error)}</Typography>;

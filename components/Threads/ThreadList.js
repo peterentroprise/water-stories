@@ -14,6 +14,7 @@ import {
   ListItemIcon,
 } from "@material-ui/core";
 
+import IndeterminateLoader from "../IndeterminateLoader";
 import ThreadListItem from "./ThreadListItem";
 
 const GET_THREADS = gql`
@@ -43,7 +44,7 @@ const ThreadListQuery = () => {
   const { loading, error, data } = useQuery(GET_THREADS);
 
   if (loading) {
-    return <Typography>Loading...</Typography>;
+    return <IndeterminateLoader />;
   }
   if (error) {
     console.error(error);
