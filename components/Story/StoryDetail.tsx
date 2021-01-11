@@ -20,7 +20,10 @@ const StoryDetail = ({ item: story }: ListDetailProps) => {
   return (
     <>
       <Box my={3}>
-        <StoryVideo data={story} />
+        <Box my={3}>
+          <StoryVideo data={story} />
+        </Box>
+        <Box mt={2} mb={1}></Box>
         <Card variant="outlined">
           <CardHeader
             title={story.storyName}
