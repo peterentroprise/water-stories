@@ -7,9 +7,14 @@ import {
   CardContent,
 } from "@material-ui/core";
 
+import Logo from "../components/Logo";
+
 const AboutPage = () => (
   <Layout title="About | Entroprise">
     <Box my={3}>
+      <Logo />
+    </Box>
+    <Box mt={2} mb={1}>
       <Card variant="outlined">
         <CardHeader
           title="About"
