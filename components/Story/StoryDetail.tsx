@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 
 import { Story } from "../../interfaces";
+import StoryVideo from "./StoryVideo";
 
 type ListDetailProps = {
   item: Story;
@@ -19,6 +20,7 @@ const StoryDetail = ({ item: story }: ListDetailProps) => {
   return (
     <>
       <Box my={3}>
+        <StoryVideo data={story} />
         <Card variant="outlined">
           <CardHeader
             title={story.storyName}

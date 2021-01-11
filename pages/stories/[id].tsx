@@ -19,6 +19,7 @@ query getStoryCollection {
       coverImage {
         url
       }
+      coverVideoUrl
       storyShortDescription
       storyLongDescription {
         json

@@ -30,6 +30,7 @@ export type Story = {
     json: any;
   };
   slug: string;
+  coverVideoUrl: string;
   coverImage: {
     url: string;
   };
