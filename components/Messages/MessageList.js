@@ -7,6 +7,7 @@ import { Waypoint } from "react-waypoint";
 
 import IndeterminateLoader from "../IndeterminateLoader";
 import MessageItem from "./MessageItem";
+import LoadMoreItem from "./LoadMoreItem";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -44,7 +45,7 @@ const MessageList = ({ thread, latestMessage }) => {
   }, []);
 
   useEffect(() => {
-    if (latestMessage && latestMessage.id >= newestMessageId) {
+    if (latestMessage && latestMessage.id > newestMessageId) {
       setState((prevState) => {
         return {
           ...prevState,
@@ -158,7 +159,9 @@ const MessageList = ({ thread, latestMessage }) => {
 
   return (
     <div className={classes.list}>
-      <Waypoint onEnter={handleLoad} />
+      {/* <Waypoint onEnter={handleLoad} /> */}
+      {!state.olderTodosAvailable && <LoadMoreItem handleLoad={handleLoad} />}
+
       <List className="message-list">
         {state.messages &&
           state.messages
