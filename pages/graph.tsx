@@ -1,9 +1,9 @@
 import Layout from "../components/Layout";
-import UserGraph from "../components/OnlineUsers/UserGraph";
+import StoryGraph from "../components/Graph/StoryGraph";
 
 const GraphPage = () => (
   <Layout title="Graph | Entroprise">
-    <UserGraph />
+    <StoryGraph />
   </Layout>
 );
 

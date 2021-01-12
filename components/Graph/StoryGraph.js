@@ -1,8 +1,37 @@
 import React from "react";
 import WebCola from "react-cola";
 import { Line } from "react-lineto";
+import { makeStyles } from "@material-ui/core/styles";
+import Avatar from "@material-ui/core/Avatar";
+import Chip from "@material-ui/core/Chip";
+import FaceIcon from "@material-ui/icons/Face";
+import DoneIcon from "@material-ui/icons/Done";
 
-const UserGraph = () => {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5),
+    },
+  },
+}));
+
+const StoryGraph = () => {
+  const classes = useStyles();
+
+  const handleDelete = () => {
+    console.info("You clicked the delete icon.");
+  };
+
+  const handleClick = () => {
+    console.info("You clicked the Chip.");
+  };
+
+  const chipHeight = 40;
+  const chipWidth = 178;
+
   return (
     <WebCola
       renderLayout={(layout) => (
@@ -46,53 +75,60 @@ const UserGraph = () => {
               key={i}
               style={{
                 position: "absolute",
-                left: x - width * 0.5,
-                top: y - height * 0.5,
+                left: x - width * 0.5 + 4,
+                top: y - height * 0.5 + 4,
                 width,
                 height,
-                backgroundColor: "#fff",
+                // backgroundColor: "#fff",
                 borderRadius: 5,
               }}
             >
-              {name}
+              <Chip
+                avatar={<Avatar>S</Avatar>}
+                label={name}
+                clickable
+                color="primary"
+                onDelete={handleDelete}
+                deleteIcon={<DoneIcon />}
+              />
             </div>
           ))}
         </>
       )}
       nodes={[
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 1",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 2",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 3",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 4",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 5",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 6",
         },
         {
-          width: 80,
-          height: 40,
+          width: chipWidth,
+          height: chipHeight,
           name: "Story 7",
         },
       ]}
@@ -116,4 +152,4 @@ const UserGraph = () => {
   );
 };
 
-export default UserGraph;
+export default StoryGraph;
