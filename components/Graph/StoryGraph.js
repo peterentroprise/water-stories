@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const StoryGraph = () => {
+const StoryGraph = ({ stories }) => {
   const classes = useStyles();
 
   const handleDelete = () => {
@@ -31,6 +31,8 @@ const StoryGraph = () => {
 
   const chipHeight = 40;
   const chipWidth = 178;
+
+  console.log(stories);
 
   return (
     <WebCola
