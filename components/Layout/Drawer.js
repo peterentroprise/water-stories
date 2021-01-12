@@ -15,6 +15,7 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
+import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -90,6 +91,18 @@ export default function TemporaryDrawer() {
               <AccountCircleOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Account" />
+          </ListItem>
+          <ListItem
+            onClick={() => {
+              navTo("/graph");
+              toggleDrawer();
+            }}
+            button
+          >
+            <ListItemIcon>
+              <BubbleChartOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Graph" />
           </ListItem>
         </List>
         <Divider />
