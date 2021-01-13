@@ -2,13 +2,20 @@ import * as React from "react";
 import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import MenuIcon from "@material-ui/icons/Menu";
 import Link from "../Link";
-import Drawer from "./Drawer";
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
     backgroundColor: theme.palette.background.paper,
   },
+
   root: {
     flexGrow: 1,
   },
@@ -23,13 +30,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ handleDrawerToggle }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar elevation={0} className={classes.appBar} position="sticky">
+      <AppBar elevation={0} className={classes.appBar} position="fixed">
         <Toolbar>
-          <Drawer />
+          <IconButton
+            onClick={handleDrawerToggle}
+            className={classes.menuButton}
+            edge="start"
+            color="default"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
           <div className={classes.grow} />
           <Link href="/" passHref>
             <Typography variant="h6" color="textPrimary" component="div">
