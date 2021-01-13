@@ -1,6 +1,7 @@
 import React from "react";
 import WebCola from "react-cola";
 import { Line } from "react-lineto";
+import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Chip from "@material-ui/core/Chip";
@@ -18,8 +19,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function stripTypenames(value) {
+  if (Array.isArray(value)) {
+    return value.map(stripTypenames);
+  } else if (value !== null && typeof value === "object") {
+    const newObject = {};
+    for (const property in value) {
+      if (property !== "__typename") {
+        newObject[property] = stripTypenames(value[property]);
+      }
+    }
+    return newObject;
+  } else {
+    return value;
+  }
+}
+
 const StoryGraph = ({ stories }) => {
   const classes = useStyles();
+  const router = useRouter();
 
   const handleDelete = () => {
     console.info("You clicked the delete icon.");
@@ -32,7 +50,46 @@ const StoryGraph = ({ stories }) => {
   const chipHeight = 40;
   const chipWidth = 178;
 
-  console.log(stories);
+  const cleanStories = stripTypenames(stories);
+
+  const storyNodes = cleanStories.map((v) => ({
+    ...v,
+    width: 178,
+    height: 40,
+  }));
+
+  console.log(storyNodes);
+
+  const oldNodes = [
+    {
+      width: chipWidth,
+      height: chipHeight,
+      storyName: "Story 1",
+    },
+    {
+      width: chipWidth,
+      height: chipHeight,
+      storyName: "Story 2",
+    },
+    {
+      width: chipWidth,
+      height: chipHeight,
+      storyName: "Story 3",
+    },
+    {
+      width: chipWidth,
+      height: chipHeight,
+      storyName: "Story 4",
+    },
+    {
+      width: chipWidth,
+      height: chipHeight,
+      storyName: "Story 5",
+    },
+  ];
+
+  console.log("Old Nodes");
+  console.log(oldNodes);
 
   return (
     <WebCola
@@ -72,7 +129,7 @@ const StoryGraph = ({ stories }) => {
               />
             );
           })}
-          {layout.nodes().map(({ x, y, width, height, name }, i) => (
+          {layout.nodes().map(({ x, y, width, height, storyName, slug }, i) => (
             <div
               key={i}
               style={{
@@ -87,8 +144,11 @@ const StoryGraph = ({ stories }) => {
             >
               <Chip
                 avatar={<Avatar>S</Avatar>}
-                label={name}
+                label={storyName}
                 clickable
+                onClick={() => {
+                  router.push(`/stories/${slug}`);
+                }}
                 color="primary"
                 onDelete={handleDelete}
                 deleteIcon={<DoneIcon />}
@@ -97,57 +157,20 @@ const StoryGraph = ({ stories }) => {
           ))}
         </>
       )}
-      nodes={[
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 1",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 2",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 3",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 4",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 5",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 6",
-        },
-        {
-          width: chipWidth,
-          height: chipHeight,
-          name: "Story 7",
-        },
-      ]}
+      nodes={storyNodes}
       links={[
-        { source: 1, target: 2 },
         { source: 2, target: 3 },
-        { source: 3, target: 4 },
         { source: 0, target: 1 },
-        { source: 2, target: 0 },
-        { source: 3, target: 5 },
-        { source: 0, target: 5 },
+        { source: 0, target: 4 },
+        { source: 0, target: 1 },
       ]}
-      groups={[
-        { leaves: [0], groups: [1] },
-        { leaves: [1, 2] },
-        { leaves: [3, 4] },
-      ]}
+      groups={
+        [
+          // { leaves: [0], groups: [1] },
+          // { leaves: [2, 3] },
+          // { leaves: [0, 1, 4] },
+        ]
+      }
       width={540}
       height={760}
     />
