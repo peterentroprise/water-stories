@@ -1,4 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import { useFlags } from "@happykit/flags";
+import { Box, Typography } from "@material-ui/core";
 
 import { Story } from "../../interfaces";
 import fetchAPI from "../../lib/fetchAPI";
@@ -32,6 +34,7 @@ query getStoryCollection {
 }`;
 
 const StaticPropsDetail = ({ item, errors }: Props) => {
+  const flags = useFlags();
   if (errors) {
     return (
       <Layout title="Error | Entroprise">
@@ -44,7 +47,11 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 
   return (
     <Layout title={`${item ? item.storyName : "Detail"} | Entroprise`}>
-      {item && <StoryDetail item={item} />}
+      {(flags.stories && <> {item && <StoryDetail item={item} />}</>) || (
+        <Box my={3}>
+          <Typography>The stories feature is not enabled.</Typography>
+        </Box>
+      )}
     </Layout>
   );
 };

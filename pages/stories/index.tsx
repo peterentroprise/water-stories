@@ -1,5 +1,12 @@
 import { GetStaticProps } from "next";
-import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
+import {
+  Box,
+  Card,
+  CardHeader,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
+import { useFlags } from "@happykit/flags";
 
 import { Story } from "../../interfaces";
 import fetchAPI from "../../lib/fetchAPI";
@@ -31,18 +38,28 @@ query getStoryCollection {
   }
 }`;
 
-const WithStaticProps = ({ items }: Props) => (
-  <Layout title="Stories | Entroprise">
-    <Box my={3}>
-      <Card variant="outlined">
-        <CardHeader title="Stories" />
-        <CardContent>
-          <StoryList items={items} />
-        </CardContent>
-      </Card>
-    </Box>
-  </Layout>
-);
+const WithStaticProps = ({ items }: Props) => {
+  const flags = useFlags();
+  console.log(flags.stories);
+  return (
+    <Layout title="Stories | Entroprise">
+      {(flags.stories && (
+        <Box my={3}>
+          <Card variant="outlined">
+            <CardHeader title="Stories" />
+            <CardContent>
+              <StoryList items={items} />
+            </CardContent>
+          </Card>
+        </Box>
+      )) || (
+        <Box my={3}>
+          <Typography>The stories feature is not enabled.</Typography>
+        </Box>
+      )}
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await fetchAPI(GET_STORY_COLLECTION);

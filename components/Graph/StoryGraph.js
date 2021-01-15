@@ -9,13 +9,9 @@ import FaceIcon from "@material-ui/icons/Face";
 import DoneIcon from "@material-ui/icons/Done";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(0.5),
-    },
+  root: {},
+  chip: {
+    width: 200,
   },
 }));
 
@@ -39,57 +35,13 @@ const StoryGraph = ({ stories }) => {
   const classes = useStyles();
   const router = useRouter();
 
-  const handleDelete = () => {
-    console.info("You clicked the delete icon.");
-  };
-
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
-  };
-
-  const chipHeight = 40;
-  const chipWidth = 178;
-
   const cleanStories = stripTypenames(stories);
 
   const storyNodes = cleanStories.map((v) => ({
     ...v,
-    width: 178,
-    height: 40,
+    width: 208,
+    height: 48,
   }));
-
-  console.log(storyNodes);
-
-  const oldNodes = [
-    {
-      width: chipWidth,
-      height: chipHeight,
-      storyName: "Story 1",
-    },
-    {
-      width: chipWidth,
-      height: chipHeight,
-      storyName: "Story 2",
-    },
-    {
-      width: chipWidth,
-      height: chipHeight,
-      storyName: "Story 3",
-    },
-    {
-      width: chipWidth,
-      height: chipHeight,
-      storyName: "Story 4",
-    },
-    {
-      width: chipWidth,
-      height: chipHeight,
-      storyName: "Story 5",
-    },
-  ];
-
-  console.log("Old Nodes");
-  console.log(oldNodes);
 
   return (
     <WebCola
@@ -104,6 +56,7 @@ const StoryGraph = ({ stories }) => {
                 style={{
                   position: "absolute",
                   left: x,
+                  padding: 4,
                   top: y,
                   width,
                   height,
@@ -143,15 +96,13 @@ const StoryGraph = ({ stories }) => {
               }}
             >
               <Chip
-                avatar={<Avatar>S</Avatar>}
+                className={classes.chip}
                 label={storyName}
                 clickable
                 onClick={() => {
                   router.push(`/stories/${slug}`);
                 }}
                 color="primary"
-                onDelete={handleDelete}
-                deleteIcon={<DoneIcon />}
               />
             </div>
           ))}
@@ -160,17 +111,13 @@ const StoryGraph = ({ stories }) => {
       nodes={storyNodes}
       links={[
         { source: 2, target: 3 },
-        { source: 0, target: 1 },
-        { source: 0, target: 4 },
-        { source: 0, target: 1 },
+        { source: 1, target: 4 },
       ]}
-      groups={
-        [
-          // { leaves: [0], groups: [1] },
-          // { leaves: [2, 3] },
-          // { leaves: [0, 1, 4] },
-        ]
-      }
+      groups={[
+        // { leaves: [0], groups: [1] },
+        { leaves: [2, 3] },
+        { leaves: [1, 4] },
+      ]}
       width={540}
       height={760}
     />

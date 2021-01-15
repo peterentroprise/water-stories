@@ -1,5 +1,11 @@
 import * as React from "react";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Hidden,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -36,15 +42,18 @@ const HeaderComponent = ({ handleDrawerToggle }) => {
     <div className={classes.root}>
       <AppBar elevation={0} className={classes.appBar} position="fixed">
         <Toolbar>
-          <IconButton
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-            edge="start"
-            color="default"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
+          <Hidden mdUp implementation="css">
+            <IconButton
+              onClick={handleDrawerToggle}
+              className={classes.menuButton}
+              edge="start"
+              color="default"
+              aria-label="menu"
+            >
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
+
           <div className={classes.grow} />
           <Link href="/" passHref>
             <Typography variant="h6" color="textPrimary" component="div">
