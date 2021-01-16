@@ -12,7 +12,7 @@ import { configure } from "@happykit/flags";
 
 export const cache = createCache({ key: "css", prepend: true });
 
-configure({ clientId: process.env.NEXT_PUBLIC_FLAGS_CLIENT_ID });
+configure({ clientId: process.env["NEXT_PUBLIC_FLAGS_CLIENT_ID"] });
 
 export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
