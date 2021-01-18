@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { CssBaseline, AppBar, Container } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
@@ -44,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(2),
   },
 }));
 
@@ -61,7 +59,7 @@ function Core({ children }) {
     <div className={classes.root}>
       <Header handleDrawerToggle={handleDrawerToggle} />
       <nav className={classes.drawer}>
-        <Hidden smUp implementation="js">
+        <Hidden smUp implementation="css">
           <Drawer
             variant="temporary"
             anchor={theme.direction === "rtl" ? "right" : "left"}
@@ -77,7 +75,7 @@ function Core({ children }) {
             <DrawerContent />
           </Drawer>
         </Hidden>
-        <Hidden smDown implementation="js">
+        <Hidden smDown implementation="css">
           <Drawer
             classes={{
               paper: classes.drawerPaper,
@@ -91,7 +89,7 @@ function Core({ children }) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {children}
+        <Container maxWidth="sm">{children}</Container>
       </main>
     </div>
   );
