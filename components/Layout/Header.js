@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
     },
     backgroundColor: theme.palette.background.paper,
   },
+  toolbar: {
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
+  },
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -39,7 +43,7 @@ const HeaderComponent = ({ handleDrawerToggle }) => {
 
   return (
     <AppBar elevation={0} className={classes.appBar} position="fixed">
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <Hidden mdUp implementation="css">
           <IconButton
             onClick={handleDrawerToggle}
