@@ -1,7 +1,8 @@
 import { useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
-import { Typography } from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 import { useRouter } from "next/router";
+import { useFlags } from "@happykit/flags";
 
 import { ThreadInterface } from "../../interfaces";
 import Layout from "../../components/Layout";
@@ -27,6 +28,16 @@ const GET_THREADS = gql`
 `;
 
 const Thread = ({ item, errors }: Props) => {
+  const flags = useFlags();
+  if (!flags.threads) {
+    return (
+      <Layout title={`${item ? item.threadName : "Detail"} | Entroprise`}>
+        <Box my={3}>
+          <Typography>The threads feature is not enabled.</Typography>
+        </Box>
+      </Layout>
+    );
+  }
   if (errors) {
     return (
       <Layout title="Error | Entroprise">

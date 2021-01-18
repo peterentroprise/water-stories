@@ -17,11 +17,11 @@ import { withApollo } from "../../lib/withApollo";
 const ThreadsPage = () => {
   const { user, loading } = useFetchUser();
   const flags = useFlags();
-  if (!flags.stories) {
+  if (!flags.threads) {
     return (
       <Layout title="Threads | Entroprise">
         <Box my={3}>
-          <Typography>The stories feature is not enabled.</Typography>
+          <Typography>The threads feature is not enabled.</Typography>
         </Box>
       </Layout>
     );
