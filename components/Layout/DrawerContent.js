@@ -14,7 +14,7 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import PeopleOutlineOutlinedIcon from "@material-ui/icons/PeopleOutlineOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
@@ -83,9 +83,9 @@ export default function TemporaryDrawer() {
           button
         >
           <ListItemIcon>
-            <AccountCircleOutlinedIcon />
+            <PeopleOutlineOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="Account" />
+          <ListItemText primary="Users" />
         </ListItem>
         <ListItem
           onClick={() => {

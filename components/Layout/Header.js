@@ -23,10 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     backgroundColor: theme.palette.background.paper,
   },
-  toolbar: {
-    paddingLeft: theme.spacing(3),
-    paddingRight: theme.spacing(3),
-  },
+  toolbar: {},
   menuButton: {
     marginRight: theme.spacing(2),
   },
