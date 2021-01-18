@@ -9,6 +9,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useFlags } from "@happykit/flags";
+
 import Link from "../Link";
 
 const drawerWidth = 240;
@@ -38,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const HeaderComponent = ({ handleDrawerToggle }) => {
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <AppBar elevation={0} className={classes.appBar} position="fixed">

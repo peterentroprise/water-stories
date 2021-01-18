@@ -1,4 +1,11 @@
-import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Card,
+  CardHeader,
+  CardContent,
+} from "@material-ui/core";
+import { useFlags } from "@happykit/flags";
 
 import Layout from "../../components/Layout";
 import Login from "../../components/Auth/Login";
@@ -9,6 +16,16 @@ import { withApollo } from "../../lib/withApollo";
 
 const ThreadsPage = () => {
   const { user, loading } = useFetchUser();
+  const flags = useFlags();
+  if (!flags.stories) {
+    return (
+      <Layout title="Threads | Entroprise">
+        <Box my={3}>
+          <Typography>The stories feature is not enabled.</Typography>
+        </Box>
+      </Layout>
+    );
+  }
   if (!loading && !user) {
     return (
       <Layout title="Threads | Entroprise">
@@ -18,14 +35,12 @@ const ThreadsPage = () => {
   }
   return (
     <Layout title="Threads | Entroprise">
-      <Box my={3}>
-        <Card variant="outlined">
-          <CardHeader title="Public Threads" />
-          <CardContent>
-            <ThreadsWrapper />
-          </CardContent>
-        </Card>
-      </Box>
+      <Card variant="outlined">
+        <CardHeader title="Public Threads" />
+        <CardContent>
+          <ThreadsWrapper />
+        </CardContent>
+      </Card>
     </Layout>
   );
 };

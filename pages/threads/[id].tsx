@@ -30,9 +30,7 @@ const Thread = ({ item, errors }: Props) => {
   if (errors) {
     return (
       <Layout title="Error | Entroprise">
-        <p>
-          <span style={{ color: "red" }}>Error:</span> {errors}
-        </p>
+        <Typography>Error: {errors}</Typography>
       </Layout>
     );
   }

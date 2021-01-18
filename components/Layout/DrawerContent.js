@@ -16,6 +16,7 @@ import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
+import { useFlags } from "@happykit/flags";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const router = useRouter();
+  const flags = useFlags();
   const [isOpen, setOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -47,31 +49,36 @@ export default function TemporaryDrawer() {
     <>
       <div className={classes.toolbar} />
       <List className={classes.list}>
-        <ListItem
-          onClick={() => {
-            navTo("/threads");
-            toggleDrawer();
-          }}
-          button
-        >
-          <ListItemIcon>
-            <ListOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Threads" />
-        </ListItem>
+        {flags.threads && (
+          <ListItem
+            onClick={() => {
+              navTo("/threads");
+              toggleDrawer();
+            }}
+            button
+          >
+            <ListItemIcon>
+              <ListOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Threads" />
+          </ListItem>
+        )}
 
-        <ListItem
-          onClick={() => {
-            navTo("/stories");
-            toggleDrawer();
-          }}
-          button
-        >
-          <ListItemIcon>
-            <RecentActorsOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Stories" />
-        </ListItem>
+        {flags.stories && (
+          <ListItem
+            onClick={() => {
+              navTo("/stories");
+              toggleDrawer();
+            }}
+            button
+          >
+            <ListItemIcon>
+              <RecentActorsOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Stories" />
+          </ListItem>
+        )}
+
         <ListItem
           onClick={() => {
             navTo("/users");

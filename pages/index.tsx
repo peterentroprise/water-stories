@@ -6,24 +6,13 @@ import {
   CardHeader,
   CardContent,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 import Logo from "../components/Logo";
 
-const useStyles = makeStyles((theme) => ({
-  box: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-  },
-}));
-
 const AboutPage = () => {
-  const classes = useStyles();
   return (
     <Layout title="About | Entroprise">
-      <Box className={classes.box}>
-        <Logo />
-      </Box>
+      <Logo />
       <Box>
         <Card variant="outlined">
           <CardHeader

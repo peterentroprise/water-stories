@@ -40,7 +40,6 @@ query getStoryCollection {
 
 const WithStaticProps = ({ items }: Props) => {
   const flags = useFlags();
-  console.log(flags.stories);
   return (
     <Layout title="Stories | Entroprise">
       {(flags.stories && (
