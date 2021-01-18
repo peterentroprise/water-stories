@@ -1,33 +1,28 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { useFlags } from "@happykit/flags";
+
 import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import MenuIcon from "@material-ui/icons/Menu";
-import { IconButton } from "@material-ui/core";
-import Link from "../Link";
+import {
+  IconButton,
+  MenuIcon,
+  Drawer,
+  Button,
+  List,
+  Divider,
+  ListItemIcon,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
-import { useFlags } from "@happykit/flags";
+
+import Link from "../Link";
 
 const useStyles = makeStyles((theme) => ({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: "auto",
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   toolbar: theme.mixins.toolbar,
 }));
 
@@ -48,7 +43,8 @@ export default function TemporaryDrawer() {
   return (
     <>
       <div className={classes.toolbar} />
-      <List className={classes.list}>
+      <Divider />
+      <List>
         {flags.threads && (
           <ListItem
             onClick={() => {
