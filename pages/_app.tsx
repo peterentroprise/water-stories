@@ -31,11 +31,25 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="Description" />
-        <meta name="keywords" content="Keywords" />
-        <title>Entroprise</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta name="theme-color" content="#556cd6" />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          href="/images/iconsfavicon-16x16.png"
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+        />
+        <link
+          href="/images/icons/favicon-32x32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="/images/icons/apple-icon-180x180.png"
+        ></link>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />

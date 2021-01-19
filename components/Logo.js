@@ -13,7 +13,12 @@ function Logo() {
   const classes = useStyles();
   return (
     <Box className={classes.box}>
-      <Image src="/transparentLogo.png" alt="Logo" width={500} height={500} />
+      <Image
+        src="/images/transparentLogo.png"
+        alt="Logo"
+        width={500}
+        height={500}
+      />
     </Box>
   );
 }
