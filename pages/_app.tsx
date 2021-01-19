@@ -29,8 +29,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <CacheProvider value={cache}>
       <Head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Description" />
+        <meta name="keywords" content="Keywords" />
         <title>Entroprise</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
