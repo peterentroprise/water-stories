@@ -13,6 +13,9 @@ import {
   ListItemIcon,
   ListItem,
   ListItemText,
+  Toolbar,
+  Typography,
+  Avatar,
 } from "@material-ui/core";
 import PeopleOutlineOutlinedIcon from "@material-ui/icons/PeopleOutlineOutlined";
 import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
@@ -24,7 +27,14 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import Link from "../Link";
 
 const useStyles = makeStyles((theme) => ({
-  toolbar: theme.mixins.toolbar,
+  title: {
+    flexGrow: 1,
+  },
+  logo: {
+    marginRight: theme.spacing(2),
+    width: theme.spacing(4),
+    height: theme.spacing(4),
+  },
 }));
 
 export default function TemporaryDrawer() {
@@ -43,7 +53,16 @@ export default function TemporaryDrawer() {
 
   return (
     <>
-      <div className={classes.toolbar} />
+      <Toolbar>
+        <Avatar
+          src="/images/transparentLogo.png"
+          variant="square"
+          className={classes.logo}
+        />
+        <Typography variant="h6" className={classes.title}>
+          Entroprise
+        </Typography>
+      </Toolbar>
       <Divider />
       <List>
         <ListItem
