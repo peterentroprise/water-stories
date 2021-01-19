@@ -1,5 +1,4 @@
 const withPWA = require("next-pwa");
-const runtimeCaching = require("next-pwa/cache");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -20,6 +19,5 @@ module.exports = withPWA({
   },
   pwa: {
     dest: "public",
-    runtimeCaching,
   },
 });
