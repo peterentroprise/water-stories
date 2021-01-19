@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HeaderComponent = ({ handleDrawerToggle }) => {
+const HeaderComponent = ({ title, handleDrawerToggle }) => {
   const classes = useStyles();
 
   return (

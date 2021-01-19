@@ -16,7 +16,7 @@ const Layout = ({ children, title = "Entroprise" }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Core>{children}</Core>
+    <Core title={title}>{children}</Core>
     <Footer />
   </>
 );

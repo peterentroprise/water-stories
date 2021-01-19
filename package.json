@@ -34,6 +34,7 @@
     "logrocket": "^1.0.14",
     "moment": "^2.29.1",
     "next": "latest",
+    "next-pwa": "^5.0.4",
     "next-with-apollo": "^5.1.0",
     "nookies": "^2.5.0",
     "react": "^16.12.0",

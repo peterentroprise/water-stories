@@ -1,7 +1,8 @@
+const withPWA = require("next-pwa");
 const dotenv = require("dotenv");
 dotenv.config();
 
-module.exports = {
+module.exports = withPWA({
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
     AUTH0_AUDIENCE: process.env.AUTH0_AUDIENCE,
@@ -16,4 +17,7 @@ module.exports = {
     SESSION_COOKIE_LIFETIME: 7200, // 2 hours
     APP_HOST: process.env.DOMAIN,
   },
-};
+  pwa: {
+    dest: "public",
+  },
+});
