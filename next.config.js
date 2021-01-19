@@ -20,4 +20,7 @@ module.exports = withPWA({
   pwa: {
     dest: "public",
   },
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+  },
 });

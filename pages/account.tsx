@@ -1,14 +1,13 @@
 import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
+import Avatar from "@material-ui/core/Avatar";
 
 import Layout from "../components/Layout";
 import Login from "../components/Auth/Login";
-
-import OnlineUsersWrapper from "../components/OnlineUsers/OnlineUsersWrapper";
-
+import LogoutBtn from "../components/Auth/Logout";
 import { useFetchUser } from "../lib/user";
 import { withApollo } from "../lib/withApollo";
 
-const UsersPage = () => {
+const AccountPage = () => {
   const { user, loading } = useFetchUser();
   if (!loading && !user) {
     return (
@@ -21,12 +20,13 @@ const UsersPage = () => {
     return <></>;
   }
   return (
-    <Layout title="Users | Entroprise">
+    <Layout title="Account | Entroprise">
       <Box my={3}>
         <Card variant="outlined">
-          <CardHeader title="Users" />
+          <CardHeader title="Account" subheader={user.name} />
           <CardContent>
-            <OnlineUsersWrapper />
+            <Avatar alt={user.name} src={user.picture} />
+            <LogoutBtn />
           </CardContent>
         </Card>
       </Box>
@@ -34,7 +34,4 @@ const UsersPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(UsersPage);
-
-// enable the line below for client side rendering of <TodoPrivateWrapper />
-// export default withApollo()(IndexPage);
+export default withApollo({ ssr: true })(AccountPage);

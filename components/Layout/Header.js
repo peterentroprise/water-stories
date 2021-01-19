@@ -5,12 +5,14 @@ import {
   IconButton,
   Typography,
   Hidden,
+  Avatar,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useFlags } from "@happykit/flags";
 
+import { useFetchUser } from "../../lib/user";
 import Link from "../Link";
 
 const drawerWidth = 240;
@@ -33,10 +35,16 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  small: {
+    marginLeft: theme.spacing(2),
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
 }));
 
 const HeaderComponent = ({ title, handleDrawerToggle }) => {
   const classes = useStyles();
+  const { user, loading } = useFetchUser();
 
   return (
     <AppBar elevation={0} className={classes.appBar} position="fixed">
@@ -61,15 +69,23 @@ const HeaderComponent = ({ title, handleDrawerToggle }) => {
         </Link>
 
         <div className={classes.grow} />
-        <Link href="/users" passHref>
-          <IconButton
-            className={classes.accountButton}
-            edge="end"
-            color="default"
-            aria-label="open account"
-          >
-            <AccountCircleOutlinedIcon />
-          </IconButton>
+        <Link href="/account" passHref>
+          {(user && (
+            <Avatar
+              alt={user.name}
+              src={user.picture}
+              className={classes.small}
+            />
+          )) || (
+            <IconButton
+              className={classes.accountButton}
+              edge="end"
+              color="default"
+              aria-label="open account"
+            >
+              <AccountCircleOutlinedIcon />
+            </IconButton>
+          )}
         </Link>
       </Toolbar>
     </AppBar>

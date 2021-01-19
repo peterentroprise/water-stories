@@ -19,6 +19,7 @@ import ListOutlinedIcon from "@material-ui/icons/ListOutlined";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 
 import Link from "../Link";
 
@@ -45,21 +46,18 @@ export default function TemporaryDrawer() {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {flags.threads && (
-          <ListItem
-            onClick={() => {
-              navTo("/threads");
-              toggleDrawer();
-            }}
-            button
-          >
-            <ListItemIcon>
-              <ListOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Threads" />
-          </ListItem>
-        )}
-
+        <ListItem
+          onClick={() => {
+            navTo("/");
+            toggleDrawer();
+          }}
+          button
+        >
+          <ListItemIcon>
+            <InfoOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="About" />
+        </ListItem>
         {flags.stories && (
           <ListItem
             onClick={() => {
@@ -72,6 +70,23 @@ export default function TemporaryDrawer() {
               <RecentActorsOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Stories" />
+          </ListItem>
+        )}
+      </List>
+      <Divider />
+      <List>
+        {flags.threads && (
+          <ListItem
+            onClick={() => {
+              navTo("/threads");
+              toggleDrawer();
+            }}
+            button
+          >
+            <ListItemIcon>
+              <ListOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Threads" />
           </ListItem>
         )}
 
@@ -101,18 +116,18 @@ export default function TemporaryDrawer() {
         </ListItem>
       </List>
       <Divider />
-      <List className={classes.list}>
+      <List>
         <ListItem
           onClick={() => {
-            navTo("/");
+            navTo("/account");
             toggleDrawer();
           }}
           button
         >
           <ListItemIcon>
-            <InfoOutlinedIcon />
+            <AccountCircleOutlinedIcon />
           </ListItemIcon>
-          <ListItemText primary="About" />
+          <ListItemText primary="Account" />
         </ListItem>
       </List>
     </>
