@@ -14,12 +14,9 @@ const Login = () => {
   return (
     <Box mt={2} mb={1}>
       <Card variant="outlined">
-        <CardHeader
-          title="Entroprise"
-          subheader="Merging the finite with the infinite."
-        />
+        <CardHeader title="Authentication Required" />
         <CardContent>
-          <Typography>Please Login To Continue</Typography>
+          <Typography>Please login To continue.</Typography>
           <Box mt={2} mb={1}>
             <Link href="/api/login" passHref>
               <Button elevation={0} variant="contained" color="primary">

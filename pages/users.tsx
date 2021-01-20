@@ -1,4 +1,4 @@
-import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
+import { Box, Card, CardContent } from "@material-ui/core";
 
 import Layout from "../components/Layout";
 import Login from "../components/Auth/Login";
@@ -12,7 +12,7 @@ const UsersPage = () => {
   const { user, loading } = useFetchUser();
   if (!loading && !user) {
     return (
-      <Layout title="Users | Entroprise">
+      <Layout title="Users">
         <Login />
       </Layout>
     );
@@ -21,10 +21,9 @@ const UsersPage = () => {
     return <></>;
   }
   return (
-    <Layout title="Users | Entroprise">
+    <Layout title="Users">
       <Box my={3}>
         <Card variant="outlined">
-          <CardHeader title="Users" />
           <CardContent>
             <OnlineUsersWrapper />
           </CardContent>
@@ -35,6 +34,3 @@ const UsersPage = () => {
 };
 
 export default withApollo({ ssr: true })(UsersPage);
-
-// enable the line below for client side rendering of <TodoPrivateWrapper />
-// export default withApollo()(IndexPage);

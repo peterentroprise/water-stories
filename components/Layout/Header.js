@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {},
   small: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(3.5),
     width: theme.spacing(3),
     height: theme.spacing(3),
   },
@@ -70,7 +70,7 @@ const HeaderComponent = ({ title, handleDrawerToggle }) => {
             color="textPrimary"
             component="div"
           >
-            Entroprise
+            {title}
           </Typography>
         </Link>
 
