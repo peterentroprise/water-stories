@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
+  title: {},
   small: {
     marginLeft: theme.spacing(2),
     width: theme.spacing(3),
@@ -63,7 +64,12 @@ const HeaderComponent = ({ title, handleDrawerToggle }) => {
 
         <div className={classes.grow} />
         <Link href="/" passHref>
-          <Typography variant="h6" color="textPrimary" component="div">
+          <Typography
+            className={classes.title}
+            variant="h6"
+            color="textPrimary"
+            component="div"
+          >
             Entroprise
           </Typography>
         </Link>

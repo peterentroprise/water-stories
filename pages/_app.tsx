@@ -6,6 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import createCache from "@emotion/cache";
 import "@fontsource/muli";
+import "@fontsource/nanum-myeongjo";
 import LogRocket from "logrocket";
 import theme from "../config/theme";
 import { configure } from "@happykit/flags";

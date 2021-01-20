@@ -18,6 +18,30 @@ const theme = createMuiTheme({
     },
   },
   typography: {
+    h1: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
+    h2: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
+    h3: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
+    h4: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
+    h5: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
+    h6: {
+      fontFamily: "Nanum Myeongjo",
+      fontWeight: 800,
+    },
     button: {
       textTransform: "none",
     },
