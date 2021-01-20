@@ -98,7 +98,6 @@ const MessageList = ({ thread, latestMessage }) => {
       });
     }
     if (error) {
-      console.error(error);
       setState((prevState) => {
         return { ...prevState, error: true };
       });
@@ -144,7 +143,6 @@ const MessageList = ({ thread, latestMessage }) => {
       newestMessageId = data.messages[0].id;
     }
     if (error) {
-      console.error(error);
       setState((prevState) => {
         return { ...prevState, error: true };
       });

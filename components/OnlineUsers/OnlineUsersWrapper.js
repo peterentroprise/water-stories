@@ -54,7 +54,6 @@ const OnlineUsersWrapper = () => {
     return <IndeterminateLoader />;
   }
   if (error) {
-    console.error(error);
     return <Typography>Error!</Typography>;
   }
   if (data) {

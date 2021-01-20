@@ -75,7 +75,6 @@ const TodoPublicList = (props) => {
       });
     }
     if (error) {
-      console.error(error);
       setState((prevState) => {
         return { ...prevState, error: true };
       });
@@ -118,7 +117,6 @@ const TodoPublicList = (props) => {
       newestTodoId = data.todos[0].id;
     }
     if (error) {
-      console.error(error);
       setState((prevState) => {
         return { ...prevState, error: true };
       });

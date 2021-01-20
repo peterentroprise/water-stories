@@ -65,7 +65,6 @@ const ThreadListQuery = () => {
     return <IndeterminateLoader />;
   }
   if (error) {
-    console.error(error);
     return <Typography>Error!</Typography>;
   }
   return <Thread item={data.threads_by_pk} />;

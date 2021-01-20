@@ -35,7 +35,6 @@ const StoryGraphWrapper = () => {
     return <IndeterminateLoader />;
   }
   if (error) {
-    console.error(error);
     return <Typography>Error!</Typography>;
   }
   return <StoryGraph stories={data.storyCollection.items} />;

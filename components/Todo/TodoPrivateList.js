@@ -104,7 +104,6 @@ const TodoPrivateListQuery = () => {
     return <IndeterminateLoader />;
   }
   if (error) {
-    console.error(error);
     return <Typography>Error!</Typography>;
   }
   return <TodoPrivateList todos={data.todos} />;

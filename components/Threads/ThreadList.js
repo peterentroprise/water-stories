@@ -47,7 +47,6 @@ const ThreadListQuery = () => {
     return <IndeterminateLoader />;
   }
   if (error) {
-    console.error(error);
     return <Typography>Error!</Typography>;
   }
   return <ThreadList threads={data.threads} />;
