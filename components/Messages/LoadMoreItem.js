@@ -3,7 +3,7 @@ import { ListItem, ListItemText } from "@material-ui/core";
 
 const MessageItem = ({ handleLoad }) => {
   return (
-    <ListItem divider>
+    <ListItem disableGutters divider>
       <ListItemText button onClick={handleLoad} primary="Load Older Messages" />
     </ListItem>
   );

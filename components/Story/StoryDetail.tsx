@@ -1,10 +1,12 @@
 import * as React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Typography,
   Box,
   Card,
   CardHeader,
   CardContent,
+  CardMedia,
 } from "@material-ui/core";
 
 import { Story } from "../../interfaces";
@@ -14,7 +16,15 @@ type ListDetailProps = {
   item: Story;
 };
 
+const useStyles = makeStyles(() => ({
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9
+  },
+}));
+
 const StoryDetail = ({ item: story }: ListDetailProps) => {
+  const classes = useStyles();
   const storyLongDescription =
     story.storyLongDescription.json.content[0].content[0].value;
   return (
@@ -25,20 +35,14 @@ const StoryDetail = ({ item: story }: ListDetailProps) => {
         </Box>
         <Box mt={2} mb={1}></Box>
         <Card variant="outlined">
-          <CardHeader
+          <CardMedia
+            className={classes.media}
+            image={story.coverImage.url}
             title={story.storyName}
-            subheader={story.storyShortDescription}
           />
+          <CardHeader title={story.storyShortDescription} />
           <CardContent>
-            <Box my={1}>
-              <img
-                src={story.coverImage.url}
-                style={{ maxWidth: "100%" }}
-              ></img>
-            </Box>
-            <Box my={1}>
-              <Typography>{storyLongDescription}</Typography>
-            </Box>
+            <Typography>{storyLongDescription}</Typography>
           </CardContent>
         </Card>
       </Box>

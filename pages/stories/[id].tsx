@@ -46,7 +46,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout title={`${item ? item.storyName : "Detail"} | Entroprise`}>
+    <Layout title={`${item ? item.storyName : "Detail"}`}>
       {(flags.stories && <> {item && <StoryDetail item={item} />}</>) || (
         <Box my={3}>
           <Typography>The stories feature is not enabled.</Typography>

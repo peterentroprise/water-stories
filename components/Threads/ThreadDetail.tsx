@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Card, CardHeader, CardContent } from "@material-ui/core";
+import { Box, Card, CardContent } from "@material-ui/core";
 
 import { ThreadInterface } from "../../interfaces";
 import MessagesWrapper from "../Messages/MessagesWrapper";
@@ -13,10 +13,6 @@ const ThreadDetail = ({ item: thread }: ListDetailProps) => {
     <>
       <Box my={3}>
         <Card variant="outlined">
-          <CardHeader
-            title={thread.threadName}
-            subheader={thread.threadDescription}
-          />
           <CardContent>
             <MessagesWrapper thread={thread} />
           </CardContent>

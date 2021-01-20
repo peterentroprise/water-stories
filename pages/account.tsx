@@ -1,5 +1,4 @@
 import { withApollo } from "../lib/withApollo";
-
 import Layout from "../components/Layout";
 import AccountWrapper from "../components/Account/AccountWrapper";
 

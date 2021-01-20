@@ -8,7 +8,7 @@ const MessageItem = ({ message }) => {
   const secondary = `${message.user.name} on ${createdAtDate} at ${createdAtTime}`;
 
   return (
-    <ListItem divider>
+    <ListItem disableGutters divider>
       <ListItemText primary={message.body} secondary={secondary} />
     </ListItem>
   );

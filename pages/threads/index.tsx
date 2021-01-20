@@ -1,10 +1,4 @@
-import {
-  Box,
-  Typography,
-  Card,
-  CardHeader,
-  CardContent,
-} from "@material-ui/core";
+import { Box, Typography, Card, CardContent } from "@material-ui/core";
 import { useFlags } from "@happykit/flags";
 
 import Layout from "../../components/Layout";
@@ -19,7 +13,7 @@ const ThreadsPage = () => {
   const flags = useFlags();
   if (!flags.threads) {
     return (
-      <Layout title="Threads | Entroprise">
+      <Layout title="Threads">
         <Box my={3}>
           <Typography>The threads feature is not enabled.</Typography>
         </Box>
@@ -28,15 +22,14 @@ const ThreadsPage = () => {
   }
   if (!loading && !user) {
     return (
-      <Layout title="Threads | Entroprise">
+      <Layout title="Threads">
         <Login />
       </Layout>
     );
   }
   return (
-    <Layout title="Threads | Entroprise">
+    <Layout title="Threads">
       <Card variant="outlined">
-        <CardHeader title="Public Threads" />
         <CardContent>
           <ThreadsWrapper />
         </CardContent>
@@ -46,6 +39,3 @@ const ThreadsPage = () => {
 };
 
 export default withApollo({ ssr: true })(ThreadsPage);
-
-// enable the line below for client side rendering of <TodoPrivateWrapper />
-// export default withApollo()(IndexPage);

@@ -5,7 +5,7 @@ import Link from "../../components/Link";
 const ThreadListItem = ({ thread }) => {
   return (
     <Link href={`/threads/${thread.id}`}>
-      <ListItem divider>
+      <ListItem disableGutters divider>
         <ListItemText
           primary={thread.threadName}
           secondary={thread.threadDescription}

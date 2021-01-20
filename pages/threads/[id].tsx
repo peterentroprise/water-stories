@@ -31,7 +31,7 @@ const Thread = ({ item, errors }: Props) => {
   const flags = useFlags();
   if (!flags.threads) {
     return (
-      <Layout title={`${item ? item.threadName : "Detail"} | Entroprise`}>
+      <Layout title={`${item ? item.threadName : "Detail"}`}>
         <Box my={3}>
           <Typography>The threads feature is not enabled.</Typography>
         </Box>
@@ -47,7 +47,7 @@ const Thread = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout title={`${item ? item.threadName : "Detail"} | Entroprise`}>
+    <Layout title={`${item ? item.threadName : "Detail"}`}>
       {item && <ThreadDetail item={item} />}
     </Layout>
   );
