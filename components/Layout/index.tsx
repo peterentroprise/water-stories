@@ -6,6 +6,7 @@ import Core from "./Core";
 type Props = {
   children?: ReactNode;
   title?: string;
+  backUrl?: string;
   description?: string;
   keywords?: string;
 };
@@ -13,6 +14,7 @@ type Props = {
 const Layout = ({
   children,
   title = "Entroprise",
+  backUrl,
   description = "Description",
   keywords = "Keywords",
 }: Props) => (
@@ -22,7 +24,9 @@ const Layout = ({
       <meta name="keywords" content={keywords} />
       <title>{title}</title>
     </Head>
-    <Core title={title}>{children}</Core>
+    <Core title={title} backUrl={backUrl}>
+      {children}
+    </Core>
   </>
 );
 

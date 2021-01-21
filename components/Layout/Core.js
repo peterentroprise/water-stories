@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Core({ children, title }) {
+function Core({ children, title, backUrl }) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -58,7 +58,11 @@ function Core({ children, title }) {
 
   return (
     <div className={classes.root}>
-      <Header title={title} handleDrawerToggle={handleDrawerToggle} />
+      <Header
+        title={title}
+        backUrl={backUrl}
+        handleDrawerToggle={handleDrawerToggle}
+      />
       <nav className={classes.drawer}>
         <Hidden smUp implementation="css">
           <Drawer

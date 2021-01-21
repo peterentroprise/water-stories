@@ -47,7 +47,7 @@ const Thread = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout title={`${item ? item.threadName : "Detail"}`}>
+    <Layout title={`${item ? item.threadName : "Detail"}`} backUrl="/threads">
       {item && <ThreadDetail item={item} />}
     </Layout>
   );
