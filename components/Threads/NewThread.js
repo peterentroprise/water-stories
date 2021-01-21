@@ -15,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
   dialog: {
     backgroundColor: theme.palette.background.paper,
   },
+  dialogTitle: {
+    paddingTop: theme.spacing(3),
+  },
+  dialogActions: {
+    paddingTop: theme.spacing(2),
+    paddingRight: theme.spacing(3),
+    paddingBottom: theme.spacing(2),
+  },
 }));
 
 const NewThreadDialog = ({ onClose, open }) => {
@@ -26,14 +34,22 @@ const NewThreadDialog = ({ onClose, open }) => {
 
   return (
     <Dialog fullWidth maxWidth="xs" onClose={handleClose} open={open}>
-      <DialogTitle>Create New Thread</DialogTitle>
+      <DialogTitle className={classes.dialogTitle}>
+        Create New Thread
+      </DialogTitle>
       <DialogContent>
         <ThreadInput />
       </DialogContent>
-      <DialogActions>
+      <DialogActions className={classes.dialogActions}>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit" form="new-thread-form">
-          Create Thread
+        <Button
+          color="primary"
+          variant="contained"
+          disableElevation
+          type="submit"
+          form="new-thread-form"
+        >
+          Create
         </Button>
       </DialogActions>
     </Dialog>

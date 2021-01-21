@@ -82,6 +82,7 @@ const ThreadInput = () => {
         autoFocus
         fullWidth
         value={threadInput}
+        label="Thread Name"
         placeholder="Enter thread name..."
         ref={(n) => (input = n)}
         onChange={(e) => setThreadInput(e.target.value)}
