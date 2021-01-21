@@ -90,6 +90,7 @@ function Core({ children, title }) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <div className={classes.toolbar} />
         <Container maxWidth="sm">{children}</Container>
       </main>
     </div>

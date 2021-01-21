@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
+    borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
     backgroundColor: theme.palette.background.paper,
   },
   toolbar: {},

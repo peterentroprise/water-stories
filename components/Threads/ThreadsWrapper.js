@@ -6,8 +6,6 @@ import { useFetchUser } from "../../lib/user";
 import IndeterminateLoader from "../IndeterminateLoader";
 import FlagStateDisplay from "../FlagStateDisplay";
 import Login from "../Auth/Login";
-
-import CardWrapper from "../Card/CardWrapper";
 import ThreadToolbar from "./ThreadToolbar";
 import ThreadList from "./ThreadList";
 
@@ -32,9 +30,7 @@ const ThreadsWrapper = () => {
   return (
     <div className={classes.wrapper}>
       <ThreadToolbar />
-      <CardWrapper>
-        <ThreadList />
-      </CardWrapper>
+      <ThreadList />
     </div>
   );
 };
