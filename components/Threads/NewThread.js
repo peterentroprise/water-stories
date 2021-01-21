@@ -25,14 +25,14 @@ const NewThreadDialog = ({ onClose, open }) => {
   };
 
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog fullWidth maxWidth="xs" onClose={handleClose} open={open}>
       <DialogTitle>Create New Thread</DialogTitle>
       <DialogContent>
         <ThreadInput />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button type="submit" form="my-form">
+        <Button type="submit" form="new-thread-form">
           Create Thread
         </Button>
       </DialogActions>
