@@ -63,16 +63,14 @@ const HeaderComponent = ({ title, handleDrawerToggle }) => {
         </Hidden>
 
         <div className={classes.grow} />
-        <Link href="/" passHref>
-          <Typography
-            className={classes.title}
-            variant="h6"
-            color="textPrimary"
-            component="div"
-          >
-            {title}
-          </Typography>
-        </Link>
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="textPrimary"
+          component="div"
+        >
+          {title}
+        </Typography>
 
         <div className={classes.grow} />
         <Link href="/account" passHref>

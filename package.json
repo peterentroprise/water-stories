@@ -28,6 +28,7 @@
     "apollo-link-ws": "^1.0.20",
     "clsx": "^1.1.1",
     "dotenv": "^8.2.0",
+    "firebase": "^8.2.3",
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
     "isomorphic-unfetch": "^3.1.0",

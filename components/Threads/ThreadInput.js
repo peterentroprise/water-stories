@@ -66,29 +66,27 @@ const ThreadInput = () => {
   });
 
   return (
-    <AppBar elevation={0} className={classes.appBar}>
-      <Toolbar>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addThread({
-              variables: {
-                threadName: threadInput,
-                threadDescription: "Default Thread Description",
-              },
-            });
-          }}
-        >
-          <TextField
-            fullWidth
-            value={threadInput}
-            placeholder="Enter thread name..."
-            ref={(n) => (input = n)}
-            onChange={(e) => setThreadInput(e.target.value)}
-          />
-        </form>
-      </Toolbar>
-    </AppBar>
+    <form
+      id="new-thread-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        addThread({
+          variables: {
+            threadName: threadInput,
+            threadDescription: "Default Thread Description",
+          },
+        });
+      }}
+    >
+      <TextField
+        autoFocus
+        fullWidth
+        value={threadInput}
+        placeholder="Enter thread name..."
+        ref={(n) => (input = n)}
+        onChange={(e) => setThreadInput(e.target.value)}
+      />
+    </form>
   );
 };
 
