@@ -1,15 +1,20 @@
 import React from "react";
-import { ListItem, ListItemText } from "@material-ui/core";
+import {
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+} from "@material-ui/core";
 import Link from "../../components/Link";
 
 const ThreadListItem = ({ thread }) => {
   return (
     <Link href={`/threads/${thread.id}`}>
       <ListItem disableGutters divider>
-        <ListItemText
-          primary={thread.threadName}
-          secondary={thread.threadDescription}
-        />
+        <ListItemAvatar>
+          <Avatar>{thread.threadName.charAt(0)}</Avatar>
+        </ListItemAvatar>
+        <ListItemText primary={thread.threadName} />
       </ListItem>
     </Link>
   );
