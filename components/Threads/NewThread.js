@@ -69,7 +69,12 @@ const NewThread = () => {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
+      <Button
+        color="primary"
+        variant="contained"
+        disableElevation
+        onClick={handleClickOpen}
+      >
         New Thread
       </Button>
       <NewThreadDialog open={open} onClose={handleClose} />

@@ -97,3 +97,5 @@ function Core({ children, title }) {
 }
 
 export default Core;
+
+export { drawerWidth };
