@@ -1,4 +1,1 @@
 # Entroprise
-
-asd
-qwe
