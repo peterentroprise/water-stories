@@ -32,8 +32,8 @@ const ThreadToolbar = () => {
     <div className={classes.root}>
       <AppBar className={classes.appBar} elevation={0}>
         <Toolbar>
-          <div className={classes.grow} />
           <NewThread />
+          <div className={classes.grow} />
         </Toolbar>
       </AppBar>
     </div>

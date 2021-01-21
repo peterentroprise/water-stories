@@ -95,7 +95,7 @@ function Core({ children, title, backUrl }) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <div className={classes.toolbar} />
-        <Container maxWidth="sm">{children}</Container>
+        <Container maxWidth="md">{children}</Container>
       </main>
     </div>
   );

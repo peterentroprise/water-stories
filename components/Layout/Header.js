@@ -79,7 +79,6 @@ const HeaderComponent = ({ title, handleDrawerToggle, backUrl }) => {
           </IconButton>
         )}
 
-        <div className={classes.grow} />
         <Typography
           className={classes.title}
           variant="h6"
