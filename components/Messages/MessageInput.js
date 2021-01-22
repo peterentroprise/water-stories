@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { InputBase, AppBar, Toolbar, IconButton } from "@material-ui/core";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import {} from "./MessageList";
+import { drawerWidth } from "../Layout/Core";
 
 const ADD_MESSAGE = gql`
   mutation($message: String!, $thread_id: Int!) {
@@ -23,6 +24,10 @@ const ADD_MESSAGE = gql`
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
     borderTop: "1px solid rgba(0, 0, 0, 0.12)",
     backgroundColor: theme.palette.background.paper,
     top: "auto",
