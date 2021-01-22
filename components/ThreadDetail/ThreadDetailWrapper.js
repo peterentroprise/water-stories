@@ -30,7 +30,7 @@ const ThreadDetailWrapper = (item) => {
   return (
     <div className={classes.wrapper}>
       <ThreadDetailToolbar thread={item.item} />
-      <MessagesWrapper thread={item} />
+      <MessagesWrapper thread={item.item} />
     </div>
   );
 };

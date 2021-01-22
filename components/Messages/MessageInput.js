@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, AppBar, Toolbar } from "@material-ui/core";
-import {  } from "./MessageList";
+import { InputBase, AppBar, Toolbar, IconButton } from "@material-ui/core";
+import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
+import {} from "./MessageList";
 
 const ADD_MESSAGE = gql`
   mutation($message: String!, $thread_id: Int!) {
@@ -22,9 +23,13 @@ const ADD_MESSAGE = gql`
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
+    borderTop: "1px solid rgba(0, 0, 0, 0.12)",
     backgroundColor: theme.palette.background.paper,
-    position: "sticky",
+    top: "auto",
     bottom: 0,
+  },
+  input: {
+    flexGrow: 1,
   },
 }));
 
@@ -44,26 +49,32 @@ const MessageInput = ({ thread }) => {
   });
 
   return (
-    <AppBar elevation={0} className={classes.appBar}>
-      <Toolbar>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addMessage({
-              variables: { message: messageInput, thread_id: thread.id },
-            });
-          }}
-        >
-          <TextField
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        addMessage({
+          variables: { message: messageInput, thread_id: thread.id },
+        });
+      }}
+    >
+      <AppBar position="fixed" elevation={0} className={classes.appBar}>
+        <Toolbar>
+          <InputBase
+            autoFocus
             fullWidth
+            className={classes.input}
+            disableUnderline
             value={messageInput}
             placeholder="Enter a message..."
             ref={(n) => (input = n)}
             onChange={(e) => setMessageInput(e.target.value)}
           />
-        </form>
-      </Toolbar>
-    </AppBar>
+          <IconButton edge="end" type="submit">
+            <SendOutlinedIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+    </form>
   );
 };
 

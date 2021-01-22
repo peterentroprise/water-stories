@@ -11,7 +11,7 @@ import LoadMoreItem from "./LoadMoreItem";
 
 const useStyles = makeStyles((theme) => ({
   list: {
-    height: "60vh",
+    height: "calc(100vh - 168px)",
     overflow: "auto",
   },
 }));
