@@ -52,7 +52,7 @@ const MessageList = ({ thread, latestMessage }) => {
   }, [state.messages]);
 
   useEffect(() => {
-    if (latestMessage && latestMessage.id >= newestMessageId) {
+    if (latestMessage && latestMessage.id > newestMessageId) {
       setState((prevState) => {
         return {
           ...prevState,
