@@ -10,7 +10,7 @@ import Link from "../../components/Link";
 const ThreadListItem = ({ thread }) => {
   return (
     <Link href={`/threads/${thread.id}`}>
-      <ListItem disableGutters divider>
+      <ListItem disableGutters>
         <ListItemAvatar>
           <Avatar>{thread.threadName.charAt(0).toUpperCase()}</Avatar>
         </ListItemAvatar>

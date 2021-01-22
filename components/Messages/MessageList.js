@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from "react";
+import React, { Fragment, useState, useEffect, createRef } from "react";
 import { useSubscription, useApolloClient } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const MessageList = ({ thread, latestMessage }) => {
   const classes = useStyles();
   const client = useApolloClient();
+  let listScrollRef = createRef();
   const [state, setState] = useState({
     olderMessagesAvailable: latestMessage ? true : false,
     newMessagesCount: 0,
@@ -43,6 +44,12 @@ const MessageList = ({ thread, latestMessage }) => {
   useEffect(() => {
     loadOlder(thread);
   }, []);
+
+  useEffect(() => {
+    if (listScrollRef.current) {
+      listScrollRef.current.scrollIntoView({ behavior: "auto" });
+    }
+  }, [state.messages]);
 
   useEffect(() => {
     if (latestMessage && latestMessage.id >= newestMessageId) {
@@ -151,15 +158,11 @@ const MessageList = ({ thread, latestMessage }) => {
   const handleLoad = () => {
     loadOlder(thread);
   };
-  if (state.messages.length == 0) {
-    return <Typography>No messages in thread.</Typography>;
-  }
 
   return (
     <div className={classes.list}>
       {/* <Waypoint onEnter={handleLoad} /> */}
-      {!state.olderTodosAvailable && <LoadMoreItem handleLoad={handleLoad} />}
-
+      {state.olderTodosAvailable && <LoadMoreItem handleLoad={handleLoad} />}
       <List className="message-list">
         {state.messages &&
           state.messages
@@ -174,6 +177,7 @@ const MessageList = ({ thread, latestMessage }) => {
               );
             })
             .reverse()}
+        <div ref={listScrollRef} />
       </List>
     </div>
   );
