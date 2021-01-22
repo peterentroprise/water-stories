@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout";
 import ThreadsWrapper from "../../components/Threads/ThreadsWrapper";
-import { withApollo } from "../../lib/withApollo";
 
 const ThreadsPage = () => {
   return (
@@ -10,4 +9,4 @@ const ThreadsPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(ThreadsPage);
+export default ThreadsPage;

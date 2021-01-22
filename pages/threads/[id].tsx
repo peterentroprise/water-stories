@@ -6,7 +6,6 @@ import { useFlags } from "@happykit/flags";
 
 import { ThreadInterface } from "../../interfaces";
 import Layout from "../../components/Layout";
-import { withApollo } from "../../lib/withApollo";
 import ThreadDetailWrapper from "../../components/ThreadDetail/ThreadDetailWrapper";
 import IndeterminateLoader from "../../components/IndeterminateLoader";
 
@@ -70,4 +69,4 @@ const ThreadListQuery = () => {
   return <Thread item={data.threads_by_pk} />;
 };
 
-export default withApollo({ ssr: true })(ThreadListQuery);
+export default ThreadListQuery;

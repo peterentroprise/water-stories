@@ -1,4 +1,3 @@
-import { withApollo } from "../lib/withApollo";
 import Layout from "../components/Layout";
 import AccountWrapper from "../components/Account/AccountWrapper";
 
@@ -10,4 +9,4 @@ const AccountPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(AccountPage);
+export default AccountPage;

@@ -1,4 +1,3 @@
-import { withApollo } from "../lib/withApollo";
 import Layout from "../components/Layout";
 import UsersWrapper from "../components/Users/UsersWrapper";
 
@@ -10,4 +9,4 @@ const UsersPage = () => {
   );
 };
 
-export default withApollo({ ssr: true })(UsersPage);
+export default UsersPage;
