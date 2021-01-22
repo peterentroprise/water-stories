@@ -12,7 +12,7 @@ const ThreadListItem = ({ thread }) => {
     <Link href={`/threads/${thread.id}`}>
       <ListItem disableGutters divider>
         <ListItemAvatar>
-          <Avatar>{thread.threadName.charAt(0)}</Avatar>
+          <Avatar>{thread.threadName.charAt(0).toUpperCase()}</Avatar>
         </ListItemAvatar>
         <ListItemText primary={thread.threadName} />
       </ListItem>
