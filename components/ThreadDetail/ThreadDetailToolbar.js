@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar } from "@material-ui/core";
 import RenameThread from "./RenameThread";
-import DeleteThreadInput from "./DeleteThreadInput";
+import DeleteThread from "./DeleteThread";
 
 import { drawerWidth } from "../Layout/Core";
 
@@ -35,7 +35,7 @@ const ThreadDetailToolbar = ({ thread }) => {
         <Toolbar>
           <RenameThread thread={thread} />
           <div className={classes.grow} />
-          <DeleteThreadInput thread={thread} />
+          <DeleteThread thread={thread} />
         </Toolbar>
       </AppBar>
     </div>
