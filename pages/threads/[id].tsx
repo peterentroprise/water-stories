@@ -7,7 +7,7 @@ import { useFlags } from "@happykit/flags";
 import { ThreadInterface } from "../../interfaces";
 import Layout from "../../components/Layout";
 import { withApollo } from "../../lib/withApollo";
-import ThreadDetail from "../../components/Threads/ThreadDetail";
+import ThreadDetailWrapper from "../../components/ThreadDetail/ThreadDetailWrapper";
 import IndeterminateLoader from "../../components/IndeterminateLoader";
 
 type Props = {
@@ -48,7 +48,7 @@ const Thread = ({ item, errors }: Props) => {
 
   return (
     <Layout title={`${item ? item.threadName : "Detail"}`} backUrl="/threads">
-      {item && <ThreadDetail item={item} />}
+      {item && <ThreadDetailWrapper item={item} />}
     </Layout>
   );
 };
