@@ -72,7 +72,7 @@ const MessageList = ({ thread, latestMessage }) => {
             thread_id: { _eq: $thread_id }
             id: { _lt: $oldestMessageId }
           }
-          limit: 5
+          limit: 20
           order_by: { created_at: desc }
         ) {
           id
