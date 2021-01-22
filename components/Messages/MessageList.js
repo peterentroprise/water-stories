@@ -158,8 +158,6 @@ const MessageList = ({ thread, latestMessage }) => {
   return (
     <div className={classes.list}>
       {/* <Waypoint onEnter={handleLoad} /> */}
-      {console.log("latestMessage RENDER")}
-      {console.log(latestMessage)}
       {!state.olderTodosAvailable && <LoadMoreItem handleLoad={handleLoad} />}
 
       <List className="message-list">
