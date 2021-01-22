@@ -8,6 +8,7 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
 
 import ThreadInput from "./ThreadInput";
 
@@ -70,8 +71,7 @@ const NewThread = () => {
   return (
     <>
       <Button
-        color="primary"
-        variant="contained"
+        startIcon={<AddBoxOutlinedIcon />}
         disableElevation
         onClick={handleClickOpen}
       >

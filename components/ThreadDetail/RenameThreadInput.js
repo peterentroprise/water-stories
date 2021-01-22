@@ -68,7 +68,6 @@ const RenameThreadInput = ({ thread, handleClose }) => {
         });
       }}
     >
-      {console.log(thread)}
       <TextField
         autoFocus
         fullWidth

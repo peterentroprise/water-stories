@@ -7,6 +7,7 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
+import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 
 import RenameThreadInput from "./RenameThreadInput";
 
@@ -67,9 +68,8 @@ const RenameThread = ({ thread }) => {
   return (
     <>
       <Button
-        color="primary"
-        variant="contained"
         disableElevation
+        startIcon={<EditOutlinedIcon />}
         onClick={handleClickOpen}
       >
         Rename Thread
