@@ -63,7 +63,6 @@ const MessageInput = ({ thread }) => {
             autoFocus
             fullWidth
             className={classes.input}
-            disableUnderline
             value={messageInput}
             placeholder="Enter a message..."
             ref={(n) => (input = n)}

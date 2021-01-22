@@ -14,7 +14,6 @@ const MessageItem = ({ message }) => {
 
   return (
     <ListItem disableGutters>
-      {console.log(message)}
       <ListItemAvatar>
         <Avatar>{message.user.name.charAt(0).toUpperCase()}</Avatar>
       </ListItemAvatar>
