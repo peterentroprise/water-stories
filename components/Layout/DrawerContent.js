@@ -60,7 +60,7 @@ export default function TemporaryDrawer() {
           className={classes.logo}
         />
         <Typography variant="h6" className={classes.title}>
-          Entroprise
+          Water Stories
         </Typography>
       </Toolbar>
       <Divider />

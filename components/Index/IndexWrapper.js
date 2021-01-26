@@ -7,7 +7,7 @@ const IndexWrapper = () => {
   return (
     <>
       <Logo />
-      <CardWrapper title="Merging the finite, with the infinite.">
+      <CardWrapper title="Echoing Tales of Water">
         <Typography>
           In mainstream theories of natural language syntax, every
           syntactically-valid utterance can be extended to produce a new, longer

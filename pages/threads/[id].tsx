@@ -39,7 +39,7 @@ const Thread = ({ item, errors }: Props) => {
   }
   if (errors) {
     return (
-      <Layout title="Error | Entroprise">
+      <Layout title="Error">
         <Typography>Error: {errors}</Typography>
       </Layout>
     );

@@ -37,7 +37,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   const flags = useFlags();
   if (errors) {
     return (
-      <Layout title="Error | Entroprise">
+      <Layout title="Error">
         <p>
           <span style={{ color: "red" }}>Error:</span> {errors}
         </p>

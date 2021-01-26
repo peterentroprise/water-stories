@@ -1,8 +1,8 @@
 {
-  "name": "Entroprise",
-  "short_name": "Entroprise",
+  "name": "Water Stories",
+  "short_name": "Water Stories",
   "lang": "en",
-  "description": "Merging the finite with the infinite.",
+  "description": "Echoing Tales of Water",
   "background_color": "#ffffff",
   "theme_color": "#556cd6",
   "display": "standalone",

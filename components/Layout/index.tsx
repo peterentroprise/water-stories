@@ -13,7 +13,7 @@ type Props = {
 
 const Layout = ({
   children,
-  title = "Entroprise",
+  title = "Water Stories",
   backUrl,
   description = "Description",
   keywords = "Keywords",
