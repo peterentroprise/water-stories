@@ -92,24 +92,28 @@ export default function TemporaryDrawer() {
           </ListItem>
         )}
       </List>
-      <Divider />
-      <List>
-        {flags.threads && (
-          <ListItem
-            onClick={() => {
-              navTo("/threads");
-              toggleDrawer();
-            }}
-            button
-          >
-            <ListItemIcon>
-              <ListOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Threads" />
-          </ListItem>
-        )}
 
-        <ListItem
+      {flags.threads && (
+        <>
+          <Divider />
+          <List>
+            <ListItem
+              onClick={() => {
+                navTo("/threads");
+                toggleDrawer();
+              }}
+              button
+            >
+              <ListItemIcon>
+                <ListOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Threads" />
+            </ListItem>
+          </List>
+        </>
+      )}
+
+      {/* <ListItem
           onClick={() => {
             navTo("/users");
             toggleDrawer();
@@ -132,8 +136,8 @@ export default function TemporaryDrawer() {
             <BubbleChartOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="Graph" />
-        </ListItem>
-      </List>
+        </ListItem> */}
+
       <Divider />
       <List>
         <ListItem
