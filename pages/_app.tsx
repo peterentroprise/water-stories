@@ -42,24 +42,29 @@ export default function App({ Component, pageProps }: AppProps) {
             name="viewport"
             content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
           />
-          <meta name="theme-color" content="#556cd6" />
-          <link rel="manifest" href="/manifest.json" />
           <link
-            href="/images/iconsfavicon-16x16.png"
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
           />
           <link
-            href="/images/icons/favicon-32x32.png"
             rel="icon"
             type="image/png"
             sizes="32x32"
+            href="/favicon-32x32.png"
           />
           <link
-            rel="apple-touch-icon"
-            href="/images/icons/apple-icon-180x180.png"
-          ></link>
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#556cd6" />
+          <meta name="apple-mobile-web-app-title" content="Water Stories" />
+          <meta name="application-name" content="Water Stories" />
+          <meta name="msapplication-TileColor" content="#556cd6" />
+          <meta name="theme-color" content="#ffffff" />
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
