@@ -59,7 +59,7 @@ export default function App({ Component, pageProps }: AppProps) {
             sizes="16x16"
             href="/favicon-16x16.png"
           />
-          <link rel="manifest" href="/site.webmanifest" />
+          <link rel="manifest" href="/manifest.json" />
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#556cd6" />
           <meta name="apple-mobile-web-app-title" content="Water Stories" />
           <meta name="application-name" content="Water Stories" />
