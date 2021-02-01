@@ -31,6 +31,8 @@ const LaunchWrapper = () => {
           sx={{
             display: "flex",
             flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Section3 />
