@@ -2,7 +2,7 @@ import { Container, Box, Typography, Button } from "@material-ui/core";
 
 import Link from "../Link";
 
-const Section1 = () => {
+const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
   return (
     <>
       <Box
@@ -14,7 +14,7 @@ const Section1 = () => {
           backgroundSize: "cover",
         }}
       ></Box>
-      <Box sx={{ position: "absolute" }}>
+      <Box sx={{ position: "absolute", p: 2 }}>
         <Box sx={{ p: 1 }}>
           <Typography sx={{ color: "white" }} variant="h3" align="center">
             Water Stories
@@ -35,12 +35,15 @@ const Section1 = () => {
           }}
         >
           <Box sx={{ p: 1 }}>
-            <Button variant="contained">Subscribe For Updates</Button>
+            <Button variant="contained" onClick={handleScrollToSubscribe}>
+              Subscribe For Updates
+            </Button>
           </Box>
           <Box sx={{ p: 1 }}>
             <Button
               sx={{ color: "white", borderColor: "white" }}
               variant="outlined"
+              onClick={handleScrollToInfo}
             >
               Learn More
             </Button>
