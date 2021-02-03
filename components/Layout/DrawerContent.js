@@ -126,30 +126,30 @@ export default function TemporaryDrawer() {
         </>
       )}
 
-      {/* <ListItem
-          onClick={() => {
-            navTo("/users");
-            toggleDrawer();
-          }}
-          button
-        >
-          <ListItemIcon>
-            <PeopleOutlineOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Users" />
-        </ListItem>
-        <ListItem
-          onClick={() => {
-            navTo("/graph");
-            toggleDrawer();
-          }}
-          button
-        >
-          <ListItemIcon>
-            <BubbleChartOutlinedIcon />
-          </ListItemIcon>
-          <ListItemText primary="Graph" />
-        </ListItem> */}
+      <ListItem
+        onClick={() => {
+          navTo("/users");
+          toggleDrawer();
+        }}
+        button
+      >
+        <ListItemIcon>
+          <PeopleOutlineOutlinedIcon />
+        </ListItemIcon>
+        <ListItemText primary="Users" />
+      </ListItem>
+      <ListItem
+        onClick={() => {
+          navTo("/graph");
+          toggleDrawer();
+        }}
+        button
+      >
+        <ListItemIcon>
+          <BubbleChartOutlinedIcon />
+        </ListItemIcon>
+        <ListItemText primary="Graph" />
+      </ListItem>
 
       <Divider />
       <List>
