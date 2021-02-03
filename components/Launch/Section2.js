@@ -22,9 +22,15 @@ const Section2 = () => {
           forums, digital stories, customized mentorship, and simulation games.
         </Typography>
       </Box>
-      <Box sx={{ width: { xs: "100%", md: "50%" } }}>
-        <img style={{ width: "100%" }} src="/images/launch2.jpg" />
-      </Box>
+      <Box
+        sx={{
+          width: { xs: "100%", md: "50%" },
+          height: { xs: "340px", md: "auto" },
+          background: `url('/images/launch2.jpg')`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+        }}
+      ></Box>
     </>
   );
 };

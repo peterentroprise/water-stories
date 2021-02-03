@@ -30,9 +30,13 @@ const MailChimpForm = () => {
   };
 
   return (
-    <Box sx={{ minWidth: 320 }}>
-      <Card>
-        <CardContent>
+    <Box>
+      <Card sx={{ minWidth: 340 }}>
+        <CardContent
+          sx={{
+            paddingTop: 3,
+          }}
+        >
           <Typography variant="h6">Subscribe For Updates</Typography>
           <Box
             sx={{

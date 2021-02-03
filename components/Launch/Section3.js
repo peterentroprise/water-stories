@@ -6,9 +6,15 @@ import MailChimpForm from "./MailChimpForm";
 const Section3 = () => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
-        <img style={{ width: "100%" }} src="/images/launch3.jpg" />
-      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: "340px",
+          background: `url('/images/launch3.jpg')`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+        }}
+      ></Box>
       <Box sx={{ position: "absolute" }}>
         <MailChimpForm />
       </Box>

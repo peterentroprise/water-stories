@@ -5,9 +5,15 @@ import Link from "../Link";
 const Section1 = () => {
   return (
     <>
-      <Box sx={{ width: "100%" }}>
-        <img style={{ width: "100%" }} src="/images/launch1.jpg" />
-      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: "340px",
+          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/launch1.jpg')`,
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+        }}
+      ></Box>
       <Box sx={{ position: "absolute" }}>
         <Box sx={{ p: 1 }}>
           <Typography sx={{ color: "white" }} variant="h3" align="center">
