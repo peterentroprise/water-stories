@@ -9,7 +9,7 @@ const Section3 = () => {
       <Box
         sx={{
           width: "100%",
-          height: "340px",
+          height: "420px",
           background: `url('/images/launch3.jpg')`,
           backgroundPosition: "center center",
           backgroundSize: "cover",

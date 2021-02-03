@@ -5,7 +5,7 @@ import Link from "../Link";
 const Section2 = () => {
   return (
     <>
-      <Box sx={{ width: { xs: "100%", md: "50%" }, p: 3 }}>
+      <Box sx={{ width: { xs: "100%", md: "50%" }, height: "340px", p: 3 }}>
         <Typography variant="h6">
           A Message From Zach Weiss of Elemental Ecosystems
         </Typography>
@@ -25,7 +25,7 @@ const Section2 = () => {
       <Box
         sx={{
           width: { xs: "100%", md: "50%" },
-          height: { xs: "340px", md: "auto" },
+          height: { xs: "420px", md: "auto" },
           background: `url('/images/launch2.jpg')`,
           backgroundPosition: "center center",
           backgroundSize: "cover",

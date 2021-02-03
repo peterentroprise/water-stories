@@ -23,6 +23,7 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RecentActorsOutlinedIcon from "@material-ui/icons/RecentActorsOutlined";
 import BubbleChartOutlinedIcon from "@material-ui/icons/BubbleChartOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import FlightTakeoffOutlinedIcon from "@material-ui/icons/FlightTakeoffOutlined";
 
 import Link from "../Link";
 
@@ -76,6 +77,18 @@ export default function TemporaryDrawer() {
             <InfoOutlinedIcon />
           </ListItemIcon>
           <ListItemText primary="About" />
+        </ListItem>
+        <ListItem
+          onClick={() => {
+            navTo("/launch");
+            toggleDrawer();
+          }}
+          button
+        >
+          <ListItemIcon>
+            <FlightTakeoffOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Launch" />
         </ListItem>
         {flags.stories && (
           <ListItem
