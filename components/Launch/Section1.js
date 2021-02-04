@@ -20,7 +20,7 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
             Water Stories
           </Typography>
         </Box>
-        <Box sx={{}}>
+        <Box sx={{ paddingTop: 2 }}>
           <Typography sx={{ color: "white" }} variant="h6" align="center">
             an online learning platform focusing entirely on water cycle
             restoration
@@ -32,6 +32,7 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
             display: "flex",
             justifyContent: "center",
             p: 1,
+            paddingTop: 6,
           }}
         >
           <Box sx={{ p: 1 }}>
