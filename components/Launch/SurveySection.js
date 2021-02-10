@@ -2,28 +2,34 @@ import { Container, Box, Typography, Button } from "@material-ui/core";
 
 import Link from "../Link";
 
-const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
+const SurveySection = () => {
   return (
     <>
       <Box
         sx={{
           width: "100%",
           height: "420px",
-          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/launch1.jpg')`,
+          background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/launch3.jpg')`,
           backgroundPosition: "center center",
           backgroundSize: "cover",
         }}
       ></Box>
       <Box sx={{ position: "absolute", p: 2 }}>
         <Box sx={{ p: 1 }}>
-          <Typography sx={{ color: "white" }} variant="h3" align="center">
-            Water Stories
+          <Typography sx={{ color: "white" }} variant="h6" align="center">
+            We Need Your Feedback
           </Typography>
         </Box>
-        <Box sx={{ paddingTop: 2 }}>
-          <Typography sx={{ color: "white" }} variant="h6" align="center">
-            an online learning platform focusing entirely on water cycle
-            restoration
+        <Box sx={{ paddingTop: 1 }}>
+          <Typography
+            sx={{ color: "white", p: 6 }}
+            variant="body1"
+            align="center"
+          >
+            Help us shape a new community with our digital ecosystem. Fill out
+            the short survey below to help us understand what you want in this
+            platform so we can better design features, courses, and stories
+            relevant to your needs.
           </Typography>
         </Box>
         <Box
@@ -36,17 +42,12 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
           }}
         >
           <Box sx={{ p: 1 }}>
-            <Button variant="contained" onClick={handleScrollToSubscribe}>
-              Subscribe For Updates
-            </Button>
-          </Box>
-          <Box sx={{ p: 1 }}>
             <Button
+              size="large"
               sx={{ color: "white", borderColor: "white" }}
               variant="outlined"
-              onClick={handleScrollToInfo}
             >
-              Learn More
+              Take The Survey
             </Button>
           </Box>
         </Box>
@@ -55,4 +56,4 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
   );
 };
 
-export default Section1;
+export default SurveySection;

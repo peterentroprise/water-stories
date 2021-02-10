@@ -14,6 +14,7 @@ import Link from "../Link";
 
 const MailChimpForm = () => {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [state, setState] = useState("IDLE");
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -43,18 +44,34 @@ const MailChimpForm = () => {
               width: "100%",
               display: "flex",
               paddingTop: 2,
+              paddingBottom: 1,
+            }}
+          >
+            <TextField
+              fullWidth
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              paddingTop: 1,
               paddingBottom: 2,
             }}
           >
             <TextField
               fullWidth
-              placeholder="Enter Email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Box>
           <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
             <Button
+              size="large"
               disabled={state === "LOADING"}
               variant="contained"
               onClick={subscribe}

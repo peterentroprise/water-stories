@@ -2,9 +2,11 @@ import { useRef } from "react";
 import { Container, Box, Typography, Button } from "@material-ui/core";
 
 import Link from "../Link";
-import Section1 from "./Section1";
-import Section2 from "./Section2";
-import Section3 from "./Section3";
+import TopSection from "./TopSection";
+import ZachSection from "./ZachSection";
+import SubscribeSection from "./SubscribeSection";
+import VideoSection from "./VideoSection";
+import SurveySection from "./SurveySection";
 
 const LaunchWrapper = () => {
   const infoRef = useRef();
@@ -29,7 +31,7 @@ const LaunchWrapper = () => {
             alignItems: "center",
           }}
         >
-          <Section1
+          <TopSection
             handleScrollToInfo={handleScrollToInfo}
             handleScrollToSubscribe={handleScrollToSubscribe}
           />
@@ -41,7 +43,7 @@ const LaunchWrapper = () => {
             flexWrap: "wrap",
           }}
         >
-          <Section2 />
+          <VideoSection />
         </Box>
         <Box
           ref={subscribeRef}
@@ -52,7 +54,27 @@ const LaunchWrapper = () => {
             alignItems: "center",
           }}
         >
-          <Section3 />
+          <SurveySection />
+        </Box>
+        <Box
+          ref={infoRef}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+          }}
+        >
+          <ZachSection />
+        </Box>
+        <Box
+          ref={subscribeRef}
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <SubscribeSection />
         </Box>
       </div>
     </Container>

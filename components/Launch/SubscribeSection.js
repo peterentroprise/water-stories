@@ -3,7 +3,7 @@ import { Container, Box, Typography, Button } from "@material-ui/core";
 import Link from "../Link";
 import MailChimpForm from "./MailChimpForm";
 
-const Section3 = () => {
+const SubscribeSection = () => {
   return (
     <>
       <Box
@@ -22,4 +22,4 @@ const Section3 = () => {
   );
 };
 
-export default Section3;
+export default SubscribeSection;
