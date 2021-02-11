@@ -64,8 +64,14 @@ export default async (req, res) => {
     // success
     return res.status(201).json({ error: null });
   } catch (error) {
+    console.log(error.response.data.title);
+    if (error.response.data.title == "Member Exists") {
+      return res.status(400).json({
+        error: `Looks like you're already on this list, thanks for subscribing!`,
+      });
+    }
     return res.status(400).json({
-      error: `Looks like you're already on this list, thanks for subscribing!`,
+      error: `Oops, something went wrong...`,
     });
   }
 };
