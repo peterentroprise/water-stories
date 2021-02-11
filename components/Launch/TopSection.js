@@ -44,7 +44,7 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
               variant="outlined"
               onClick={handleScrollToSubscribe}
             >
-              Subscribe For Updates
+              Subscribe
             </Button>
           </Box>
           <Box sx={{ p: 1 }}>
