@@ -8,7 +8,7 @@ const Section1 = ({ handleScrollToInfo, handleScrollToSubscribe }) => {
       <Box
         sx={{
           width: "100%",
-          height: "420px",
+          height: "480px",
           background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/launch1.jpg')`,
           backgroundPosition: "center center",
           backgroundSize: "cover",

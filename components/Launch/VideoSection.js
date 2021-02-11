@@ -15,13 +15,20 @@ const VideoSection = () => {
   const classes = useStyles();
   return (
     <>
-      <ReactJWPlayer
-        className={classes.player}
-        playerId="story-video"
-        playerScript="https://cdn.jwplayer.com/libraries/zu9ZTlIy.js"
-        file="https://content.jwplatform.com/videos/umjxL6a5-nh7Mumxo.mp4"
-        image="/images/launchVideoPoster.jpg"
-      />
+      <Box
+        sx={{
+          width: "100%",
+          // height: "420px",
+        }}
+      >
+        <ReactJWPlayer
+          className={classes.player}
+          playerId="story-video"
+          playerScript="https://cdn.jwplayer.com/libraries/zu9ZTlIy.js"
+          file="https://content.jwplatform.com/videos/umjxL6a5-nh7Mumxo.mp4"
+          image="/images/launchVideoPoster.jpg"
+        />
+      </Box>
     </>
   );
 };
