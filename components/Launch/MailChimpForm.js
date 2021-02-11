@@ -58,7 +58,7 @@ const MailChimpForm = () => {
           paddingRight: 2,
         }}
       >
-        <Typography sx={{ color: "white", textAlign: "center" }} variant="h5">
+        <Typography sx={{ color: "white", textAlign: "left" }} variant="h5">
           Subscribe For Updates
         </Typography>
         <Box
@@ -67,17 +67,11 @@ const MailChimpForm = () => {
             paddingBottom: 2,
           }}
         >
-          <Typography
-            sx={{ color: "white", textAlign: "center" }}
-            variant="body"
-          >
+          <Typography sx={{ color: "white", textAlign: "left" }} variant="body">
             Be the first to get updates, test beta versions
           </Typography>
           <br />
-          <Typography
-            sx={{ color: "white", textAlign: "center" }}
-            variant="body"
-          >
+          <Typography sx={{ color: "white", textAlign: "left" }} variant="body">
             and learn moreabout water cycle resotration
           </Typography>
         </Box>
@@ -121,7 +115,7 @@ const MailChimpForm = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box sx={{ display: "flex", justifyContent: "left", paddingLeft: 2 }}>
         <Button
           size="large"
           disabled={state === "LOADING"}

@@ -18,7 +18,8 @@ const VideoSection = () => {
       <Box
         sx={{
           width: "100%",
-          // height: "420px",
+          paddingBottom: 3,
+          paddingTop: 3,
         }}
       >
         <ReactJWPlayer

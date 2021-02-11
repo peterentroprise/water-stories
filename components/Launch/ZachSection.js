@@ -6,7 +6,15 @@ import Link from "../Link";
 const Section2 = () => {
   return (
     <>
-      <Box sx={{ width: { xs: "100%", md: "50%" }, p: 6 }}>
+      <Box
+        sx={{
+          width: { xs: "100%", md: "50%" },
+          paddingTop: 6,
+          paddingLeft: 2,
+          paddingRight: 2,
+          paddingBottom: 6,
+        }}
+      >
         <Typography variant="h5">
           A Message From Zach Weiss of Elemental Ecosystems
         </Typography>
@@ -39,8 +47,8 @@ const Section2 = () => {
         <Image
           className="avatar"
           src="/images/ZachWeissHeadshot.jpg"
-          width={320}
-          height={320}
+          width={272}
+          height={272}
         />
         <style jsx global>{`
           .avatar {
