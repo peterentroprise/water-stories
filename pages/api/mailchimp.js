@@ -65,7 +65,7 @@ export default async (req, res) => {
     return res.status(201).json({ error: null });
   } catch (error) {
     return res.status(400).json({
-      error: `Oops, something went wrong...`,
+      error: `Looks like you're already on this list, thanks for subscribing!`,
     });
   }
 };
