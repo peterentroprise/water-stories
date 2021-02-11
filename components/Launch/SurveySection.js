@@ -22,7 +22,7 @@ const SurveySection = () => {
         </Box>
         <Box sx={{ paddingTop: 1 }}>
           <Typography
-            sx={{ color: "white", p: 6 }}
+            sx={{ color: "white", paddingLeft: 6, paddingRight: 6 }}
             variant="body1"
             align="center"
           >
