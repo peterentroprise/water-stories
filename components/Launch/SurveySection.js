@@ -42,13 +42,15 @@ const SurveySection = () => {
           }}
         >
           <Box sx={{ p: 1 }}>
-            <Button
-              size="large"
-              sx={{ color: "white", borderColor: "white" }}
-              variant="outlined"
-            >
-              Take The Survey
-            </Button>
+            <Link href="https://www.surveymonkey.com/r/EELEARN" passHref>
+              <Button
+                size="large"
+                sx={{ color: "white", borderColor: "white" }}
+                variant="outlined"
+              >
+                Take The Survey
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Box>
