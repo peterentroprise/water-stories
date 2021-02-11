@@ -17,7 +17,7 @@ const SurveySection = () => {
         }}
       ></Box>
       <Box sx={{ position: "absolute", padding: 2 }}>
-        <Box sx={{ p: 0 }}>
+        <Box sx={{ paddingBottom: 1 }}>
           <Typography sx={{ color: "white" }} variant="h5" align="left">
             We Need Your Feedback
           </Typography>
