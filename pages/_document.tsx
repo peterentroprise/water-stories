@@ -5,6 +5,10 @@ import createEmotionServer from "@emotion/server/create-instance";
 import theme from "../config/theme";
 import { cache } from "./_app";
 
+import { GA_TRACKING_ID } from "../lib/gtag";
+
+const isProduction = process.env.NODE_ENV === "production";
+
 const { extractCritical } = createEmotionServer(cache);
 
 export default class MyDocument extends Document {
@@ -12,6 +16,28 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          {/* enable analytics script only for production */}
+          {isProduction && (
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+              />
+              <script
+                // eslint-disable-next-line react/no-danger
+                dangerouslySetInnerHTML={{
+                  __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+                }}
+              />
+            </>
+          )}
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           {/* <link

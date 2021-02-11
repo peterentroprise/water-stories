@@ -1,5 +1,9 @@
 import React from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import * as gtag from "../lib/gtag";
+const isProduction = process.env.NODE_ENV === "production";
 import { AppProps } from "next/app";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { CacheProvider } from "@emotion/react";
@@ -20,6 +24,7 @@ configure({ clientId: process.env["NEXT_PUBLIC_FLAGS_CLIENT_ID"] });
 
 export default function App({ Component, pageProps }: AppProps) {
   const apolloClient = useApollo(pageProps.initialApolloState);
+  const router = useRouter();
 
   React.useEffect(() => {
     const jssStyles = document.querySelector("#jss-server-side");
@@ -31,6 +36,17 @@ export default function App({ Component, pageProps }: AppProps) {
   if (typeof window !== "undefined") {
     LogRocket.init("xjwz8l/entro-web");
   }
+
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      /* invoke analytics function only for production */
+      if (isProduction) gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <ApolloProvider client={apolloClient}>
