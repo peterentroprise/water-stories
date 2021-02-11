@@ -1,4 +1,5 @@
 import { Container, Box, Typography, Button } from "@material-ui/core";
+import Image from "next/image";
 
 import Link from "../Link";
 
@@ -6,7 +7,7 @@ const Section2 = () => {
   return (
     <>
       <Box sx={{ width: { xs: "100%", md: "50%" }, p: 6 }}>
-        <Typography variant="h6">
+        <Typography variant="h5">
           A Message From Zach Weiss of Elemental Ecosystems
         </Typography>
         <br />
@@ -30,8 +31,23 @@ const Section2 = () => {
         sx={{
           width: { xs: "100%", md: "50%" },
           height: { xs: "420px", md: "auto" },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-      ></Box>
+      >
+        <Image
+          className="avatar"
+          src="/images/ZachWeissHeadshot.jpg"
+          width={320}
+          height={320}
+        />
+        <style jsx global>{`
+          .avatar {
+            border-radius: 50%;
+          }
+        `}</style>
+      </Box>
     </>
   );
 };

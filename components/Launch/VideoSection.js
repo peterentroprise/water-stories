@@ -19,7 +19,8 @@ const VideoSection = () => {
         className={classes.player}
         playerId="story-video"
         playerScript="https://cdn.jwplayer.com/libraries/zu9ZTlIy.js"
-        file="https://content.jwplatform.com/videos/M8LPoR6p-nh7Mumxo.mp4"
+        file="https://content.jwplatform.com/videos/umjxL6a5-nh7Mumxo.mp4"
+        image="/images/launchVideoPoster.jpg"
       />
     </>
   );

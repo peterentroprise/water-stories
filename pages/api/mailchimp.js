@@ -1,6 +1,6 @@
 import axios from "axios";
 
-function getRequestParams(email) {
+function getRequestParams(email, name) {
   // get env variables
   const API_KEY = process.env.MAILCHIMP_API_KEY;
   const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
@@ -18,6 +18,9 @@ function getRequestParams(email) {
   const data = {
     email_address: email,
     status: "subscribed",
+    merge_fields: {
+      FNAME: name,
+    },
   };
 
   // API key needs to be encoded in base 64 format
@@ -37,6 +40,7 @@ function getRequestParams(email) {
 
 export default async (req, res) => {
   const { email } = req.body;
+  const { name } = req.body;
 
   if (!email || !email.length) {
     return res.status(400).json({
@@ -44,8 +48,14 @@ export default async (req, res) => {
     });
   }
 
+  if (!name || !name.length) {
+    return res.status(400).json({
+      error: "Forgot to add your name?",
+    });
+  }
+
   try {
-    const { url, data, headers } = getRequestParams(email);
+    const { url, data, headers } = getRequestParams(email, name);
 
     console.log(`url: ,${url}`);
     console.log(`data: ,${data}`);
