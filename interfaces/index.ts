@@ -39,6 +39,16 @@ export type Story = {
   };
 };
 
+export type Request = {
+  id: string;
+  name: string;
+  description: string;
+  slug: string;
+  created_at: string;
+  updated_at: string;
+  is_active: boolean;
+};
+
 export type ThreadInterface = {
   id: string;
   threadName: string;
