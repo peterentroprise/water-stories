@@ -72,7 +72,7 @@ const MailChimpForm = () => {
           </Typography>
           <br />
           <Typography sx={{ color: "white", textAlign: "left" }} variant="body">
-            and learn moreabout water cycle resotration
+            and learn more about water cycle restoration
           </Typography>
         </Box>
       </Box>
