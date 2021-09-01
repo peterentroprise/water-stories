@@ -39,7 +39,7 @@
     "lodash": "^4.17.20",
     "logrocket": "^1.0.14",
     "moment": "^2.29.1",
-    "next": "^10.0.5",
+    "next": "^11.1.1",
     "next-pwa": "^5.0.4",
     "next-with-apollo": "^5.1.0",
     "nookies": "^2.5.0",
